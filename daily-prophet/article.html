@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Daily Prophet - Read full reports from the wizarding world.">
+    <meta name="theme-color" content="#b59449">
+    <!-- Open Graph (dynamic title updated by article.js) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Daily Prophet">
+    <meta property="og:image" content="assets/hogwarts_sketch.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="The Daily Prophet">
+    <title>The Daily Prophet | Full Report</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="parchment single-article-view">
+    <!-- Skip to content link for screen readers -->
+    <a href="#full-article-container" class="skip-link">Skip to article</a>
+
+    <!-- Magical sound effects -->
+    <audio id="sound-page" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" preload="auto"></audio>
+    <audio id="sound-magic" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-84.wav" preload="auto"></audio>
+
+    <!-- Ambient Spell Overlay for Lumos/Nox -->
+    <div id="spell-glow" class="spell-glow-overlay" aria-hidden="true"></div>
+    <div id="spark-container" aria-hidden="true"></div>
+
+    <div class="scroll-wrapper">
+        <!-- Top Toolbar -->
+        <header class="top-toolbar" role="banner">
+            <div class="toolbar-left">
+                <a href="index.html" class="back-link-btn" id="btn-back-header" aria-label="Return to front page">&laquo; Back to Front Page</a>
+            </div>
+            <div class="toolbar-right">
+                <button id="btn-sound" class="toolbar-btn" aria-label="Toggle Sound Effects" aria-pressed="true">
+                    <span class="icon">🔊</span> Sound: ON
+                </button>
+                <nav class="spell-selector" aria-label="Spell Casting Controls">
+                    <span class="label" id="spell-label">Cast Spell:</span>
+                    <button id="spell-lumos" class="spell-btn" data-spell="lumos" aria-describedby="spell-label">Lumos</button>
+                    <button id="spell-nox" class="spell-btn" data-spell="nox" aria-describedby="spell-label">Nox</button>
+                    <button id="spell-confundo" class="spell-btn" data-spell="confundo" aria-describedby="spell-label">Confundo</button>
+                    <button id="spell-finite" class="spell-btn active" data-spell="finite" aria-describedby="spell-label" aria-pressed="true">Finite</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Scroll Container -->
+        <article class="scroll-content" id="full-article-container">
+            <!-- Loading state -->
+            <div class="loading-message" id="article-loading" role="status" aria-live="polite">
+                <span class="wand-loader" aria-hidden="true">🪄</span> Loading magical report...
+            </div>
+
+            <!-- Content will be injected by article.js -->
+            <div class="article-details-wrapper hide" id="article-details">
+                <div class="article-meta-header">
+                    <span class="article-badge" id="article-category">NEWS REPORT</span>
+                    <span class="article-date" id="article-date">Thursday, 2 July 2026</span>
+                </div>
+                
+                <h1 class="full-title" id="article-title">ARTICLE TITLE</h1>
+                <p class="full-subtitle" id="article-subtitle">Article Subtitle</p>
+                <div class="author-signature" id="article-author">By Rita Skeeter</div>
+
+                <hr class="double-divider">
+
+                <div class="full-article-body">
+                    <!-- Ornate image container (only displayed if article has image) -->
+                    <div class="article-visual-frame hide" id="article-image-container">
+                        <div class="photo-border">
+                            <img src="" alt="" id="article-image" class="magical-photo" loading="lazy">
+                        </div>
+                        <p class="photo-caption" id="article-image-caption">Captioned sketch detailing the event.</p>
+                    </div>
+
+                    <div class="article-paragraphs" id="article-body-text">
+                        <!-- Paragraphs injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-message hide" id="article-error" role="alert">
+                <h2>⚠️ REPORT NOT FOUND</h2>
+                <p>This report appears to have been classified by the Ministry of Magic or dissolved by a counter-spell.</p>
+                <a href="index.html" class="magic-action-btn back-btn-error">Return to Front Page</a>
+            </div>
+        </article>
+
+        <!-- Bottom Page Controls -->
+        <footer class="scroll-footer" role="contentinfo">
+            <a href="index.html" class="stamp-back-btn" id="btn-back-footer" aria-label="Return to front page">
+                <div class="stamp-border">
+                    <span class="stamp-text">DAILY PROPHET</span>
+                    <span class="stamp-action">RETURN TO INDEX</span>
+                </div>
+            </a>
+        </footer>
+    </div>
+
+    <!-- Script Imports -->
+    <script src="articles-data.js"></script>
+    <script src="magic-engine.js"></script>
+    <script src="article.js"></script>
+</body>
+</html>
