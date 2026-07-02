@@ -1,0 +1,1748 @@
+     1→/* ==========================================================================
+     2→   DAILY PROPHET - CORE STYLING & MAGICAL EFFECTS
+     3→   ========================================================================== */
+     4→
+     5→/* Importing Google Fonts */
+     6→@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&family=UnifrakturMaguntia&display=swap');
+     7→
+     8→/* Design Tokens & Variables */
+     9→:root {
+    10→    --bg-parchment: #f2ebd9;
+    11→    --bg-parchment-dark: #e8dda8;
+    12→    --ink-color: #1f1f1e;
+    13→    --accent-gold: #b59449;
+    14→    --accent-red: #8a1f1f;
+    15→    --border-color: #4a412a;
+    16→    --font-gothic: 'UnifrakturMaguntia', serif;
+    17→    --font-display: 'Cinzel Decorative', serif;
+    18→    --font-headline: 'Playfair Display', serif;
+    19→    --font-body: 'Spectral', serif;
+    20→    
+    21→    /* Magic Overlays */
+    22→    --glow-color: rgba(255, 238, 150, 0.4);
+    23→    --shadow-intensity: 0.15;
+    24→}
+    25→
+    26→/* Global Reset */
+    27→* {
+    28→    box-sizing: border-box;
+    29→    margin: 0;
+    30→    padding: 0;
+    31→}
+    32→
+    33→body {
+    34→    background-color: #110f0c;
+    35→    color: var(--ink-color);
+    36→    font-family: var(--font-body);
+    37→    font-size: 16px;
+    38→    line-height: 1.5;
+    39→    overflow-x: hidden;
+    40→    position: relative;
+    41→    transition: background-color 0.8s ease, color 0.8s ease;
+    42→}
+    43→
+    44→/* Custom Cursor - Wand Style (on desktop) */
+    45→@media (min-width: 768px) {
+    46→    body {
+    47→        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 30 L30 2' stroke='%238B5A2B' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M26 6 L30 2' stroke='%23FFE57F' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='2' r='2' fill='%23FFF'/%3E%3C/svg%3E") 28 4, auto;
+    48→    }
+    49→}
+    50→
+    51→/* Vintage Parchment Texture & Paper Styling */
+    52→.parchment {
+    53→    position: relative;
+    54→    background-color: var(--bg-parchment);
+    55→    background-image: 
+    56→        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.1) 100%),
+    57→        repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
+    58→    box-shadow: inset 0 0 100px rgba(80, 60, 30, 0.4);
+    59→}
+    60→
+    61→.newspaper-container {
+    62→    max-width: 1200px;
+    63→    margin: 0 auto;
+    64→    padding: 20px 40px;
+    65→    background: transparent;
+    66→    position: relative;
+    67→    z-index: 2;
+    68→}
+    69→
+    70→/* Vignette overlay for aging paper edges */
+    71→.newspaper-container::before {
+    72→    content: "";
+    73→    position: absolute;
+    74→    top: 0; left: 0; right: 0; bottom: 0;
+    75→    pointer-events: none;
+    76→    box-shadow: inset 0 0 80px rgba(0,0,0,0.3);
+    77→    z-index: 10;
+    78→}
+    79→
+    80→/* Links & Text Styles */
+    81→a {
+    82→    color: var(--ink-color);
+    83→    text-decoration: none;
+    84→    transition: color 0.3s ease;
+    85→}
+    86→
+    87→a:hover {
+    88→    color: var(--accent-red);
+    89→}
+    90→
+    91→body.nox-active a:hover {
+    92→    color: var(--accent-gold);
+    93→}
+    94→
+    95→.read-more-link {
+    96→    font-size: 0.85rem;
+    97→    font-weight: 700;
+    98→    font-style: italic;
+    99→    white-space: nowrap;
+   100→    text-transform: uppercase;
+   101→    letter-spacing: 0.5px;
+   102→    border-bottom: 1px dotted var(--border-color);
+   103→    margin-left: 4px;
+   104→}
+   105→
+   106→body.nox-active .read-more-link {
+   107→    border-bottom-color: var(--accent-gold);
+   108→}
+   109→
+   110→/* ==========================================================================
+   111→   TOP TOOLBAR & INTERACTIVE OVERLAYS
+   112→   ========================================================================== */
+   113→
+   114→.top-toolbar {
+   115→    display: flex;
+   116→    justify-content: space-between;
+   117→    align-items: center;
+   118→    border-bottom: 2px solid var(--border-color);
+   119→    padding-bottom: 10px;
+   120→    margin-bottom: 20px;
+   121→    font-size: 0.9rem;
+   122→    font-weight: 600;
+   123→    text-transform: uppercase;
+   124→    letter-spacing: 1px;
+   125→}
+   126→
+   127→.magic-indicator {
+   128→    display: flex;
+   129→    align-items: center;
+   130→    gap: 6px;
+   131→}
+   132→
+   133→.status-online {
+   134→    color: #2e7d32;
+   135→    text-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+   136→    animation: magic-pulse 2s infinite;
+   137→}
+   138→
+   139→.toolbar-right {
+   140→    display: flex;
+   141→    align-items: center;
+   142→    gap: 15px;
+   143→}
+   144→
+   145→.toolbar-btn, .spell-btn, .magic-action-btn {
+   146→    background: rgba(139, 90, 43, 0.1);
+   147→    border: 1px solid var(--border-color);
+   148→    color: var(--ink-color);
+   149→    padding: 5px 12px;
+   150→    font-family: var(--font-body);
+   151→    font-weight: bold;
+   152→    cursor: pointer;
+   153→    border-radius: 3px;
+   154→    transition: all 0.3s ease;
+   155→}
+   156→
+   157→.toolbar-btn:hover, .magic-action-btn:hover {
+   158→    background: rgba(139, 90, 43, 0.2);
+   159→    box-shadow: 0 0 5px rgba(181, 148, 73, 0.5);
+   160→}
+   161→
+   162→.spell-selector {
+   163→    display: flex;
+   164→    align-items: center;
+   165→    gap: 5px;
+   166→}
+   167→
+   168→.spell-btn {
+   169→    padding: 3px 8px;
+   170→    font-size: 0.8rem;
+   171→}
+   172→
+   173→.spell-btn.active {
+   174→    background: var(--accent-gold);
+   175→    color: #fff;
+   176→    border-color: var(--accent-gold);
+   177→    box-shadow: 0 0 8px var(--accent-gold);
+   178→}
+   179→
+   180→/* Lumos / Nox Magic Overlays */
+   181→.spell-glow-overlay {
+   182→    position: fixed;
+   183→    top: 0; left: 0; width: 100vw; height: 100vh;
+   184→    pointer-events: none;
+   185→    z-index: 999;
+   186→    opacity: 0;
+   187→    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+   188→}
+   189→
+   190→/* Lumos Glow - Cursor shines a light */
+   191→body.lumos-active .spell-glow-overlay {
+   192→    opacity: 1;
+   193→    background: radial-gradient(circle 180px at var(--cursor-x, 50%) var(--cursor-y, 50%), transparent 0%, rgba(0, 0, 0, 0.45) 80%);
+   194→}
+   195→
+   196→/* Nox - Dark Realm */
+   197→body.nox-active {
+   198→    --bg-parchment: #161513;
+   199→    --bg-parchment-dark: #0f0e0c;
+   200→    --ink-color: #e4d8bc;
+   201→    --border-color: #63573e;
+   202→    --accent-gold: #ffdf7a;
+   203→    background-color: #080807;
+   204→}
+   205→
+   206→body.nox-active .newspaper-container::before {
+   207→    box-shadow: inset 0 0 100px rgba(0,0,0,0.85);
+   208→}
+   209→
+   210→body.nox-active .parchment {
+   211→    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+   212→}
+   213→
+   214→body.nox-active .magical-photo {
+   215→    filter: grayscale(1) sepia(0.2) invert(0.85) brightness(1.2) contrast(1.2);
+   216→}
+   217→
+   218→/* Confundo Effect */
+   219→body.confundo-active .newspaper-grid > *,
+   220→body.confundo-active .scroll-content > * {
+   221→    animation: confundo-shake 6s ease-in-out infinite alternate;
+   222→}
+   223→
+   224→/* ==========================================================================
+   225→   MASTHEAD & ISSUE INFORMATION
+   226→   ========================================================================== */
+   227→
+   228→.masthead {
+   229→    display: flex;
+   230→    align-items: center;
+   231→    justify-content: center;
+   232→    margin: 20px 0;
+   233→    position: relative;
+   234→}
+   235→
+   236→.logo-container {
+   237→    text-align: center;
+   238→    padding: 0 20px;
+   239→}
+   240→
+   241→.logo-title {
+   242→    font-family: var(--font-display);
+   243→    font-size: 4.8rem;
+   244→    font-weight: 900;
+   245→    letter-spacing: -2px;
+   246→    line-height: 1;
+   247→    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+   248→    transition: transform 0.5s ease;
+   249→}
+   250→
+   251→body.nox-active .logo-title {
+   252→    color: var(--accent-gold);
+   253→    text-shadow: 0 0 12px rgba(255, 223, 122, 0.4);
+   254→}
+   255→
+   256→.logo-tagline {
+   257→    font-family: var(--font-body);
+   258→    font-size: 1.1rem;
+   259→    font-style: italic;
+   260→    letter-spacing: 2px;
+   261→    margin-top: 5px;
+   262→    text-transform: uppercase;
+   263→}
+   264→
+   265→.masthead-decor-left, .masthead-decor-right {
+   266→    flex-grow: 1;
+   267→    height: 12px;
+   268→    border-top: 4px double var(--border-color);
+   269→    border-bottom: 2px solid var(--border-color);
+   270→}
+   271→
+   272→/* Issue Bar */
+   273→.issue-info-bar {
+   274→    display: flex;
+   275→    justify-content: space-between;
+   276→    border-top: 4px double var(--border-color);
+   277→    border-bottom: 4px double var(--border-color);
+   278→    padding: 6px 15px;
+   279→    font-family: var(--font-body);
+   280→    font-weight: 600;
+   281→    font-size: 1.05rem;
+   282→    letter-spacing: 1px;
+   283→    text-transform: uppercase;
+   284→}
+   285→
+   286→/* News Ticker */
+   287→.news-ticker-container {
+   288→    display: flex;
+   289→    align-items: center;
+   290→    background: rgba(0, 0, 0, 0.05);
+   291→    border-bottom: 2px solid var(--border-color);
+   292→    overflow: hidden;
+   293→    height: 32px;
+   294→    font-family: var(--font-body);
+   295→    font-weight: 700;
+   296→    font-size: 0.9rem;
+   297→}
+   298→
+   299→body.nox-active .news-ticker-container {
+   300→    background: rgba(255, 255, 255, 0.03);
+   301→}
+   302→
+   303→.ticker-label {
+   304→    background: var(--accent-red);
+   305→    color: #fff;
+   306→    padding: 0 12px;
+   307→    height: 100%;
+   308→    display: flex;
+   309→    align-items: center;
+   310→    font-weight: 800;
+   311→    letter-spacing: 1px;
+   312→    z-index: 5;
+   313→    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+   314→}
+   315→
+   316→.ticker-wrap {
+   317→    overflow: hidden;
+   318→    width: 100%;
+   319→}
+   320→
+   321→.ticker-content {
+   322→    display: inline-block;
+   323→    white-space: nowrap;
+   324→    padding-left: 100%;
+   325→    animation: ticker-slide 35s linear infinite;
+   326→}
+   327→
+   328→/* ==========================================================================
+   329→   GRID LAYOUT & COLUMNS
+   330→   ========================================================================== */
+   331→
+   332→.double-divider {
+   333→    border: none;
+   334→    border-top: 1px solid var(--border-color);
+   335→    border-bottom: 3px double var(--border-color);
+   336→    height: 5px;
+   337→    margin: 12px 0;
+   338→}
+   339→
+   340→.column-divider {
+   341→    border: none;
+   342→    border-top: 1px dashed rgba(74, 65, 42, 0.3);
+   343→    margin: 20px 0;
+   344→}
+   345→
+   346→body.nox-active .column-divider {
+   347→    border-top-color: rgba(228, 216, 188, 0.15);
+   348→}
+   349→
+   350→.newspaper-grid {
+   351→    display: grid;
+   352→    grid-template-columns: 280px 1fr 280px;
+   353→    gap: 30px;
+   354→    margin-top: 10px;
+   355→}
+   356→
+   357→.side-column {
+   358→    display: flex;
+   359→    flex-direction: column;
+   360→}
+   361→
+   362→/* News Blocks & Mini Blocks */
+   363→.mini-article-block {
+   364→    margin-top: 15px;
+   365→    background: rgba(0,0,0,0.02);
+   366→    padding: 10px;
+   367→    border: 1px solid rgba(74, 65, 42, 0.15);
+   368→}
+   369→
+   370→body.nox-active .mini-article-block {
+   371→    border-color: rgba(228, 216, 188, 0.1);
+   372→}
+   373→
+   374→.mini-title {
+   375→    font-family: var(--font-headline);
+   376→    font-size: 1.05rem;
+   377→    font-weight: 700;
+   378→    margin-bottom: 4px;
+   379→    text-transform: uppercase;
+   380→}
+   381→
+   382→.mini-snippet {
+   383→    font-size: 0.85rem;
+   384→    line-height: 1.4;
+   385→}
+   386→
+   387→.news-block {
+   388→    padding: 2px 0;
+   389→}
+   390→
+   391→.block-title {
+   392→    font-family: var(--font-headline);
+   393→    font-size: 1.25rem;
+   394→    font-weight: 700;
+   395→    line-height: 1.1;
+   396→    margin-bottom: 6px;
+   397→    text-transform: uppercase;
+   398→}
+   399→
+   400→.block-snippet {
+   401→    font-size: 0.9rem;
+   402→    line-height: 1.45;
+   403→}
+   404→
+   405→.news-block-small .block-small-title {
+   406→    font-family: var(--font-headline);
+   407→    font-size: 1.05rem;
+   408→    font-weight: 800;
+   409→    line-height: 1.1;
+   410→    margin-bottom: 5px;
+   411→    text-transform: uppercase;
+   412→}
+   413→
+   414→.news-block-small .block-small-snippet {
+   415→    font-size: 0.85rem;
+   416→    line-height: 1.4;
+   417→}
+   418→
+   419→/* ==========================================================================
+   420→   MAIN NEWS COLUMN
+   421→   ========================================================================== */
+   422→
+   423→.main-column {
+   424→    border-left: 1px solid rgba(74, 65, 42, 0.2);
+   425→    border-right: 1px solid rgba(74, 65, 42, 0.2);
+   426→    padding: 0 15px;
+   427→}
+   428→
+   429→body.nox-active .main-column {
+   430→    border-left-color: rgba(228, 216, 188, 0.1);
+   431→    border-right-color: rgba(228, 216, 188, 0.1);
+   432→}
+   433→
+   434→.main-article {
+   435→    display: flex;
+   436→    flex-direction: column;
+   437→}
+   438→
+   439→.main-headline {
+   440→    font-family: var(--font-headline);
+   441→    font-size: 2.8rem;
+   442→    font-weight: 900;
+   443→    line-height: 1.05;
+   444→    text-align: center;
+   445→    letter-spacing: -1px;
+   446→    margin-bottom: 8px;
+   447→    text-transform: uppercase;
+   448→}
+   449→
+   450→.main-subheadline {
+   451→    font-family: var(--font-body);
+   452→    font-style: italic;
+   453→    font-size: 1.25rem;
+   454→    font-weight: 600;
+   455→    text-align: center;
+   456→    color: rgba(0, 0, 0, 0.7);
+   457→    margin-bottom: 20px;
+   458→    border-bottom: 1px solid var(--border-color);
+   459→    padding-bottom: 12px;
+   460→}
+   461→
+   462→body.nox-active .main-subheadline {
+   463→    color: rgba(228, 216, 188, 0.7);
+   464→}
+   465→
+   466→/* Ornate Photo Frame */
+   467→.main-photo-frame {
+   468→    margin: 0 auto 20px auto;
+   469→    width: 100%;
+   470→    max-width: 520px;
+   471→    background: #e6dfcb;
+   472→    padding: 15px;
+   473→    border: 3px double var(--border-color);
+   474→    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+   475→    text-align: center;
+   476→}
+   477→
+   478→body.nox-active .main-photo-frame {
+   479→    background: #21201d;
+   480→}
+   481→
+   482→.photo-border {
+   483→    border: 2px solid #5a4f38;
+   484→    overflow: hidden;
+   485→    position: relative;
+   486→}
+   487→
+   488→.magical-photo {
+   489→    width: 100%;
+   490→    height: auto;
+   491→    display: block;
+   492→    mix-blend-mode: multiply;
+   493→    transition: filter 0.8s ease;
+   494→}
+   495→
+   496→body.nox-active .magical-photo {
+   497→    mix-blend-mode: normal;
+   498→}
+   499→
+   500→/* CSS Filters and Magic Motion */
+   501→.sepia-filter {
+   502→    filter: sepia(0.85) contrast(1.15) brightness(0.95);
+   503→    animation: magic-photo-flicker 5s infinite, magic-photo-zoom 20s infinite alternate;
+   504→}
+   505→
+   506→.grayscale-filter {
+   507→    filter: grayscale(1) sepia(0.15) contrast(1.25) brightness(0.95);
+   508→    animation: magic-photo-flicker 6s infinite, magic-wanted-move 8s infinite alternate ease-in-out;
+   509→}
+   510→
+   511→.potion-photo {
+   512→    filter: sepia(0.7) contrast(1.2) hue-rotate(-10deg);
+   513→    animation: magic-photo-flicker 4s infinite, potion-bubble-wiggle 3s infinite ease-in-out;
+   514→}
+   515→
+   516→.photo-caption {
+   517→    font-family: var(--font-body);
+   518→    font-size: 0.85rem;
+   519→    font-style: italic;
+   520→    margin-top: 10px;
+   521→    color: #4a412a;
+   522→    border-top: 1px solid rgba(74, 65, 42, 0.2);
+   523→    padding-top: 5px;
+   524→}
+   525→
+   526→body.nox-active .photo-caption {
+   527→    color: #c9bda5;
+   528→}
+   529→
+   530→/* Article Columns */
+   531→.article-text-columns {
+   532→    column-count: 2;
+   533→    column-gap: 20px;
+   534→    column-rule: 1px solid rgba(74, 65, 42, 0.15);
+   535→    text-align: justify;
+   536→    font-size: 1rem;
+   537→}
+   538→
+   539→body.nox-active .article-text-columns {
+   540→    column-rule-color: rgba(228, 216, 188, 0.1);
+   541→}
+   542→
+   543→.lead-para {
+   544→    font-weight: 600;
+   545→}
+   546→
+   547→.drop-cap {
+   548→    float: left;
+   549→    font-family: var(--font-headline);
+   550→    font-size: 4rem;
+   551→    line-height: 0.8;
+   552→    padding-top: 4px;
+   553→    padding-right: 8px;
+   554→    padding-left: 3px;
+   555→    color: var(--accent-red);
+   556→}
+   557→
+   558→body.nox-active .drop-cap {
+   559→    color: var(--accent-gold);
+   560→}
+   561→
+   562→/* ==========================================================================
+   563→   WANTED POSTER (LEFT COLUMN)
+   564→   ========================================================================== */
+   565→
+   566→.wanted-poster-container {
+   567→    border: 8px double var(--border-color);
+   568→    background: #eadebe;
+   569→    padding: 15px;
+   570→    text-align: center;
+   571→    box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+   572→    position: relative;
+   573→}
+   574→
+   575→body.nox-active .wanted-poster-container {
+   576→    background: #24221d;
+   577→}
+   578→
+   579→.wanted-header {
+   580→    font-family: var(--font-headline);
+   581→    font-weight: 900;
+   582→    font-size: 1.45rem;
+   583→    letter-spacing: 1px;
+   584→    line-height: 1.1;
+   585→    margin-bottom: 12px;
+   586→    border-bottom: 2px solid var(--border-color);
+   587→    padding-bottom: 8px;
+   588→}
+   589→
+   590→.wanted-image-frame {
+   591→    border: 4px solid var(--border-color);
+   592→    position: relative;
+   593→    overflow: hidden;
+   594→    background: #000;
+   595→}
+   596→
+   597→.poster-label-overlay {
+   598→    position: absolute;
+   599→    bottom: 5px;
+   600→    left: 50%;
+   601→    transform: translateX(-50%);
+   602→    background: var(--accent-red);
+   603→    color: #fff;
+   604→    font-family: var(--font-headline);
+   605→    font-weight: 900;
+   606→    padding: 2px 15px;
+   607→    font-size: 0.9rem;
+   608→    letter-spacing: 2px;
+   609→    border-radius: 2px;
+   610→}
+   611→
+   612→body.nox-active .poster-label-overlay {
+   613→    background: var(--accent-gold);
+   614→    color: #000;
+   615→}
+   616→
+   617→.wanted-details {
+   618→    margin-top: 12px;
+   619→}
+   620→
+   621→.wanted-name {
+   622→    font-family: var(--font-headline);
+   623→    font-size: 1.6rem;
+   624→    font-weight: 900;
+   625→    letter-spacing: 1px;
+   626→    margin-bottom: 4px;
+   627→}
+   628→
+   629→.wanted-desc {
+   630→    font-size: 0.85rem;
+   631→    font-style: italic;
+   632→    line-height: 1.3;
+   633→    padding: 0 10px;
+   634→}
+   635→
+   636→.reward-box {
+   637→    margin-top: 10px;
+   638→    border: 2px solid var(--border-color);
+   639→    padding: 4px;
+   640→    background: rgba(139, 90, 43, 0.05);
+   641→}
+   642→
+   643→.reward-title {
+   644→    display: block;
+   645→    font-size: 0.75rem;
+   646→    letter-spacing: 1.5px;
+   647→    font-weight: 700;
+   648→}
+   649→
+   650→.reward-amount {
+   651→    font-family: var(--font-headline);
+   652→    font-size: 1.25rem;
+   653→    font-weight: 900;
+   654→    color: var(--accent-red);
+   655→}
+   656→
+   657→body.nox-active .reward-amount {
+   658→    color: var(--accent-gold);
+   659→}
+   660→
+   661→.wanted-interact {
+   662→    margin-top: 15px;
+   663→    padding-top: 12px;
+   664→    border-top: 1px dashed rgba(74, 65, 42, 0.3);
+   665→}
+   666→
+   667→.interact-label {
+   668→    display: block;
+   669→    font-size: 0.8rem;
+   670→    font-weight: 700;
+   671→    margin-bottom: 6px;
+   672→}
+   673→
+   674→.parchment-input {
+   675→    width: 100%;
+   676→    background: rgba(255, 255, 255, 0.4);
+   677→    border: 1px solid var(--border-color);
+   678→    color: var(--ink-color);
+   679→    padding: 6px 10px;
+   680→    font-family: var(--font-body);
+   681→    font-size: 0.9rem;
+   682→    margin-bottom: 8px;
+   683→    border-radius: 2px;
+   684→}
+   685→
+   686→.parchment-input:focus {
+   687→    outline: none;
+   688→    background: rgba(255, 255, 255, 0.7);
+   689→    box-shadow: 0 0 5px var(--accent-gold);
+   690→}
+   691→
+   692→body.nox-active .parchment-input {
+   693→    background: rgba(0, 0, 0, 0.4);
+   694→}
+   695→
+   696→.magic-action-btn {
+   697→    width: 100%;
+   698→    font-size: 0.9rem;
+   699→    padding: 6px;
+   700→    background: var(--accent-gold);
+   701→    color: #fff;
+   702→    border-color: var(--accent-gold);
+   703→    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+   704→}
+   705→
+   706→body.nox-active .magic-action-btn {
+   707→    color: #000;
+   708→}
+   709→
+   710→/* Advertisement */
+   711→.advertisement-container {
+   712→    border: 1px solid var(--border-color);
+   713→    padding: 12px;
+   714→    text-align: center;
+   715→    background: rgba(181, 148, 73, 0.05);
+   716→}
+   717→
+   718→.ad-label {
+   719→    font-size: 0.7rem;
+   720→    letter-spacing: 2px;
+   721→    opacity: 0.6;
+   722→    margin-bottom: 8px;
+   723→}
+   724→
+   725→.potion-ad {
+   726→    display: flex;
+   727→    flex-direction: column;
+   728→    align-items: center;
+   729→}
+   730→
+   731→.ad-title {
+   732→    font-family: var(--font-display);
+   733→    font-size: 1.4rem;
+   734→    letter-spacing: 1px;
+   735→}
+   736→
+   737→.ad-subtitle {
+   738→    font-size: 0.8rem;
+   739→    font-style: italic;
+   740→    margin-bottom: 8px;
+   741→}
+   742→
+   743→.potion-image-frame {
+   744→    width: 70px;
+   745→    height: 90px;
+   746→    margin: 8px 0;
+   747→    overflow: hidden;
+   748→}
+   749→
+   750→.ad-description {
+   751→    font-size: 0.85rem;
+   752→    line-height: 1.3;
+   753→    margin-bottom: 6px;
+   754→}
+   755→
+   756→.ad-price {
+   757→    font-weight: 700;
+   758→    color: var(--accent-red);
+   759→}
+   760→
+   761→body.nox-active .ad-price {
+   762→    color: var(--accent-gold);
+   763→}
+   764→
+   765→/* ==========================================================================
+   766→   WIDGETS & LETTERS (RIGHT COLUMN)
+   767→   ========================================================================== */
+   768→
+   769→.widget-title {
+   770→    font-family: var(--font-headline);
+   771→    font-size: 1.15rem;
+   772→    font-weight: 900;
+   773→    letter-spacing: 1px;
+   774→    border-bottom: 2px solid var(--border-color);
+   775→    padding-bottom: 4px;
+   776→    margin-bottom: 12px;
+   777→    text-transform: uppercase;
+   778→}
+   779→
+   780→/* Weather Widget */
+   781→.weather-grid-items {
+   782→    display: flex;
+   783→    justify-content: space-between;
+   784→    gap: 8px;
+   785→}
+   786→
+   787→.weather-item {
+   788→    flex: 1;
+   789→    text-align: center;
+   790→    border: 1px solid rgba(74, 65, 42, 0.3);
+   791→    padding: 8px 4px;
+   792→    background: rgba(255, 255, 255, 0.2);
+   793→}
+   794→
+   795→body.nox-active .weather-item {
+   796→    background: rgba(0, 0, 0, 0.2);
+   797→    border-color: rgba(228, 216, 188, 0.15);
+   798→}
+   799→
+   800→.location {
+   801→    display: block;
+   802→    font-size: 0.75rem;
+   803→    font-weight: 700;
+   804→    text-transform: uppercase;
+   805→}
+   806→
+   807→.weather-visual {
+   808→    font-size: 1.8rem;
+   809→    margin: 4px 0;
+   810→    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+   811→}
+   812→
+   813→.forecast {
+   814→    font-size: 0.8rem;
+   815→    font-style: italic;
+   816→}
+   817→
+   818→/* Letters / Correspondence */
+   819→.letters-section {
+   820→    display: flex;
+   821→    flex-direction: column;
+   822→}
+   823→
+   824→/* Wand & Secret Section */
+   825→.secret-text-box {
+   826→    margin-top: 12px;
+   827→    border: 1px dashed var(--border-color);
+   828→    padding: 10px;
+   829→    background: rgba(0, 0, 0, 0.03);
+   830→    transition: all 0.5s ease;
+   831→    border-radius: 4px;
+   832→}
+   833→
+   834→body.nox-active .secret-text-box {
+   835→    background: rgba(255, 255, 255, 0.02);
+   836→}
+   837→
+   838→.secret-text-box.locked .secret-content {
+   839→    display: none;
+   840→}
+   841→
+   842→.secret-text-box.locked .lock-icon {
+   843→    font-weight: 700;
+   844→    color: var(--accent-red);
+   845→    text-align: center;
+   846→    cursor: pointer;
+   847→    animation: heartbeat 2s infinite;
+   848→}
+   849→
+   850→body.nox-active .secret-text-box.locked .lock-icon {
+   851→    color: var(--accent-gold);
+   852→}
+   853→
+   854→.secret-text-box.unlocked {
+   855→    border: 2px solid var(--accent-gold);
+   856→    background: rgba(255, 223, 122, 0.1);
+   857→    box-shadow: 0 0 10px rgba(181, 148, 73, 0.3);
+   858→}
+   859→
+   860→.secret-text-box.unlocked .lock-icon {
+   861→    display: none;
+   862→}
+   863→
+   864→.secret-content {
+   865→    font-size: 0.85rem;
+   866→    line-height: 1.4;
+   867→}
+   868→
+   869→/* ==========================================================================
+   870→   BOTTOM NEWS SECTION (4 COLUMNS)
+   871→   ========================================================================== */
+   872→
+   873→.bottom-news-section {
+   874→    margin: 20px 0;
+   875→}
+   876→
+   877→.bottom-section-title {
+   878→    font-family: var(--font-display);
+   879→    font-size: 1.6rem;
+   880→    font-weight: 900;
+   881→    text-align: center;
+   882→    letter-spacing: 1px;
+   883→    margin-bottom: 20px;
+   884→    border-bottom: 1px solid var(--border-color);
+   885→    padding-bottom: 8px;
+   886→}
+   887→
+   888→.bottom-grid {
+   889→    display: grid;
+   890→    grid-template-columns: repeat(4, 1fr);
+   891→    gap: 20px;
+   892→}
+   893→
+   894→.bottom-card {
+   895→    background: rgba(181, 148, 73, 0.03);
+   896→    border: 1px solid rgba(74, 65, 42, 0.25);
+   897→    padding: 15px;
+   898→    display: flex;
+   899→    flex-direction: column;
+   900→    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   901→}
+   902→
+   903→.bottom-card:hover {
+   904→    transform: translateY(-3px);
+   905→    box-shadow: 0 4px 10px rgba(74, 65, 42, 0.15);
+   906→    background: rgba(181, 148, 73, 0.06);
+   907→}
+   908→
+   909→body.nox-active .bottom-card {
+   910→    border-color: rgba(228, 216, 188, 0.1);
+   911→    background: rgba(255, 255, 255, 0.01);
+   912→}
+   913→
+   914→body.nox-active .bottom-card:hover {
+   915→    box-shadow: 0 4px 12px rgba(255, 223, 122, 0.1);
+   916→    background: rgba(255, 255, 255, 0.02);
+   917→}
+   918→
+   919→.card-tag {
+   920→    font-size: 0.75rem;
+   921→    font-weight: 700;
+   922→    color: var(--accent-red);
+   923→    letter-spacing: 1.5px;
+   924→    text-transform: uppercase;
+   925→    margin-bottom: 6px;
+   926→    display: block;
+   927→}
+   928→
+   929→body.nox-active .card-tag {
+   930→    color: var(--accent-gold);
+   931→}
+   932→
+   933→.card-title {
+   934→    font-family: var(--font-headline);
+   935→    font-size: 1.15rem;
+   936→    font-weight: 800;
+   937→    line-height: 1.15;
+   938→    margin-bottom: 8px;
+   939→    text-transform: uppercase;
+   940→}
+   941→
+   942→.card-snippet {
+   943→    font-size: 0.85rem;
+   944→    line-height: 1.45;
+   945→}
+   946→
+   947→/* ==========================================================================
+   948→   INDIVIDUAL ARTICLE PAGE LAYOUT (article.html)
+   949→   ========================================================================== */
+   950→
+   951→.single-article-view {
+   952→    padding: 20px 0;
+   953→    background-color: #0f0d0b;
+   954→}
+   955→
+   956→.scroll-wrapper {
+   957→    max-width: 850px;
+   958→    margin: 20px auto;
+   959→    padding: 0 20px;
+   960→}
+   961→
+   962→.scroll-content {
+   963→    background-color: var(--bg-parchment);
+   964→    background-image: 
+   965→        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0.08) 100%),
+   966→        repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
+   967→    padding: 60px 70px;
+   968→    border-left: 18px solid #b5a47e;
+   969→    border-right: 18px solid #b5a47e;
+   970→    border-top: 6px solid var(--border-color);
+   971→    border-bottom: 6px solid var(--border-color);
+   972→    box-shadow: 
+   973→        0 15px 35px rgba(0, 0, 0, 0.5), 
+   974→        inset 0 0 50px rgba(80, 60, 30, 0.25);
+   975→    position: relative;
+   976→    min-height: 500px;
+   977→    transition: background-color 0.8s ease;
+   978→}
+   979→
+   980→body.nox-active .scroll-content {
+   981→    border-left-color: #4a412c;
+   982→    border-right-color: #4a412c;
+   983→    box-shadow: 
+   984→        0 15px 35px rgba(0, 0, 0, 0.85), 
+   985→        inset 0 0 60px rgba(0, 0, 0, 0.6);
+   986→}
+   987→
+   988→/* Dynamic Scroll Roll Shadow Effect */
+   989→.scroll-content::before {
+   990→    content: "";
+   991→    position: absolute;
+   992→    top: 0; left: 0; right: 0; height: 10px;
+   993→    background: linear-gradient(to bottom, rgba(0,0,0,0.15), transparent);
+   994→    pointer-events: none;
+   995→}
+   996→
+   997→.scroll-content::after {
+   998→    content: "";
+   999→    position: absolute;
+  1000→    bottom: 0; left: 0; right: 0; height: 10px;
+  1001→    background: linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+  1002→    pointer-events: none;
+  1003→}
+  1004→
+  1005→.back-link-btn {
+  1006→    font-weight: 700;
+  1007→    font-size: 0.85rem;
+  1008→    letter-spacing: 0.5px;
+  1009→    display: inline-block;
+  1010→    padding: 3px 0;
+  1011→    border-bottom: 1px solid transparent;
+  1012→}
+  1013→
+  1014→.back-link-btn:hover {
+  1015→    border-bottom-color: var(--accent-red);
+  1016→}
+  1017→
+  1018→body.nox-active .back-link-btn:hover {
+  1019→    border-bottom-color: var(--accent-gold);
+  1020→}
+  1021→
+  1022→/* Loading & Error States */
+  1023→.loading-message {
+  1024→    text-align: center;
+  1025→    font-family: var(--font-headline);
+  1026→    font-size: 1.35rem;
+  1027→    padding: 100px 0;
+  1028→    font-weight: 700;
+  1029→}
+  1030→
+  1031→.wand-loader {
+  1032→    display: inline-block;
+  1033→    animation: wand-wave 1.5s infinite ease-in-out;
+  1034→    margin-right: 8px;
+  1035→    font-size: 1.6rem;
+  1036→}
+  1037→
+  1038→.error-message {
+  1039→    text-align: center;
+  1040→    padding: 80px 0;
+  1041→}
+  1042→
+  1043→.error-message h3 {
+  1044→    font-family: var(--font-headline);
+  1045→    font-size: 1.8rem;
+  1046→    color: var(--accent-red);
+  1047→    margin-bottom: 10px;
+  1048→}
+  1049→
+  1050→body.nox-active .error-message h3 {
+  1051→    color: var(--accent-gold);
+  1052→}
+  1053→
+  1054→.back-btn-error {
+  1055→    display: inline-block;
+  1056→    width: auto;
+  1057→    margin-top: 20px;
+  1058→    padding: 8px 25px;
+  1059→}
+  1060→
+  1061→/* Full Article Content Details */
+  1062→.article-meta-header {
+  1063→    display: flex;
+  1064→    justify-content: space-between;
+  1065→    font-size: 0.85rem;
+  1066→    font-weight: 700;
+  1067→    letter-spacing: 1px;
+  1068→    margin-bottom: 15px;
+  1069→    border-bottom: 1px dashed rgba(74, 65, 42, 0.25);
+  1070→    padding-bottom: 8px;
+  1071→}
+  1072→
+  1073→body.nox-active .article-meta-header {
+  1074→    border-bottom-color: rgba(228, 216, 188, 0.1);
+  1075→}
+  1076→
+  1077→.article-badge {
+  1078→    color: var(--accent-red);
+  1079→}
+  1080→
+  1081→body.nox-active .article-badge {
+  1082→    color: var(--accent-gold);
+  1083→}
+  1084→
+  1085→.full-title {
+  1086→    font-family: var(--font-headline);
+  1087→    font-size: 2.5rem;
+  1088→    font-weight: 900;
+  1089→    line-height: 1.1;
+  1090→    text-transform: uppercase;
+  1091→    text-align: center;
+  1092→    margin-bottom: 10px;
+  1093→}
+  1094→
+  1095→.full-subtitle {
+  1096→    font-family: var(--font-body);
+  1097→    font-size: 1.2rem;
+  1098→    font-style: italic;
+  1099→    font-weight: 600;
+  1100→    text-align: center;
+  1101→    color: rgba(0,0,0,0.7);
+  1102→    margin-bottom: 15px;
+  1103→}
+  1104→
+  1105→body.nox-active .full-subtitle {
+  1106→    color: rgba(228, 216, 188, 0.75);
+  1107→}
+  1108→
+  1109→.author-signature {
+  1110→    text-align: center;
+  1111→    font-size: 0.95rem;
+  1112→    font-weight: 700;
+  1113→    font-style: italic;
+  1114→    margin-bottom: 20px;
+  1115→    letter-spacing: 0.5px;
+  1116→}
+  1117→
+  1118→.full-article-body {
+  1119→    display: flex;
+  1120→    flex-direction: column;
+  1121→    gap: 25px;
+  1122→}
+  1123→
+  1124→.article-visual-frame {
+  1125→    width: 100%;
+  1126→    max-width: 450px;
+  1127→    margin: 10px auto;
+  1128→    background: #e6dfcb;
+  1129→    padding: 12px;
+  1130→    border: 3px double var(--border-color);
+  1131→    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+  1132→    text-align: center;
+  1133→}
+  1134→
+  1135→body.nox-active .article-visual-frame {
+  1136→    background: #21201d;
+  1137→}
+  1138→
+  1139→.article-paragraphs {
+  1140→    text-align: justify;
+  1141→    font-size: 1.05rem;
+  1142→    line-height: 1.6;
+  1143→    display: flex;
+  1144→    flex-direction: column;
+  1145→    gap: 15px;
+  1146→}
+  1147→
+  1148→/* Vintage Stamp Back Button */
+  1149→.scroll-footer {
+  1150→    display: flex;
+  1151→    justify-content: center;
+  1152→    margin-top: 25px;
+  1153→}
+  1154→
+  1155→.stamp-back-btn {
+  1156→    display: block;
+  1157→    background: var(--accent-red);
+  1158→    color: #fff;
+  1159→    padding: 10px 20px;
+  1160→    border: 2px dashed #ffdf7a;
+  1161→    border-radius: 4px;
+  1162→    transform: rotate(-2deg);
+  1163→    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  1164→    transition: all 0.3s ease;
+  1165→}
+  1166→
+  1167→.stamp-back-btn:hover {
+  1168→    transform: rotate(0deg) scale(1.05);
+  1169→    box-shadow: 4px 6px 12px rgba(0,0,0,0.4);
+  1170→    background: #9c2222;
+  1171→}
+  1172→
+  1173→body.nox-active .stamp-back-btn {
+  1174→    background: #3e3223;
+  1175→    color: #ffdf7a;
+  1176→    border-color: #ffdf7a;
+  1177→}
+  1178→
+  1179→body.nox-active .stamp-back-btn:hover {
+  1180→    background: #4d3e2b;
+  1181→}
+  1182→
+  1183→.stamp-border {
+  1184→    display: flex;
+  1185→    flex-direction: column;
+  1186→    align-items: center;
+  1187→    border: 1px solid rgba(255, 255, 255, 0.4);
+  1188→    padding: 4px 10px;
+  1189→}
+  1190→
+  1191→.stamp-text {
+  1192→    font-family: var(--font-display);
+  1193→    font-size: 0.95rem;
+  1194→    font-weight: 900;
+  1195→    letter-spacing: 1px;
+  1196→}
+  1197→
+  1198→.stamp-action {
+  1199→    font-size: 0.7rem;
+  1200→    font-weight: 700;
+  1201→    letter-spacing: 1.5px;
+  1202→}
+  1203→
+  1204→/* Hide helper */
+  1205→.hide {
+  1206→    display: none !important;
+  1207→}
+  1208→
+  1209→/* ==========================================================================
+  1210→   ANIMATIONS & KEYFRAMES
+  1211→   ========================================================================== */
+  1212→
+  1213→/* Harry Potter photo flicker */
+  1214→@keyframes magic-photo-flicker {
+  1215→    0%, 100% { filter: contrast(1.15) brightness(0.95) sepia(0.85); }
+  1216→    10% { filter: contrast(1.2) brightness(1) sepia(0.85); }
+  1217→    22% { filter: contrast(1.1) brightness(0.9) sepia(0.85); }
+  1218→    45% { filter: contrast(1.15) brightness(0.95) sepia(0.85); }
+  1219→    55% { filter: contrast(1.25) brightness(1.02) sepia(0.85); }
+  1220→    70% { filter: contrast(1.05) brightness(0.9) sepia(0.85); }
+  1221→    85% { filter: contrast(1.2) brightness(0.98) sepia(0.85); }
+  1222→}
+  1223→
+  1224→/* Subtle image motion (Ken Burns) */
+  1225→@keyframes magic-photo-zoom {
+  1226→    0% { transform: scale(1); }
+  1227→    100% { transform: scale(1.08) translate(-5px, -3px); }
+  1228→}
+  1229→
+  1230→/* Wanted portrait moving animation (subtle look around/laugh) */
+  1231→@keyframes magic-wanted-move {
+  1232→    0% { transform: scale(1.02) rotate(0deg); }
+  1233→    25% { transform: scale(1.05) rotate(1deg) translateY(-2px); }
+  1234→    50% { transform: scale(1.03) rotate(-1deg) translateX(-1px); }
+  1235→    75% { transform: scale(1.06) rotate(1.5deg) translateY(1px); }
+  1236→    100% { transform: scale(1.02) rotate(0deg); }
+  1237→}
+  1238→
+  1239→/* Potion bubbling wiggle */
+  1240→@keyframes potion-bubble-wiggle {
+  1241→    0%, 100% { transform: translateY(0) rotate(0deg); }
+  1242→    33% { transform: translateY(-3px) rotate(1deg); }
+  1243→    66% { transform: translateY(1px) rotate(-1deg); }
+  1244→}
+  1245→
+  1246→/* Magic Pulse status */
+  1247→@keyframes magic-pulse {
+  1248→    0%, 100% { opacity: 1; }
+  1249→    50% { opacity: 0.5; }
+  1250→}
+  1251→
+  1252→/* News Ticker Slider */
+  1253→@keyframes ticker-slide {
+  1254→    0% { transform: translate3d(0, 0, 0); }
+  1255→    100% { transform: translate3d(-100%, 0, 0); }
+  1256→}
+  1257→
+  1258→/* Confundo Shake */
+  1259→@keyframes confundo-shake {
+  1260→    0% { transform: rotate(0deg); }
+  1261→    25% { transform: rotate(0.8deg) translateY(-1px); }
+  1262→    50% { transform: rotate(-0.5deg) translateX(1px); }
+  1263→    75% { transform: rotate(0.6deg) translateY(1px); }
+  1264→    100% { transform: rotate(-0.8deg); }
+  1265→}
+  1266→
+  1267→/* Pulsing heart lock icon */
+  1268→@keyframes heartbeat {
+  1269→    0%, 100% { transform: scale(1); }
+  1270→    50% { transform: scale(1.08); text-shadow: 0 0 5px rgba(181, 148, 73, 0.4); }
+  1271→}
+  1272→
+  1273→/* Loading wand wave */
+  1274→@keyframes wand-wave {
+  1275→    0%, 100% { transform: rotate(0deg); }
+  1276→    50% { transform: rotate(30deg) translate(3px, -3px); }
+  1277→}
+  1278→
+  1279→/* Particle sparkles */
+  1280→.sparkle {
+  1281→    position: fixed;
+  1282→    width: 6px;
+  1283→    height: 6px;
+  1284→    background: #ffe082;
+  1285→    border-radius: 50%;
+  1286→    pointer-events: none;
+  1287→    z-index: 1000;
+  1288→    box-shadow: 0 0 10px #ffb300, 0 0 20px #ffb300;
+  1289→    animation: sparkle-fade 0.8s forwards ease-out;
+  1290→}
+  1291→
+  1292→@keyframes sparkle-fade {
+  1293→    0% { transform: scale(1) translateY(0); opacity: 1; }
+  1294→    100% { transform: scale(0) translateY(15px); opacity: 0; }
+  1295→}
+  1296→
+  1297→/* ==========================================================================
+  1298→   RESPONSIVE DESIGN SYSTEM
+  1299→   ========================================================================== */
+  1300→
+  1301→@media (max-width: 1024px) {
+  1302→    .newspaper-grid {
+  1303→        grid-template-columns: 240px 1fr;
+  1304→        gap: 20px;
+  1305→    }
+  1306→    
+  1307→    .right-column {
+  1308→        grid-column: span 2;
+  1309→        display: grid;
+  1310→        grid-template-columns: 1fr 1fr;
+  1311→        gap: 20px;
+  1312→    }
+  1313→    
+  1314→    .right-column > .column-divider {
+  1315→        display: none;
+  1316→    }
+  1317→    
+  1318→    .bottom-grid {
+  1319→        grid-template-columns: repeat(2, 1fr);
+  1320→    }
+  1321→}
+  1322→
+  1323→@media (max-width: 768px) {
+  1324→    .newspaper-container {
+  1325→        padding: 15px 20px;
+  1326→    }
+  1327→    
+  1328→    .logo-title {
+  1329→        font-size: 3.2rem;
+  1330→    }
+  1331→    
+  1332→    .newspaper-grid {
+  1333→        grid-template-columns: 1fr;
+  1334→    }
+  1335→    
+  1336→    .left-column, .right-column {
+  1337→        grid-column: span 1;
+  1338→        display: flex;
+  1339→        flex-direction: column;
+  1340→    }
+  1341→    
+  1342→    .right-column {
+  1343→        grid-template-columns: 1fr;
+  1344→    }
+  1345→    
+  1346→    .article-text-columns {
+  1347→        column-count: 1;
+  1348→    }
+  1349→    
+  1350→    .issue-info-bar {
+  1351→        font-size: 0.9rem;
+  1352→        flex-direction: column;
+  1353→        align-items: center;
+  1354→        gap: 5px;
+  1355→    }
+  1356→    
+  1357→    .top-toolbar {
+  1358→        flex-direction: column;
+  1359→        gap: 10px;
+  1360→        align-items: center;
+  1361→    }
+  1362→    
+  1363→    .bottom-grid {
+  1364→        grid-template-columns: 1fr;
+  1365→    }
+  1366→    
+  1367→    .scroll-content {
+  1368→        padding: 40px 30px;
+  1369→        border-left-width: 10px;
+  1370→        border-right-width: 10px;
+  1371→    }
+  1372→    
+  1373→    .full-title {
+  1374→        font-size: 1.8rem;
+  1375→    }
+  1376→}
+  1377→
+  1378→/* Classifieds Section Styling */
+  1379→.classifieds-section {
+  1380→    margin-top: 5px;
+  1381→}
+  1382→
+  1383→.classified-item {
+  1384→    font-family: var(--font-body);
+  1385→}
+  1386→
+  1387→.classified-heading {
+  1388→    font-family: var(--font-headline);
+  1389→    font-size: 0.9rem;
+  1390→    font-weight: 800;
+  1391→    text-transform: uppercase;
+  1392→    color: var(--accent-red);
+  1393→    display: block;
+  1394→    margin-bottom: 2px;
+  1395→}
+  1396→
+  1397→body.nox-active .classified-heading {
+  1398→    color: var(--accent-gold);
+  1399→}
+  1400→
+  1401→.classified-body {
+  1402→    font-size: 0.82rem;
+  1403→    line-height: 1.35;
+  1404→    text-align: justify;
+  1405→}
+  1406→
+  1407→/* Official Wax Seal Styling */
+  1408→.seal-wrapper {
+  1409→    display: flex;
+  1410→    justify-content: center;
+  1411→    align-items: center;
+  1412→    padding: 10px 0;
+  1413→    margin-top: 5px;
+  1414→}
+  1415→
+  1416→.wax-seal {
+  1417→    width: 84px;
+  1418→    height: 84px;
+  1419→    background: #7a1616;
+  1420→    background-image: radial-gradient(circle at 35% 35%, #9e2727 0%, #611010 100%);
+  1421→    border-radius: 47% 53% 49% 51% / 52% 48% 52% 48%; /* Organic wax shape */
+  1422→    box-shadow: 
+  1423→        2px 4px 10px rgba(0, 0, 0, 0.45), 
+  1424→        inset 2px 2px 4px rgba(255, 255, 255, 0.15), 
+  1425→        inset -2px -2px 5px rgba(0, 0, 0, 0.6);
+  1426→    position: relative;
+  1427→    transform: rotate(-6deg);
+  1428→    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  1429→    cursor: pointer;
+  1430→}
+  1431→
+  1432→.wax-seal:hover {
+  1433→    transform: scale(1.1) rotate(5deg);
+  1434→}
+  1435→
+  1436→body.nox-active .wax-seal {
+  1437→    background: #3a2e24;
+  1438→    background-image: radial-gradient(circle at 35% 35%, #4f3f31 0%, #292018 100%);
+  1439→    border-radius: 51% 49% 52% 48% / 48% 52% 48% 52%;
+  1440→}
+  1441→
+  1442→.seal-inner {
+  1443→    border: 2px dashed rgba(255, 223, 122, 0.5);
+  1444→    width: 70px;
+  1445→    height: 70px;
+  1446→    border-radius: 50%;
+  1447→    position: absolute;
+  1448→    top: 7px;
+  1449→    left: 7px;
+  1450→    display: flex;
+  1451→    flex-direction: column;
+  1452→    justify-content: center;
+  1453→    align-items: center;
+  1454→}
+  1455→
+  1456→body.nox-active .seal-inner {
+  1457→    border-color: rgba(228, 216, 188, 0.3);
+  1458→}
+  1459→
+  1460→.seal-letter {
+  1461→    font-family: var(--font-display);
+  1462→    font-size: 2.1rem;
+  1463→    font-weight: 900;
+  1464→    color: #ffdf7a;
+  1465→    line-height: 1;
+  1466→    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  1467→}
+  1468→
+  1469→body.nox-active .seal-letter {
+  1470→    color: #c9bda5;
+  1471→}
+  1472→
+  1473→.seal-text {
+  1474→    font-size: 0.36rem;
+  1475→    font-weight: 800;
+  1476→    color: #ffdf7a;
+  1477→    text-transform: uppercase;
+  1478→    letter-spacing: 0.5px;
+  1479→    text-align: center;
+  1480→    margin-top: -3px;
+  1481→    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  1482→}
+  1483→
+  1484→body.nox-active .seal-text {
+  1485→    color: #c9bda5;
+  1486→}
+  1487→
+  1488→/* Ministry Decree Box */
+  1489→.ministry-decree-box {
+  1490→    background: rgba(181, 148, 73, 0.02);
+  1491→    border: 3px double var(--border-color);
+  1492→    padding: 15px;
+  1493→    margin: 15px 0;
+  1494→    text-align: center;
+  1495→    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+  1496→}
+  1497→
+  1498→body.nox-active .ministry-decree-box {
+  1499→    border-color: rgba(228, 216, 188, 0.25);
+  1500→    background: rgba(255, 255, 255, 0.01);
+  1501→}
+  1502→
+  1503→.decree-header {
+  1504→    font-family: var(--font-headline);
+  1505→    font-size: 0.95rem;
+  1506→    font-weight: bold;
+  1507→    letter-spacing: 1.5px;
+  1508→    color: var(--accent-red);
+  1509→    margin-bottom: 2px;
+  1510→}
+  1511→
+  1512→body.nox-active .decree-header {
+  1513→    color: var(--accent-gold);
+  1514→}
+  1515→
+  1516→.decree-number {
+  1517→    font-family: var(--font-display);
+  1518→    font-size: 0.75rem;
+  1519→    font-weight: bold;
+  1520→    margin-bottom: 10px;
+  1521→    text-transform: uppercase;
+  1522→    color: var(--ink-color);
+  1523→}
+  1524→
+  1525→.decree-body {
+  1526→    font-family: var(--font-body);
+  1527→    font-size: 0.85rem;
+  1528→    font-style: italic;
+  1529→    line-height: 1.45;
+  1530→    margin-bottom: 10px;
+  1531→    padding: 0 10px;
+  1532→}
+  1533→
+  1534→.decree-sign {
+  1535→    font-family: var(--font-gothic);
+  1536→    font-size: 0.9rem;
+  1537→    text-align: right;
+  1538→    color: var(--border-color);
+  1539→}
+  1540→
+  1541→body.nox-active .decree-sign {
+  1542→    color: #c9bda5;
+  1543→}
+  1544→
+  1545→/* ==========================================================================
+  1546→   SMALL MOBILE BREAKPOINT (≤ 480px)
+  1547→   ========================================================================== */
+  1548→
+  1549→@media (max-width: 480px) {
+  1550→    .newspaper-container {
+  1551→        padding: 10px 12px;
+  1552→    }
+  1553→
+  1554→    .logo-title {
+  1555→        font-size: 2.2rem;
+  1556→        letter-spacing: 2px;
+  1557→    }
+  1558→
+  1559→    .logo-tagline {
+  1560→        font-size: 0.65rem;
+  1561→    }
+  1562→
+  1563→    .top-toolbar {
+  1564→        padding: 8px;
+  1565→        gap: 8px;
+  1566→    }
+  1567→
+  1568→    .spell-selector {
+  1569→        flex-wrap: wrap;
+  1570→        justify-content: center;
+  1571→        gap: 4px;
+  1572→    }
+  1573→
+  1574→    .spell-btn, .toolbar-btn {
+  1575→        font-size: 0.7rem;
+  1576→        padding: 4px 8px;
+  1577→    }
+  1578→
+  1579→    .news-ticker-container {
+  1580→        flex-direction: column;
+  1581→        gap: 4px;
+  1582→        padding: 6px 8px;
+  1583→    }
+  1584→
+  1585→    .ticker-label {
+  1586→        font-size: 0.7rem;
+  1587→        white-space: nowrap;
+  1588→    }
+  1589→
+  1590→    .wanted-poster-container {
+  1591→        padding: 12px;
+  1592→    }
+  1593→
+  1594→    .wanted-image-frame img {
+  1595→        max-width: 100%;
+  1596→        height: auto;
+  1597→    }
+  1598→
+  1599→    .wanted-interact input[type="text"] {
+  1600→        font-size: 0.9rem;
+  1601→        width: 100%;
+  1602→    }
+  1603→
+  1604→    .magic-action-btn {
+  1605→        width: 100%;
+  1606→        text-align: center;
+  1607→        font-size: 0.85rem;
+  1608→    }
+  1609→
+  1610→    .weather-grid-items {
+  1611→        grid-template-columns: 1fr;
+  1612→        gap: 8px;
+  1613→    }
+  1614→
+  1615→    .main-headline {
+  1616→        font-size: 1.3rem;
+  1617→    }
+  1618→
+  1619→    .main-subheadline {
+  1620→        font-size: 0.95rem;
+  1621→    }
+  1622→
+  1623→    .scroll-content {
+  1624→        padding: 25px 15px;
+  1625→        border-left-width: 6px;
+  1626→        border-right-width: 6px;
+  1627→    }
+  1628→
+  1629→    .full-title {
+  1630→        font-size: 1.4rem;
+  1631→    }
+  1632→
+  1633→    .full-subtitle {
+  1634→        font-size: 1rem;
+  1635→    }
+  1636→
+  1637→    .bottom-card {
+  1638→        padding: 12px;
+  1639→    }
+  1640→
+  1641→    .issue-info-bar {
+  1642→        font-size: 0.8rem;
+  1643→        gap: 3px;
+  1644→    }
+  1645→
+  1646→    .masthead-decor-left,
+  1647→    .masthead-decor-right {
+  1648→        display: none;
+  1649→    }
+  1650→
+  1651→    .ministry-decree-box {
+  1652→        padding: 10px;
+  1653→    }
+  1654→
+  1655→    .seal-wrapper {
+  1656→        padding: 8px 0;
+  1657→    }
+  1658→
+  1659→    .wax-seal {
+  1660→        width: 64px;
+  1661→        height: 64px;
+  1662→    }
+  1663→
+  1664→    .seal-inner {
+  1665→        width: 52px;
+  1666→        height: 52px;
+  1667→        top: 6px;
+  1668→        left: 6px;
+  1669→    }
+  1670→
+  1671→    .seal-letter {
+  1672→        font-size: 1.6rem;
+  1673→    }
+  1674→
+  1675→    .seal-text {
+  1676→        font-size: 0.3rem;
+  1677→    }
+  1678→}
+  1679→
+  1680→/* ==========================================================================
+  1681→   ACCESSIBILITY — FOCUS STATES & REDUCED MOTION
+  1682→   ========================================================================== */
+  1683→
+  1684→/* Visible focus indicators for keyboard navigation */
+  1685→:focus-visible {
+  1686→    outline: 3px solid var(--accent-gold);
+  1687→    outline-offset: 2px;
+  1688→    border-radius: 2px;
+  1689→}
+  1690→
+  1691→/* Remove default focus ring; rely on :focus-visible */
+  1692→:focus:not(:focus-visible) {
+  1693→    outline: none;
+  1694→}
+  1695→
+  1696→/* Skip link for screen readers */
+  1697→.skip-link {
+  1698→    position: absolute;
+  1699→    top: -100%;
+  1700→    left: 0;
+  1701→    background: var(--accent-red);
+  1702→    color: #fff;
+  1703→    padding: 8px 16px;
+  1704→    z-index: 10000;
+  1705→    font-weight: bold;
+  1706→    text-decoration: none;
+  1707→}
+  1708→
+  1709→.skip-link:focus {
+  1710→    top: 0;
+  1711→}
+  1712→
+  1713→/* Reduce motion for users who prefer it */
+  1714→@media (prefers-reduced-motion: reduce) {
+  1715→    *, *::before, *::after {
+  1716→        animation-duration: 0.01ms !important;
+  1717→        animation-iteration-count: 1 !important;
+  1718→        transition-duration: 0.01ms !important;
+  1719→        scroll-behavior: auto !important;
+  1720→    }
+  1721→
+  1722→    .sparkle {
+  1723→        display: none !important;
+  1724→    }
+  1725→
+  1726→    .ticker-content {
+  1727→        animation: none !important;
+  1728→    }
+  1729→
+  1730→    body {
+  1731→        transition: none !important;
+  1732→    }
+  1733→}
+  1734→
+  1735→/* Decorative elements — hide from screen readers */
+  1736→.magical-photo[role="presentation"],
+  1737→.masthead-decor-left,
+  1738→.masthead-decor-right {
+  1739→    /* Already decorative; add role="presentation" in HTML */
+  1740→}
+  1741→
+  1742→/* Improved color contrast for small text */
+  1743→.news-ticker-container,
+  1744→.ticker-label,
+  1745→.info-item {
+  1746→    color: var(--ink-color);
+  1747→}
+  1748→

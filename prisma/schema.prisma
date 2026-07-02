@@ -1,0 +1,188 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ========================
+// THE DAILY PYHOOD - ডাটাবেস স্কিমা
+// ========================
+
+// সংখ্যা সমূহ (পত্রিকার প্রতিটি সংখ্যা)
+model Issue {
+  id          String   @id @default(cuid())
+  issueNumber Int      @unique
+  title       String   @default("The Daily Pyhood")
+  publishDate DateTime @default(now())
+  priceGalleons Int    @default(5)
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  articles    Article[]
+  tickers     Ticker[]
+  weathers    Weather[]
+  wantedPosters WantedPoster[]
+  classifieds Classified[]
+  decrees     Decree[]
+  letters     Letter[]
+  ads         Ad[]
+  articleViews ArticleView[]
+  views       IssueView[]
+
+  @@index([publishDate])
+  @@index([isPublished])
+}
+
+// প্রধান সংবাদ সমূহ
+model Article {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  issueId     String
+  section     String   // headline, lead, ministry, sports, world, security, gossip, economy, entertainment, local, mystery
+  title       String
+  subtitle    String?
+  author      String
+  category    String   @default("সংবাদ")
+  snippet     String?
+  content     String   // JSON array of paragraphs
+  imageUrl    String?
+  imageFilter String?
+  imageCaption String?
+  isPublished Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  viewCount   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  views       ArticleView[]
+
+  @@index([issueId])
+  @@index([section])
+  @@index([author])
+  @@index([isPublished])
+  @@index([createdAt])
+}
+
+// আর্টিকেল ভিউ ট্র্যাকিং
+model ArticleView {
+  id        String   @id @default(cuid())
+  articleId String
+  issueId   String?
+  ipHash    String?
+  userAgent String?
+  viewedAt  DateTime @default(now())
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  issue     Issue?   @relation(fields: [issueId], references: [id], onDelete: SetNull)
+
+  @@index([articleId])
+  @@index([issueId])
+  @@index([viewedAt])
+}
+
+// ইস্যু ভিউ ট্র্যাকিং
+model IssueView {
+  id        String   @id @default(cuid())
+  issueId   String
+  ipHash    String?
+  userAgent String?
+  viewedAt  DateTime @default(now())
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+  @@index([viewedAt])
+}
+
+// ব্রেকিং নিউজ টিকার
+model Ticker {
+  id        String   @id @default(cuid())
+  issueId   String
+  message   String
+  sortOrder Int      @default(0)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// আবহাওয়া পূর্বাভাস
+model Weather {
+  id        String   @id @default(cuid())
+  issueId   String
+  location  String
+  emoji     String
+  forecast  String
+  sortOrder Int      @default(0)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// পুরস্কার ঘোষণায় খোঁজা হচ্ছে (ওয়ান্টেড পোস্টার)
+model WantedPoster {
+  id          String   @id @default(cuid())
+  issueId     String
+  name        String   @default("সিরিয়াস ব্ল্যাক")
+  description String
+  reward      String   @default("১০,০০০ গ্যালিয়ন")
+  imageUrl    String?
+  isPublished Boolean  @default(true)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// বিজ্ঞাপন
+model Ad {
+  id          String   @id @default(cuid())
+  issueId     String
+  title       String
+  subtitle    String?
+  description String?
+  imageUrl    String?
+  price       String?
+  articleSlug String?  // লিংক করা আর্টিকেল
+  sortOrder   Int      @default(0)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// চিঠিপত্র
+model Classified {
+  id        String   @id @default(cuid())
+  issueId   String
+  heading   String
+  body      String
+  sortOrder Int      @default(0)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// মন্ত্রণালয় ডিক্রি
+model Decree {
+  id          String   @id @default(cuid())
+  issueId     String
+  title       String   @default("মন্ত্রণালয় ডিক্রি")
+  decreeNumber String
+  body        String
+  signedBy    String
+  sortOrder   Int      @default(0)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
+
+// পাঠকের চিঠি
+model Letter {
+  id        String   @id @default(cuid())
+  issueId   String
+  author    String
+  body      String
+  sortOrder Int      @default(0)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@index([issueId])
+}
