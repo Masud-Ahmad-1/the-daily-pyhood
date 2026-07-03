@@ -78,7 +78,10 @@ export default function Home() {
   // ===== ডেটা ফেচ =====
   useEffect(() => {
     fetch('/api/newspaper')
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error('API error')
+        return r.json()
+      })
       .then(d => { setData(d); setLoading(false) })
       .catch(() => { setLoading(false) })
   }, [])
@@ -179,7 +182,7 @@ export default function Home() {
     )
   }
 
-  if (!data) {
+  if (!data || !data.issue) {
     return (
       <div className="parchment-bg min-h-screen flex items-center justify-center">
         <p className="loading-state">⚠️ প্রতিবেদন পাওয়া যায়নি</p>
