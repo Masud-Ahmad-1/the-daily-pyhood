@@ -52,3 +52,16 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# cPanel deployment artifacts
+server.js
+.htaccess
+.htpasswd
+/download/
+
+# Tool results & uploads (development artifacts)
+/tool-results/
+/upload/
+/agent-ctx/
+/worklog.md
+/db/
