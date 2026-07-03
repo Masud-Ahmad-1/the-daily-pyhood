@@ -215,6 +215,9 @@ export default function Home() {
               <a href="/archive" className="spell-btn">📚 আর্কাইভ</a>
               <a href="/sections" className="spell-btn">📂 বিভাগ</a>
               <a href="/analytics" className="spell-btn">🔮 পরিসংখ্যান</a>
+              <a href="/wallet" className="spell-btn">🪙 ওয়ালেট</a>
+              <a href="/profile" className="spell-btn">👤 প্রোফাইল</a>
+              <a href="/subscribe" className="spell-btn">🔮 সাবস্ক্রিপশন</a>
             </nav>
             <button
               className="spell-btn"
@@ -549,10 +552,13 @@ export default function Home() {
 
         {/* ফুটার */}
         <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
-          <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8 }} aria-label="ফুটার নেভিগেশন">
+          <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8, flexWrap: 'wrap' }} aria-label="ফুটার নেভিগেশন">
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📚 আর্কাইভ</a>
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
             <a href="/analytics" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 পরিসংখ্যান</a>
+            <a href="/wallet" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🪙 ওয়ালেট</a>
+            <a href="/profile" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>👤 প্রোফাইল</a>
+            <a href="/subscribe" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 সাবস্ক্রিপশন</a>
           </nav>
           <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত। উইজার্ডিং প্রেস গিল্ডের অধীনে নিবন্ধিত। অননুমোদিত নকল ব্যাঙে রূপান্তরের সম্মুখীন হবে।</p>
         </footer>

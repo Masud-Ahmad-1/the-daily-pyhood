@@ -131,7 +131,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
           {/* ছবি */}
           {article.imageUrl && (
-            <div className="photo-frame" style={{ maxWidth: 450, margin: '15px auto' }}>
+            <div className="photo-frame copyright-overlay" style={{ maxWidth: 450, margin: '15px auto' }}>
               <div className="photo-border">
                 <img
                   src={article.imageUrl}

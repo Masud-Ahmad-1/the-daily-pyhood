@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Playfair_Display } from "next/font/google";
+import CopyrightProtection from "@/components/copyright-protection";
 import "./globals.css";
 
 const cinzelDecorative = Cinzel_Decorative({
@@ -60,6 +61,7 @@ export default function RootLayout({
         className={`${cinzelDecorative.variable} ${playfairDisplay.variable} antialiased`}
       >
         {children}
+        <CopyrightProtection />
       </body>
     </html>
   );

@@ -186,3 +186,61 @@ model Letter {
 
   @@index([issueId])
 }
+
+// ইউজার
+model User {
+  id            String   @id @default(cuid())
+  username      String   @unique
+  displayName   String
+  email         String?  @unique
+  passwordHash  String?
+  role          String   @default("reader") // reader, admin
+  provider      String   @default("credentials") // credentials, google
+  
+  // ওয়ালেট
+  galleons      Int      @default(50) // স্বাগত বোনাস
+  sickles       Int      @default(0)
+  knuts         Int      @default(0)
+  
+  // সাবস্ক্রিপশন
+  subscriptionPlan String?  // owl, phoenix, dragon
+  subscriptionEnds DateTime?
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  transactions  Transaction[]
+  articleReads  ArticleRead[]
+
+  @@index([username])
+  @@index([subscriptionPlan])
+}
+
+// লেনদেন
+model Transaction {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   // purchase, subscription, bonus, earning, conversion
+  amountG     Int      @default(0)  // গ্যালিয়ন
+  amountS     Int      @default(0)  // সিকেল
+  amountK     Int      @default(0)  // নাট
+  description String
+  balanceG    Int      // লেনদেন পরবর্তী ব্যালেন্স
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// আর্টিকেল রিডিং ট্র্যাকিং (প্রিমিয়াম আর্টিকেল)
+model ArticleRead {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId String
+  readAt    DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+  @@index([userId])
+  @@index([articleId])
+}
