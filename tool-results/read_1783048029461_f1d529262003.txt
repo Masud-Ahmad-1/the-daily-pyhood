@@ -1,0 +1,1097 @@
+     1→@import "tailwindcss";
+     2→@import "tw-animate-css";
+     3→
+     4→@custom-variant dark (&:is(.dark *));
+     5→
+     6→@theme inline {
+     7→  --color-background: var(--background);
+     8→  --color-foreground: var(--foreground);
+     9→  --font-display: var(--font-cinzel-decorative);
+    10→  --font-headline: var(--font-playfair-display);
+    11→}
+    12→
+    13→:root {
+    14→  /* পার্চমেন্ট থিম */
+    15→  --bg-parchment: #f2ebd9;
+    16→  --ink-color: #1f1f1e;
+    17→  --accent-gold: #b59449;
+    18→  --accent-red: #8a1f1f;
+    19→  --border-color: #4a412a;
+    20→  --font-bengali: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
+    21→  --font-gothic: 'UnifrakturMaguntia', serif;
+    22→  --font-display: 'Cinzel Decorative', serif;
+    23→  --font-headline: 'Playfair Display', serif;
+    24→  --font-body: 'Spectral', 'Noto Sans Bengali', serif;
+    25→  --font-bn-headline: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+    26→}
+    27→
+    28→* { box-sizing: border-box; margin: 0; padding: 0; }
+    29→
+    30→body {
+    31→  background-color: #110f0c;
+    32→  color: var(--ink-color);
+    33→  font-family: var(--font-bengali);
+    34→  font-size: 16px;
+    35→  line-height: 1.7;
+    36→  overflow-x: hidden;
+    37→}
+    38→
+    39→/* ==============================
+    40→   পার্চমেন্ট টেক্সচার
+    41→   ============================== */
+    42→.parchment-bg {
+    43→  position: relative;
+    44→  background-color: var(--bg-parchment);
+    45→  background-image:
+    46→    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.1) 100%),
+    47→    repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
+    48→  box-shadow: inset 0 0 100px rgba(80,60,30,0.4);
+    49→}
+    50→
+    51→.newspaper-container {
+    52→  max-width: 1200px;
+    53→  margin: 0 auto;
+    54→  padding: 20px 40px;
+    55→  position: relative;
+    56→  z-index: 2;
+    57→}
+    58→
+    59→.newspaper-container::before {
+    60→  content: "";
+    61→  position: absolute;
+    62→  top: 0; left: 0; right: 0; bottom: 0;
+    63→  pointer-events: none;
+    64→  box-shadow: inset 0 0 80px rgba(0,0,0,0.3);
+    65→  z-index: 10;
+    66→}
+    67→
+    68→/* ==============================
+    69→   লিংক
+    70→   ============================== */
+    71→a {
+    72→  color: var(--ink-color);
+    73→  text-decoration: none;
+    74→  transition: color 0.3s ease;
+    75→  cursor: pointer;
+    76→}
+    77→a:hover { color: var(--accent-red); }
+    78→
+    79→.read-more {
+    80→  font-size: 0.85rem;
+    81→  font-weight: 700;
+    82→  font-style: italic;
+    83→  white-space: nowrap;
+    84→  text-transform: uppercase;
+    85→  letter-spacing: 0.5px;
+    86→  border-bottom: 1px dotted var(--border-color);
+    87→  margin-left: 4px;
+    88→}
+    89→
+    90→/* ==============================
+    91→   টপ টুলবার
+    92→   ============================== */
+    93→.top-toolbar {
+    94→  display: flex;
+    95→  justify-content: space-between;
+    96→  align-items: center;
+    97→  border-bottom: 2px solid var(--border-color);
+    98→  padding-bottom: 10px;
+    99→  margin-bottom: 20px;
+   100→  font-size: 0.85rem;
+   101→  font-weight: 600;
+   102→  text-transform: uppercase;
+   103→  letter-spacing: 1px;
+   104→  font-family: var(--font-bengali);
+   105→}
+   106→
+   107→.status-online {
+   108→  color: #2e7d32;
+   109→  text-shadow: 0 0 5px rgba(46,125,50,0.5);
+   110→  animation: pulse 2s infinite;
+   111→}
+   112→
+   113→.spell-btn {
+   114→  background: rgba(139,90,43,0.1);
+   115→  border: 1px solid var(--border-color);
+   116→  color: var(--ink-color);
+   117→  padding: 4px 10px;
+   118→  font-family: var(--font-body);
+   119→  font-weight: bold;
+   120→  cursor: pointer;
+   121→  border-radius: 3px;
+   122→  transition: all 0.3s ease;
+   123→  font-size: 0.8rem;
+   124→}
+   125→.spell-btn:hover {
+   126→  background: rgba(139,90,43,0.2);
+   127→  box-shadow: 0 0 5px rgba(181,148,73,0.5);
+   128→}
+   129→.spell-btn.active {
+   130→  background: var(--accent-gold);
+   131→  color: #fff;
+   132→  border-color: var(--accent-gold);
+   133→  box-shadow: 0 0 8px var(--accent-gold);
+   134→}
+   135→
+   136→/* ==============================
+   137→   মাস্টহেড
+   138→   ============================== */
+   139→.masthead {
+   140→  display: flex;
+   141→  align-items: center;
+   142→  justify-content: center;
+   143→  margin: 20px 0;
+   144→  position: relative;
+   145→}
+   146→
+   147→.logo-title {
+   148→  font-family: var(--font-display);
+   149→  font-size: 4.8rem;
+   150→  font-weight: 900;
+   151→  letter-spacing: -2px;
+   152→  line-height: 1;
+   153→  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+   154→  text-align: center;
+   155→}
+   156→
+   157→.logo-tagline {
+   158→  font-family: var(--font-bengali);
+   159→  font-size: 1rem;
+   160→  font-style: italic;
+   161→  letter-spacing: 2px;
+   162→  margin-top: 5px;
+   163→  text-align: center;
+   164→}
+   165→
+   166→.masthead-decor {
+   167→  flex-grow: 1;
+   168→  height: 12px;
+   169→  border-top: 4px double var(--border-color);
+   170→  border-bottom: 2px solid var(--border-color);
+   171→}
+   172→
+   173→/* ==============================
+   174→   ইস্যু বার ও টিকার
+   175→   ============================== */
+   176→.issue-bar {
+   177→  display: flex;
+   178→  justify-content: space-between;
+   179→  border-top: 4px double var(--border-color);
+   180→  border-bottom: 4px double var(--border-color);
+   181→  padding: 6px 15px;
+   182→  font-weight: 600;
+   183→  font-size: 1rem;
+   184→  letter-spacing: 1px;
+   185→  font-family: var(--font-bengali);
+   186→}
+   187→
+   188→.ticker-container {
+   189→  display: flex;
+   190→  align-items: center;
+   191→  background: rgba(0,0,0,0.05);
+   192→  border-bottom: 2px solid var(--border-color);
+   193→  overflow: hidden;
+   194→  height: 32px;
+   195→  font-weight: 700;
+   196→  font-size: 0.9rem;
+   197→  font-family: var(--font-bengali);
+   198→}
+   199→
+   200→.ticker-label {
+   201→  background: var(--accent-red);
+   202→  color: #fff;
+   203→  padding: 0 12px;
+   204→  height: 100%;
+   205→  display: flex;
+   206→  align-items: center;
+   207→  font-weight: 800;
+   208→  letter-spacing: 1px;
+   209→  z-index: 5;
+   210→  white-space: nowrap;
+   211→}
+   212→
+   213→.ticker-wrap {
+   214→  overflow: hidden;
+   215→  width: 100%;
+   216→}
+   217→
+   218→.ticker-content {
+   219→  display: inline-block;
+   220→  white-space: nowrap;
+   221→  padding-left: 100%;
+   222→  animation: ticker-slide 40s linear infinite;
+   223→}
+   224→
+   225→/* ==============================
+   226→   ডিভাইডার
+   227→   ============================== */
+   228→.double-divider {
+   229→  border: none;
+   230→  border-top: 1px solid var(--border-color);
+   231→  border-bottom: 3px double var(--border-color);
+   232→  height: 5px;
+   233→  margin: 12px 0;
+   234→}
+   235→
+   236→.column-divider {
+   237→  border: none;
+   238→  border-top: 1px dashed rgba(74,65,42,0.3);
+   239→  margin: 20px 0;
+   240→}
+   241→
+   242→/* ==============================
+   243→   গ্রিড লেআউট
+   244→   ============================== */
+   245→.newspaper-grid {
+   246→  display: grid;
+   247→  grid-template-columns: 280px 1fr 280px;
+   248→  gap: 30px;
+   249→  margin-top: 10px;
+   250→}
+   251→
+   252→.main-column {
+   253→  border-left: 1px solid rgba(74,65,42,0.2);
+   254→  border-right: 1px solid rgba(74,65,42,0.2);
+   255→  padding: 0 15px;
+   256→}
+   257→
+   258→/* ==============================
+   259→   ওয়ান্টেড পোস্টার
+   260→   ============================== */
+   261→.wanted-poster {
+   262→  border: 8px double var(--border-color);
+   263→  background: #eadebe;
+   264→  padding: 15px;
+   265→  text-align: center;
+   266→  box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+   267→  position: relative;
+   268→}
+   269→
+   270→.wanted-header {
+   271→  font-family: var(--font-bn-headline);
+   272→  font-weight: 800;
+   273→  font-size: 1.3rem;
+   274→  letter-spacing: 1px;
+   275→  line-height: 1.2;
+   276→  margin-bottom: 12px;
+   277→  border-bottom: 2px solid var(--border-color);
+   278→  padding-bottom: 8px;
+   279→}
+   280→
+   281→.wanted-img-frame {
+   282→  border: 4px solid var(--border-color);
+   283→  position: relative;
+   284→  overflow: hidden;
+   285→  background: #000;
+   286→}
+   287→
+   288→.wanted-label {
+   289→  position: absolute;
+   290→  bottom: 5px;
+   291→  left: 50%;
+   292→  transform: translateX(-50%);
+   293→  background: var(--accent-red);
+   294→  color: #fff;
+   295→  font-family: var(--font-bn-headline);
+   296→  font-weight: 800;
+   297→  padding: 2px 15px;
+   298→  font-size: 0.85rem;
+   299→  letter-spacing: 2px;
+   300→  border-radius: 2px;
+   301→}
+   302→
+   303→.wanted-name {
+   304→  font-family: var(--font-bn-headline);
+   305→  font-size: 1.5rem;
+   306→  font-weight: 800;
+   307→  letter-spacing: 1px;
+   308→  margin: 12px 0 4px;
+   309→}
+   310→
+   311→.reward-box {
+   312→  margin-top: 10px;
+   313→  border: 2px solid var(--border-color);
+   314→  padding: 4px;
+   315→  background: rgba(139,90,43,0.05);
+   316→}
+   317→.reward-amount {
+   318→  font-family: var(--font-bn-headline);
+   319→  font-size: 1.2rem;
+   320→  font-weight: 800;
+   321→  color: var(--accent-red);
+   322→}
+   323→
+   324→/* ==============================
+   325→   নিউজ ব্লক
+   326→   ============================== */
+   327→.news-block { padding: 2px 0; }
+   328→
+   329→.block-title {
+   330→  font-family: var(--font-bn-headline);
+   331→  font-size: 1.15rem;
+   332→  font-weight: 700;
+   333→  line-height: 1.3;
+   334→  margin-bottom: 6px;
+   335→}
+   336→
+   337→.block-snippet {
+   338→  font-size: 0.9rem;
+   339→  line-height: 1.5;
+   340→  font-family: var(--font-bengali);
+   341→}
+   342→
+   343→/* ==============================
+   344→   প্রধান সংবাদ
+   345→   ============================== */
+   346→.main-headline {
+   347→  font-family: var(--font-bn-headline);
+   348→  font-size: 2.4rem;
+   349→  font-weight: 800;
+   350→  line-height: 1.15;
+   351→  text-align: center;
+   352→  letter-spacing: -0.5px;
+   353→  margin-bottom: 8px;
+   354→}
+   355→
+   356→.main-subheadline {
+   357→  font-family: var(--font-bengali);
+   358→  font-style: italic;
+   359→  font-size: 1.15rem;
+   360→  font-weight: 600;
+   361→  text-align: center;
+   362→  color: rgba(0,0,0,0.7);
+   363→  margin-bottom: 20px;
+   364→  border-bottom: 1px solid var(--border-color);
+   365→  padding-bottom: 12px;
+   366→}
+   367→
+   368→.photo-frame {
+   369→  margin: 0 auto 20px auto;
+   370→  width: 100%;
+   371→  max-width: 520px;
+   372→  background: #e6dfcb;
+   373→  padding: 15px;
+   374→  border: 3px double var(--border-color);
+   375→  box-shadow: 2px 2px 12px rgba(0,0,0,0.15);
+   376→  text-align: center;
+   377→}
+   378→
+   379→.photo-border {
+   380→  border: 2px solid #5a4f38;
+   381→  overflow: hidden;
+   382→}
+   383→
+   384→.magical-photo {
+   385→  width: 100%;
+   386→  height: auto;
+   387→  display: block;
+   388→  mix-blend-mode: multiply;
+   389→  transition: filter 0.8s ease;
+   390→}
+   391→
+   392→.sepia-filter {
+   393→  filter: sepia(0.85) contrast(1.15) brightness(0.95);
+   394→  animation: photo-flicker 5s infinite, photo-zoom 20s infinite alternate;
+   395→}
+   396→
+   397→.grayscale-filter {
+   398→  filter: grayscale(1) sepia(0.15) contrast(1.25) brightness(0.95);
+   399→  animation: photo-flicker 6s infinite, wanted-move 8s infinite alternate ease-in-out;
+   400→}
+   401→
+   402→.potion-photo {
+   403→  filter: sepia(0.7) contrast(1.2) hue-rotate(-10deg);
+   404→  animation: photo-flicker 4s infinite, potion-wiggle 3s infinite ease-in-out;
+   405→}
+   406→
+   407→.photo-caption {
+   408→  font-family: var(--font-bengali);
+   409→  font-size: 0.85rem;
+   410→  font-style: italic;
+   411→  margin-top: 10px;
+   412→  color: #4a412a;
+   413→  border-top: 1px solid rgba(74,65,42,0.2);
+   414→  padding-top: 5px;
+   415→}
+   416→
+   417→.article-columns {
+   418→  column-count: 2;
+   419→  column-gap: 20px;
+   420→  column-rule: 1px solid rgba(74,65,42,0.15);
+   421→  text-align: justify;
+   422→  font-size: 1rem;
+   423→  font-family: var(--font-bengali);
+   424→}
+   425→
+   426→.lead-para { font-weight: 600; }
+   427→
+   428→.drop-cap {
+   429→  float: left;
+   430→  font-family: var(--font-bn-headline);
+   431→  font-size: 3.8rem;
+   432→  line-height: 0.8;
+   433→  padding-top: 4px;
+   434→  padding-right: 8px;
+   435→  color: var(--accent-red);
+   436→}
+   437→
+   438→/* ==============================
+   439→   উইজেট
+   440→   ============================== */
+   441→.widget-title {
+   442→  font-family: var(--font-bn-headline);
+   443→  font-size: 1.1rem;
+   444→  font-weight: 800;
+   445→  letter-spacing: 0.5px;
+   446→  border-bottom: 2px solid var(--border-color);
+   447→  padding-bottom: 4px;
+   448→  margin-bottom: 12px;
+   449→}
+   450→
+   451→.weather-grid {
+   452→  display: flex;
+   453→  justify-content: space-between;
+   454→  gap: 8px;
+   455→}
+   456→
+   457→.weather-item {
+   458→  flex: 1;
+   459→  text-align: center;
+   460→  border: 1px solid rgba(74,65,42,0.3);
+   461→  padding: 8px 4px;
+   462→  background: rgba(255,255,255,0.2);
+   463→}
+   464→
+   465→.weather-location {
+   466→  display: block;
+   467→  font-size: 0.8rem;
+   468→  font-weight: 700;
+   469→  font-family: var(--font-bengali);
+   470→}
+   471→
+   472→.weather-emoji {
+   473→  font-size: 1.8rem;
+   474→  margin: 4px 0;
+   475→}
+   476→
+   477→.weather-forecast {
+   478→  font-size: 0.8rem;
+   479→  font-style: italic;
+   480→  font-family: var(--font-bengali);
+   481→}
+   482→
+   483→/* বিজ্ঞাপন */
+   484→.ad-container {
+   485→  border: 1px solid var(--border-color);
+   486→  padding: 12px;
+   487→  text-align: center;
+   488→  background: rgba(181,148,73,0.05);
+   489→}
+   490→
+   491→.ad-label {
+   492→  font-size: 0.7rem;
+   493→  letter-spacing: 2px;
+   494→  opacity: 0.6;
+   495→  margin-bottom: 8px;
+   496→  font-family: var(--font-bengali);
+   497→}
+   498→
+   499→.ad-title {
+   500→  font-family: var(--font-display);
+   501→  font-size: 1.4rem;
+   502→  letter-spacing: 1px;
+   503→}
+   504→
+   505→.ad-subtitle {
+   506→  font-size: 0.8rem;
+   507→  font-style: italic;
+   508→  margin-bottom: 8px;
+   509→  font-family: var(--font-bengali);
+   510→}
+   511→
+   512→.potion-img-frame {
+   513→  width: 70px;
+   514→  height: 90px;
+   515→  margin: 8px auto;
+   516→  overflow: hidden;
+   517→}
+   518→
+   519→.ad-price {
+   520→  font-weight: 700;
+   521→  color: var(--accent-red);
+   522→  font-family: var(--font-bengali);
+   523→}
+   524→
+   525→/* ডিক্রি */
+   526→.decree-box {
+   527→  background: rgba(181,148,73,0.02);
+   528→  border: 3px double var(--border-color);
+   529→  padding: 15px;
+   530→  margin: 15px 0;
+   531→  text-align: center;
+   532→  box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+   533→}
+   534→
+   535→.decree-header {
+   536→  font-family: var(--font-bn-headline);
+   537→  font-size: 0.95rem;
+   538→  font-weight: 800;
+   539→  letter-spacing: 1px;
+   540→  color: var(--accent-red);
+   541→  margin-bottom: 2px;
+   542→}
+   543→
+   544→.decree-number {
+   545→  font-family: var(--font-display);
+   546→  font-size: 0.75rem;
+   547→  font-weight: bold;
+   548→  margin-bottom: 10px;
+   549→}
+   550→
+   551→.decree-body {
+   552→  font-family: var(--font-bengali);
+   553→  font-size: 0.85rem;
+   554→  font-style: italic;
+   555→  line-height: 1.5;
+   556→  margin-bottom: 10px;
+   557→  padding: 0 10px;
+   558→}
+   559→
+   560→.decree-sign {
+   561→  font-family: var(--font-gothic);
+   562→  font-size: 0.85rem;
+   563→  text-align: right;
+   564→  color: var(--border-color);
+   565→}
+   566→
+   567→/* ক্লাসিফাইড */
+   568→.classified-heading {
+   569→  font-family: var(--font-bn-headline);
+   570→  font-size: 0.9rem;
+   571→  font-weight: 800;
+   572→  color: var(--accent-red);
+   573→  display: block;
+   574→  margin-bottom: 2px;
+   575→}
+   576→
+   577→.classified-body {
+   578→  font-size: 0.82rem;
+   579→  line-height: 1.4;
+   580→  text-align: justify;
+   581→  font-family: var(--font-bengali);
+   582→}
+   583→
+   584→/* সিল */
+   585→.wax-seal {
+   586→  width: 84px;
+   587→  height: 84px;
+   588→  background: #7a1616;
+   589→  background-image: radial-gradient(circle at 35% 35%, #9e2727 0%, #611010 100%);
+   590→  border-radius: 47% 53% 49% 51% / 52% 48% 52% 48%;
+   591→  box-shadow: 2px 4px 10px rgba(0,0,0,0.45), inset 2px 2px 4px rgba(255,255,255,0.15), inset -2px -2px 5px rgba(0,0,0,0.6);
+   592→  position: relative;
+   593→  transform: rotate(-6deg);
+   594→  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+   595→  cursor: pointer;
+   596→  margin: 0 auto;
+   597→}
+   598→.wax-seal:hover { transform: scale(1.1) rotate(5deg); }
+   599→
+   600→.seal-inner {
+   601→  border: 2px dashed rgba(255,223,122,0.5);
+   602→  width: 70px;
+   603→  height: 70px;
+   604→  border-radius: 50%;
+   605→  position: absolute;
+   606→  top: 7px;
+   607→  left: 7px;
+   608→  display: flex;
+   609→  flex-direction: column;
+   610→  justify-content: center;
+   611→  align-items: center;
+   612→}
+   613→
+   614→.seal-letter {
+   615→  font-family: var(--font-display);
+   616→  font-size: 2.1rem;
+   617→  font-weight: 900;
+   618→  color: #ffdf7a;
+   619→  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+   620→}
+   621→
+   622→.seal-text {
+   623→  font-size: 0.32rem;
+   624→  font-weight: 800;
+   625→  color: #ffdf7a;
+   626→  text-transform: uppercase;
+   627→  letter-spacing: 0.5px;
+   628→  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+   629→}
+   630→
+   631→/* চিঠি */
+   632→.letter-author {
+   633→  font-weight: 700;
+   634→  font-size: 0.85rem;
+   635→  font-family: var(--font-bengali);
+   636→}
+   637→.letter-body {
+   638→  font-size: 0.85rem;
+   639→  line-height: 1.4;
+   640→  font-style: italic;
+   641→  font-family: var(--font-bengali);
+   642→}
+   643→
+   644→/* ==============================
+   645→   নিচের সেকশন
+   646→   ============================== */
+   647→.bottom-grid {
+   648→  display: grid;
+   649→  grid-template-columns: repeat(4, 1fr);
+   650→  gap: 20px;
+   651→}
+   652→
+   653→.bottom-card {
+   654→  background: rgba(181,148,73,0.03);
+   655→  border: 1px solid rgba(74,65,42,0.25);
+   656→  padding: 15px;
+   657→  display: flex;
+   658→  flex-direction: column;
+   659→  transition: transform 0.3s ease, box-shadow 0.3s ease;
+   660→}
+   661→.bottom-card:hover {
+   662→  transform: translateY(-3px);
+   663→  box-shadow: 0 4px 10px rgba(74,65,42,0.15);
+   664→  background: rgba(181,148,73,0.06);
+   665→}
+   666→
+   667→.card-tag {
+   668→  font-size: 0.75rem;
+   669→  font-weight: 700;
+   670→  color: var(--accent-red);
+   671→  letter-spacing: 1.5px;
+   672→  text-transform: uppercase;
+   673→  margin-bottom: 6px;
+   674→  display: block;
+   675→  font-family: var(--font-bengali);
+   676→}
+   677→
+   678→.card-title {
+   679→  font-family: var(--font-bn-headline);
+   680→  font-size: 1.05rem;
+   681→  font-weight: 700;
+   682→  line-height: 1.2;
+   683→  margin-bottom: 8px;
+   684→}
+   685→
+   686→.card-snippet {
+   687→  font-size: 0.85rem;
+   688→  line-height: 1.45;
+   689→  font-family: var(--font-bengali);
+   690→}
+   691→
+   692→/* ==============================
+   693→   আর্টিকেল ভিউ (মোডাল/ফুল-পেজ)
+   694→   ============================== */
+   695→.article-overlay {
+   696→  position: fixed;
+   697→  top: 0; left: 0; right: 0; bottom: 0;
+   698→  background: rgba(0,0,0,0.85);
+   699→  z-index: 100;
+   700→  overflow-y: auto;
+   701→  padding: 20px;
+   702→}
+   703→
+   704→.article-scroll {
+   705→  max-width: 850px;
+   706→  margin: 20px auto;
+   707→  background-color: var(--bg-parchment);
+   708→  background-image:
+   709→    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0.08) 100%),
+   710→    repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
+   711→  padding: 60px 70px;
+   712→  border-left: 18px solid #b5a47e;
+   713→  border-right: 18px solid #b5a47e;
+   714→  border-top: 6px solid var(--border-color);
+   715→  border-bottom: 6px solid var(--border-color);
+   716→  box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 50px rgba(80,60,30,0.25);
+   717→  position: relative;
+   718→  min-height: 500px;
+   719→}
+   720→
+   721→.article-back-btn {
+   722→  display: inline-block;
+   723→  font-family: var(--font-bengali);
+   724→  font-weight: 700;
+   725→  font-size: 0.9rem;
+   726→  padding: 8px 20px;
+   727→  background: var(--accent-red);
+   728→  color: #fff;
+   729→  border: 2px dashed #ffdf7a;
+   730→  border-radius: 4px;
+   731→  transform: rotate(-2deg);
+   732→  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+   733→  cursor: pointer;
+   734→  transition: all 0.3s ease;
+   735→  text-decoration: none;
+   736→  margin-top: 20px;
+   737→}
+   738→.article-back-btn:hover {
+   739→  transform: rotate(0deg) scale(1.05);
+   740→  background: #9c2222;
+   741→}
+   742→
+   743→.full-title {
+   744→  font-family: var(--font-bn-headline);
+   745→  font-size: 2.2rem;
+   746→  font-weight: 800;
+   747→  line-height: 1.2;
+   748→  text-align: center;
+   749→  margin-bottom: 10px;
+   750→}
+   751→
+   752→.full-subtitle {
+   753→  font-family: var(--font-bengali);
+   754→  font-size: 1.15rem;
+   755→  font-style: italic;
+   756→  font-weight: 600;
+   757→  text-align: center;
+   758→  color: rgba(0,0,0,0.7);
+   759→  margin-bottom: 15px;
+   760→}
+   761→
+   762→.article-author {
+   763→  text-align: center;
+   764→  font-size: 0.95rem;
+   765→  font-weight: 700;
+   766→  font-style: italic;
+   767→  margin-bottom: 20px;
+   768→  font-family: var(--font-bengali);
+   769→}
+   770→
+   771→.article-body-text {
+   772→  text-align: justify;
+   773→  font-size: 1.05rem;
+   774→  line-height: 1.8;
+   775→  display: flex;
+   776→  flex-direction: column;
+   777→  gap: 15px;
+   778→  font-family: var(--font-bengali);
+   779→}
+   780→
+   781→/* ==============================
+   782→   মন্ত্র ইফেক্ট
+   783→   ============================== */
+   784→.spell-glow {
+   785→  position: fixed;
+   786→  top: 0; left: 0; width: 100vw; height: 100vh;
+   787→  pointer-events: none;
+   788→  z-index: 999;
+   789→  opacity: 0;
+   790→  transition: opacity 1s cubic-bezier(0.25,1,0.5,1);
+   791→}
+   792→
+   793→body.lumos-active .spell-glow {
+   794→  opacity: 1;
+   795→  background: radial-gradient(circle 180px at var(--cursor-x, 50%) var(--cursor-y, 50%), transparent 0%, rgba(0,0,0,0.45) 80%);
+   796→}
+   797→
+   798→body.nox-active .parchment-bg {
+   799→  --bg-parchment: #161513;
+   800→  box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+   801→}
+   802→body.nox-active { background-color: #080807; }
+   803→body.nox-active .spell-glow { display: none; }
+   804→body.nox-active .newspaper-container::before { box-shadow: inset 0 0 100px rgba(0,0,0,0.85); }
+   805→body.nox-active { color: #e4d8bc; }
+   806→body.nox-active a:hover { color: #ffdf7a; }
+   807→body.nox-active .magical-photo {
+   808→  filter: grayscale(1) sepia(0.2) invert(0.85) brightness(1.2) contrast(1.2);
+   809→  mix-blend-mode: normal;
+   810→}
+   811→body.nox-active .logo-title { color: #ffdf7a; text-shadow: 0 0 12px rgba(255,223,122,0.4); }
+   812→body.nox-active .wanted-poster { background: #24221d; }
+   813→body.nox-active .wanted-label { background: var(--accent-gold); color: #000; }
+   814→body.nox-active .reward-amount { color: var(--accent-gold); }
+   815→body.nox-active .main-subheadline { color: rgba(228,216,188,0.7); }
+   816→body.nox-active .drop-cap { color: var(--accent-gold); }
+   817→body.nox-active .classified-heading { color: var(--accent-gold); }
+   818→body.nox-active .card-tag { color: var(--accent-gold); }
+   819→body.nox-active .decree-header { color: var(--accent-gold); }
+   820→body.nox-active .wax-seal { background: #3a2e24; background-image: radial-gradient(circle at 35% 35%, #4f3f31 0%, #292018 100%); }
+   821→body.nox-active .seal-letter, body.nox-active .seal-text { color: #c9bda5; }
+   822→body.nox-active .photo-frame { background: #21201d; }
+   823→body.nox-active .photo-caption { color: #c9bda5; }
+   824→body.nox-active .weather-item { background: rgba(0,0,0,0.2); border-color: rgba(228,216,188,0.15); }
+   825→body.nox-active .column-divider { border-top-color: rgba(228,216,188,0.15); }
+   826→body.nox-active .bottom-card { border-color: rgba(228,216,188,0.1); background: rgba(255,255,255,0.01); }
+   827→body.nox-active .decree-box { border-color: rgba(228,216,188,0.25); background: rgba(255,255,255,0.01); }
+   828→body.nox-active .ad-price { color: var(--accent-gold); }
+   829→
+   830→/* স্পার্কল */
+   831→.sparkle {
+   832→  position: fixed;
+   833→  width: 6px;
+   834→  height: 6px;
+   835→  background: #ffe082;
+   836→  border-radius: 50%;
+   837→  pointer-events: none;
+   838→  z-index: 1000;
+   839→  box-shadow: 0 0 10px #ffb300, 0 0 20px #ffb300;
+   840→  animation: sparkle-fade 0.8s forwards ease-out;
+   841→}
+   842→
+   843→/* ==============================
+   844→   অ্যানিমেশন
+   845→   ============================== */
+   846→@keyframes pulse {
+   847→  0%, 100% { opacity: 1; }
+   848→  50% { opacity: 0.5; }
+   849→}
+   850→
+   851→@keyframes ticker-slide {
+   852→  0% { transform: translate3d(0, 0, 0); }
+   853→  100% { transform: translate3d(-100%, 0, 0); }
+   854→}
+   855→
+   856→@keyframes photo-flicker {
+   857→  0%, 100% { filter: contrast(1.15) brightness(0.95) sepia(0.85); }
+   858→  10% { filter: contrast(1.2) brightness(1) sepia(0.85); }
+   859→  45% { filter: contrast(1.15) brightness(0.95) sepia(0.85); }
+   860→  55% { filter: contrast(1.25) brightness(1.02) sepia(0.85); }
+   861→  85% { filter: contrast(1.2) brightness(0.98) sepia(0.85); }
+   862→}
+   863→
+   864→@keyframes photo-zoom {
+   865→  0% { transform: scale(1); }
+   866→  100% { transform: scale(1.08) translate(-5px, -3px); }
+   867→}
+   868→
+   869→@keyframes wanted-move {
+   870→  0% { transform: scale(1.02) rotate(0deg); }
+   871→  25% { transform: scale(1.05) rotate(1deg) translateY(-2px); }
+   872→  50% { transform: scale(1.03) rotate(-1deg) translateX(-1px); }
+   873→  75% { transform: scale(1.06) rotate(1.5deg) translateY(1px); }
+   874→  100% { transform: scale(1.02) rotate(0deg); }
+   875→}
+   876→
+   877→@keyframes potion-wiggle {
+   878→  0%, 100% { transform: translateY(0) rotate(0deg); }
+   879→  33% { transform: translateY(-3px) rotate(1deg); }
+   880→  66% { transform: translateY(1px) rotate(-1deg); }
+   881→}
+   882→
+   883→@keyframes sparkle-fade {
+   884→  0% { transform: scale(1) translateY(0); opacity: 1; }
+   885→  100% { transform: scale(0) translateY(15px); opacity: 0; }
+   886→}
+   887→
+   888→/* ==============================
+   889→   রেসপন্সিভ
+   890→   ============================== */
+   891→@media (max-width: 1024px) {
+   892→  .newspaper-grid {
+   893→    grid-template-columns: 240px 1fr;
+   894→    gap: 20px;
+   895→  }
+   896→  .right-column {
+   897→    grid-column: span 2;
+   898→    display: grid;
+   899→    grid-template-columns: 1fr 1fr;
+   900→    gap: 20px;
+   901→  }
+   902→  .right-column > .column-divider { display: none; }
+   903→  .bottom-grid { grid-template-columns: repeat(2, 1fr); }
+   904→}
+   905→
+   906→@media (max-width: 768px) {
+   907→  .newspaper-container { padding: 15px 20px; }
+   908→  .logo-title { font-size: 2.8rem; }
+   909→  .newspaper-grid { grid-template-columns: 1fr; }
+   910→  .left-column, .right-column {
+   911→    grid-column: span 1;
+   912→    display: flex;
+   913→    flex-direction: column;
+   914→  }
+   915→  .right-column { grid-template-columns: 1fr; }
+   916→  .article-columns { column-count: 1; }
+   917→  .issue-bar {
+   918→    font-size: 0.85rem;
+   919→    flex-direction: column;
+   920→    align-items: center;
+   921→    gap: 5px;
+   922→  }
+   923→  .top-toolbar {
+   924→    flex-direction: column;
+   925→    gap: 10px;
+   926→    align-items: center;
+   927→  }
+   928→  .bottom-grid { grid-template-columns: 1fr; }
+   929→  .article-scroll {
+   930→    padding: 40px 25px;
+   931→    border-left-width: 10px;
+   932→    border-right-width: 10px;
+   933→  }
+   934→  .full-title { font-size: 1.6rem; }
+   935→  .main-headline { font-size: 1.6rem; }
+   936→  .masthead-decor { display: none; }
+   937→}
+   938→
+   939→@media (max-width: 480px) {
+   940→  .newspaper-container { padding: 10px 12px; }
+   941→  .logo-title { font-size: 2rem; letter-spacing: 1px; }
+   942→  .logo-tagline { font-size: 0.7rem; }
+   943→  .top-toolbar { padding: 8px; gap: 8px; }
+   944→  .spell-btn { font-size: 0.7rem; padding: 3px 7px; }
+   945→  .ticker-container { flex-direction: column; height: auto; padding: 6px 8px; }
+   946→  .ticker-label { font-size: 0.7rem; }
+   947→  .main-headline { font-size: 1.3rem; }
+   948→  .main-subheadline { font-size: 0.95rem; }
+   949→  .full-title { font-size: 1.3rem; }
+   950→  .full-subtitle { font-size: 0.95rem; }
+   951→  .bottom-card { padding: 12px; }
+   952→  .issue-bar { font-size: 0.75rem; }
+   953→  .wax-seal { width: 64px; height: 64px; }
+   954→  .seal-inner { width: 52px; height: 52px; top: 6px; left: 6px; }
+   955→  .seal-letter { font-size: 1.6rem; }
+   956→  .weather-grid { flex-direction: column; }
+   957→}
+   958→
+   959→@media (prefers-reduced-motion: reduce) {
+   960→  *, *::before, *::after {
+   961→    animation-duration: 0.01ms !important;
+   962→    animation-iteration-count: 1 !important;
+   963→    transition-duration: 0.01ms !important;
+   964→  }
+   965→  .sparkle { display: none !important; }
+   966→  .ticker-content { animation: none !important; }
+   967→}
+   968→
+   969→/* ফোকাস */
+   970→:focus-visible {
+   971→  outline: 3px solid var(--accent-gold);
+   972→  outline-offset: 2px;
+   973→  border-radius: 2px;
+   974→}
+   975→:focus:not(:focus-visible) { outline: none; }
+   976→
+   977→.skip-link {
+   978→  position: absolute;
+   979→  top: -100%;
+   980→  left: 0;
+   981→  background: var(--accent-red);
+   982→  color: #fff;
+   983→  padding: 8px 16px;
+   984→  z-index: 10000;
+   985→  font-weight: bold;
+   986→  text-decoration: none;
+   987→}
+   988→.skip-link:focus { top: 0; }
+   989→
+   990→/* লোডিং */
+   991→.loading-state {
+   992→  text-align: center;
+   993→  font-family: var(--font-bn-headline);
+   994→  font-size: 1.3rem;
+   995→  padding: 100px 0;
+   996→  font-weight: 700;
+   997→  animation: pulse 2s infinite;
+   998→}
+   999→
+  1000→/* মিনি আর্টিকেল ব্লক */
+  1001→.mini-article {
+  1002→  margin-top: 15px;
+  1003→  background: rgba(0,0,0,0.02);
+  1004→  padding: 10px;
+  1005→  border: 1px solid rgba(74,65,42,0.15);
+  1006→}
+  1007→
+  1008→.mini-title {
+  1009→  font-family: var(--font-bn-headline);
+  1010→  font-size: 1rem;
+  1011→  font-weight: 700;
+  1012→  margin-bottom: 4px;
+  1013→}
+  1014→
+  1015→.mini-snippet {
+  1016→  font-size: 0.85rem;
+  1017→  line-height: 1.4;
+  1018→  font-family: var(--font-bengali);
+  1019→}
+  1020→
+  1021→/* গোপন সেকশন */
+  1022→.secret-box {
+  1023→  margin-top: 12px;
+  1024→  border: 1px dashed var(--border-color);
+  1025→  padding: 10px;
+  1026→  background: rgba(0,0,0,0.03);
+  1027→  border-radius: 4px;
+  1028→  transition: all 0.5s ease;
+  1029→}
+  1030→
+  1031→.secret-box.unlocked {
+  1032→  border: 2px solid var(--accent-gold);
+  1033→  background: rgba(255,223,122,0.1);
+  1034→  box-shadow: 0 0 10px rgba(181,148,73,0.3);
+  1035→}
+  1036→
+  1037→.lock-icon {
+  1038→  font-weight: 700;
+  1039→  color: var(--accent-red);
+  1040→  text-align: center;
+  1041→  cursor: pointer;
+  1042→  animation: pulse 2s infinite;
+  1043→}
+  1044→
+  1045→.secret-content {
+  1046→  font-size: 0.85rem;
+  1047→  line-height: 1.4;
+  1048→  font-style: italic;
+  1049→  font-family: var(--font-bengali);
+  1050→}
+  1051→
+  1052→.magic-btn {
+  1053→  width: 100%;
+  1054→  background: var(--accent-gold);
+  1055→  color: #fff;
+  1056→  border: 1px solid var(--accent-gold);
+  1057→  padding: 6px;
+  1058→  font-family: var(--font-bengali);
+  1059→  font-weight: bold;
+  1060→  font-size: 0.9rem;
+  1061→  cursor: pointer;
+  1062→  border-radius: 3px;
+  1063→  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  1064→  transition: all 0.3s ease;
+  1065→}
+  1066→.magic-btn:hover {
+  1067→  background: #c9a355;
+  1068→  box-shadow: 0 0 8px var(--accent-gold);
+  1069→}
+  1070→
+  1071→.parchment-input {
+  1072→  width: 100%;
+  1073→  background: rgba(255,255,255,0.4);
+  1074→  border: 1px solid var(--border-color);
+  1075→  color: var(--ink-color);
+  1076→  padding: 6px 10px;
+  1077→  font-family: var(--font-bengali);
+  1078→  font-size: 0.9rem;
+  1079→  margin-bottom: 8px;
+  1080→  border-radius: 2px;
+  1081→}
+  1082→.parchment-input:focus {
+  1083→  outline: none;
+  1084→  background: rgba(255,255,255,0.7);
+  1085→  box-shadow: 0 0 5px var(--accent-gold);
+  1086→}
+  1087→
+  1088→body.nox-active .parchment-input {
+  1089→  background: rgba(0,0,0,0.4);
+  1090→  color: #e4d8bc;
+  1091→}
+  1092→body.nox-active .magic-btn {
+  1093→  color: #000;
+  1094→}
+  1095→body.nox-active .secret-box.locked .lock-icon {
+  1096→  color: var(--accent-gold);
+  1097→}

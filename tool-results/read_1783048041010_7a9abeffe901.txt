@@ -1,0 +1,617 @@
+     1→'use client'
+     2→
+     3→import { useEffect, useState, useCallback, useRef } from 'react'
+     4→
+     5→// ===== টাইপ ডিফিনিশন =====
+     6→interface Article {
+     7→  id: string
+     8→  slug: string
+     9→  section: string
+    10→  title: string
+    11→  subtitle: string | null
+    12→  author: string
+    13→  category: string
+    14→  snippet: string | null
+    15→  content: string // JSON string
+    16→  imageUrl: string | null
+    17→  imageFilter: string | null
+    18→  imageCaption: string | null
+    19→  viewCount: number
+    20→}
+    21→
+    22→interface Ticker { id: string; message: string }
+    23→interface Weather { id: string; location: string; emoji: string; forecast: string }
+    24→interface WantedPoster { id: string; name: string; description: string; reward: string; imageUrl: string | null }
+    25→interface Classified { id: string; heading: string; body: string }
+    26→interface Decree { id: string; title: string; decreeNumber: string; body: string; signedBy: string }
+    27→interface Letter { id: string; author: string; body: string }
+    28→interface Ad { id: string; title: string; subtitle: string | null; description: string | null; imageUrl: string | null; price: string | null; articleSlug: string | null }
+    29→
+    30→interface NewspaperData {
+    31→  issue: {
+    32→    id: string
+    33→    issueNumber: number
+    34→    publishDate: string
+    35→    priceGalleons: number
+    36→    articles: Article[]
+    37→    tickers: Ticker[]
+    38→    weathers: Weather[]
+    39→    wantedPosters: WantedPoster[]
+    40→    classifieds: Classified[]
+    41→    decrees: Decree[]
+    42→    letters: Letter[]
+    43→    ads: Ad[]
+    44→  }
+    45→}
+    46→
+    47→// ===== উইজার্ডিং ডেট জেনারেটর =====
+    48→function generateWizardingDate(): string {
+    49→  const now = new Date()
+    50→  const days = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার']
+    51→  const months = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']
+    52→  const dayName = days[now.getDay()]
+    53→  const dateNum = now.getDate()
+    54→  const monthName = months[now.getMonth()]
+    55→  const year = now.getFullYear()
+    56→  let suffix = ''
+    57→  if (year % 3 === 0) suffix = ' (ড্রাগনের বছর)'
+    58→  else if (year % 3 === 1) suffix = ' (ফিনিক্সের বছর)'
+    59→  else suffix = ' (হিপোগ্রিফের বছর)'
+    60→  return `${dayName}, ${dateNum} ${monthName} ${year}${suffix}`
+    61→}
+    62→
+    63→// ===== মেইন কম্পোনেন্ট =====
+    64→export default function Home() {
+    65→  const [data, setData] = useState<NewspaperData | null>(null)
+    66→  const [loading, setLoading] = useState(true)
+    67→  const [activeSpell, setActiveSpell] = useState('finite')
+    68→  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null)
+    69→  const [soundEnabled, setSoundEnabled] = useState(true)
+    70→  const [wantedName, setWantedName] = useState('সিরিয়াস ব্ল্যাক')
+    71→  const [secretUnlocked, setSecretUnlocked] = useState(false)
+    72→  const [wantedRevealed, setWantedRevealed] = useState(false)
+    73→
+    74→  const sparkContainer = useRef<HTMLDivElement>(null)
+    75→  const spellThrottle = useRef(false)
+    76→  const soundPage = useRef<HTMLAudioElement | null>(null)
+    77→  const soundMagic = useRef<HTMLAudioElement | null>(null)
+    78→
+    79→  // ===== ডেটা ফেচ =====
+    80→  useEffect(() => {
+    81→    fetch('/api/newspaper')
+    82→      .then(r => r.json())
+    83→      .then(d => { setData(d); setLoading(false) })
+    84→      .catch(() => { setLoading(false) })
+    85→  }, [])
+    86→
+    87→  // ===== সাউন্ড ইনিশিয়ালাইজ =====
+    88→  useEffect(() => {
+    89→    soundPage.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav')
+    90→    soundMagic.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2019/2019-84.wav')
+    91→    soundPage.current.preload = 'auto'
+    92→    soundMagic.current.preload = 'auto'
+    93→  }, [])
+    94→
+    95→  // ===== স্পার্কল সিস্টেম =====
+    96→  const createSparkle = useCallback((x: number, y: number) => {
+    97→    if (!sparkContainer.current) return
+    98→    const sparkle = document.createElement('div')
+    99→    sparkle.className = 'sparkle'
+   100→    const offset = 8
+   101→    sparkle.style.left = `${x + (Math.random() - 0.5) * offset}px`
+   102→    sparkle.style.top = `${y + (Math.random() - 0.5) * offset}px`
+   103→    const colors: Record<string, { bg: string; shadow: string }> = {
+   104→      lumos: { bg: '#fff9c4', shadow: '0 0 12px #fffde7, 0 0 22px #ffe082' },
+   105→      nox: { bg: '#b2dfdb', shadow: '0 0 12px #80cbc4, 0 0 22px #004d40' },
+   106→      confundo: { bg: '#e1bee7', shadow: '0 0 12px #ce93d8, 0 0 22px #4a148c' },
+   107→      finite: { bg: '#ffe082', shadow: '0 0 10px #ffb300, 0 0 20px #ffa000' },
+   108→    }
+   109→    const c = colors[activeSpell] || colors.finite
+   110→    sparkle.style.background = c.bg
+   111→    sparkle.style.boxShadow = c.shadow
+   112→    const size = Math.random() * 6 + 3
+   113→    sparkle.style.width = `${size}px`
+   114→    sparkle.style.height = `${size}px`
+   115→    sparkContainer.current.appendChild(sparkle)
+   116→    sparkle.addEventListener('animationend', () => sparkle.remove())
+   117→  }, [activeSpell])
+   118→
+   119→  const burstSparkles = useCallback((cx: number, cy: number, count: number, sx: number, sy: number) => {
+   120→    for (let i = 0; i < count; i++) {
+   121→      setTimeout(() => {
+   122→        createSparkle(cx + (Math.random() - 0.5) * sx, cy + (Math.random() - 0.5) * sy)
+   123→      }, i * 20)
+   124→    }
+   125→  }, [createSparkle])
+   126→
+   127→  // ===== মাউস মুভ =====
+   128→  useEffect(() => {
+   129→    const handler = (e: MouseEvent) => {
+   130→      document.body.style.setProperty('--cursor-x', `${e.clientX}px`)
+   131→      document.body.style.setProperty('--cursor-y', `${e.clientY}px`)
+   132→      if (spellThrottle.current) return
+   133→      spellThrottle.current = true
+   134→      createSparkle(e.clientX, e.clientY)
+   135→      setTimeout(() => { spellThrottle.current = false }, 15)
+   136→    }
+   137→    window.addEventListener('mousemove', handler)
+   138→    return () => window.removeEventListener('mousemove', handler)
+   139→  }, [createSparkle])
+   140→
+   141→  // ===== সাউন্ড প্লে =====
+   142→  const playSound = (type: 'page' | 'magic') => {
+   143→    if (!soundEnabled) return
+   144→    const audio = type === 'page' ? soundPage.current : soundMagic.current
+   145→    if (audio) { audio.currentTime = 0; audio.play().catch(() => {}) }
+   146→  }
+   147→
+   148→  // ===== মন্ত্র সিস্টেম =====
+   149→  const castSpell = (spell: string) => {
+   150→    document.body.classList.remove('lumos-active', 'nox-active', 'confundo-active')
+   151→    setActiveSpell(spell)
+   152→    if (spell !== 'finite') {
+   153→      document.body.classList.add(`${spell}-active`)
+   154→      playSound('magic')
+   155→    } else {
+   156→      playSound('page')
+   157→    }
+   158→  }
+   159→
+   160→  // ===== আর্টিকেল ওপেন =====
+   161→  const openArticle = async (article: Article) => {
+   162→    playSound('page')
+   163→    setSelectedArticle(article)
+   164→    try {
+   165→      await fetch('/api/articles/view', {
+   166→        method: 'POST',
+   167→        headers: { 'Content-Type': 'application/json' },
+   168→        body: JSON.stringify({ articleId: article.id }),
+   169→      })
+   170→    } catch {}
+   171→  }
+   172→
+   173→  // ===== রেভেলিও ওয়ান্টেড =====
+   174→  const triggerRevelio = () => {
+   175→    playSound('magic')
+   176→    setWantedRevealed(true)
+   177→    burstSparkles(window.innerWidth * 0.2, window.innerHeight * 0.35, 25, 200, 250)
+   178→    setTimeout(() => setWantedRevealed(false), 4000)
+   179→  }
+   180→
+   181→  // ===== লোডিং স্টেট =====
+   182→  if (loading) {
+   183→    return (
+   184→      <div className="parchment-bg min-h-screen flex items-center justify-center">
+   185→        <p className="loading-state">🪄 জাদুভিত্তিক প্রতিবেদন লোড হচ্ছে...</p>
+   186→      </div>
+   187→    )
+   188→  }
+   189→
+   190→  if (!data) {
+   191→    return (
+   192→      <div className="parchment-bg min-h-screen flex items-center justify-center">
+   193→        <p className="loading-state">⚠️ প্রতিবেদন পাওয়া যায়নি</p>
+   194→      </div>
+   195→    )
+   196→  }
+   197→
+   198→  const { issue } = data
+   199→  const headline = issue.articles.find(a => a.section === 'headline')
+   200→  const leftArticles = issue.articles.filter(a => ['local', 'ministry'].includes(a.section))
+   201→  const centerArticles = issue.articles.filter(a => a.section === 'entertainment')
+   202→  const rightArticles = issue.articles.filter(a => ['mystery', 'economy'].includes(a.section))
+   203→  const bottomArticles = issue.articles.filter(a => ['sports', 'world', 'security', 'gossip'].includes(a.section))
+   204→
+   205→  const tickerMessages = issue.tickers.map(t => `⚡ ${t.message}`).join(' ')
+   206→
+   207→  const parseContent = (jsonStr: string): string[] => {
+   208→    try { return JSON.parse(jsonStr) } catch { return [jsonStr] }
+   209→  }
+   210→
+   211→  // ===== আর্টিকেল ভিউ =====
+   212→  if (selectedArticle) {
+   213→    const paragraphs = parseContent(selectedArticle.content)
+   214→    return (
+   215→      <div className="article-overlay" onClick={() => setSelectedArticle(null)}>
+   216→        <div className="spell-glow" aria-hidden="true" />
+   217→        <div ref={sparkContainer} aria-hidden="true" />
+   218→        <div className="article-scroll" onClick={e => e.stopPropagation()}>
+   219→          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px' }}>
+   220→            <span style={{ color: 'var(--accent-red)' }}>{selectedArticle.category.toUpperCase()}</span>
+   221→            <span>{generateWizardingDate()}</span>
+   222→          </div>
+   223→
+   224→          <h1 className="full-title">{selectedArticle.title}</h1>
+   225→          {selectedArticle.subtitle && <p className="full-subtitle">{selectedArticle.subtitle}</p>}
+   226→          <p className="article-author">লেখক: {selectedArticle.author}</p>
+   227→
+   228→          <hr className="double-divider" />
+   229→
+   230→          {selectedArticle.imageUrl && (
+   231→            <div className="photo-frame" style={{ maxWidth: 450, margin: '10px auto' }}>
+   232→              <div className="photo-border">
+   233→                <img
+   234→                  src={selectedArticle.imageUrl}
+   235→                  alt={selectedArticle.title}
+   236→                  className={`magical-photo ${selectedArticle.imageFilter || ''}`}
+   237→                  loading="lazy"
+   238→                />
+   239→              </div>
+   240→              {selectedArticle.imageCaption && <p className="photo-caption">{selectedArticle.imageCaption}</p>}
+   241→            </div>
+   242→          )}
+   243→
+   244→          <div className="article-body-text">
+   245→            {paragraphs.map((para, i) => (
+   246→              <p key={i} className={i === 0 ? 'lead-para' : ''}>
+   247→                {i === 0 && para.length > 0 && (
+   248→                  <span className="drop-cap">{para.charAt(0)}</span>
+   249→                )}
+   250→                {i === 0 ? para.slice(1) : para}
+   251→              </p>
+   252→            ))}
+   253→          </div>
+   254→
+   255→          <div style={{ textAlign: 'center', marginTop: 30 }}>
+   256→            <button className="article-back-btn" onClick={() => setSelectedArticle(null)}>
+   257→              ডেইলি পাইহুডে ফিরে যান
+   258→            </button>
+   259→          </div>
+   260→        </div>
+   261→      </div>
+   262→    )
+   263→  }
+   264→
+   265→  // ===== মূল পত্রিকা পেজ =====
+   266→  return (
+   267→    <div className="parchment-bg min-h-screen flex flex-col">
+   268→      <a href="#main-content" className="skip-link">সরাসরি বিষয়বস্তুতে যান</a>
+   269→      <div className="spell-glow" aria-hidden="true" />
+   270→      <div ref={sparkContainer} aria-hidden="true" />
+   271→
+   272→      <div className="newspaper-container">
+   273→        {/* টপ টুলবার */}
+   274→        <header className="top-toolbar" role="banner">
+   275→          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+   276→            <span aria-live="polite">✨ জাদুভিত্তিক সংযোগ: <span className="status-online">সক্রিয়</span></span>
+   277→          </div>
+   278→          <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+   279→            <button
+   280→              className="spell-btn"
+   281→              onClick={() => { setSoundEnabled(!soundEnabled); playSound('page') }}
+   282→              aria-label="সাউন্ড টগল"
+   283→            >
+   284→              {soundEnabled ? '🔊 সাউন্ড: চালু' : '🔇 সাউন্ড: বন্ধ'}
+   285→            </button>
+   286→            <nav style={{ display: 'flex', alignItems: 'center', gap: 5 }} aria-label="মন্ত্র নিয়ন্ত্রণ">
+   287→              <span style={{ fontSize: '0.8rem' }}>মন্ত্র:</span>
+   288→              {['lumos', 'nox', 'confundo', 'finite'].map(spell => (
+   289→                <button
+   290→                  key={spell}
+   291→                  className={`spell-btn ${activeSpell === spell ? 'active' : ''}`}
+   292→                  onClick={() => castSpell(spell)}
+   293→                  aria-pressed={activeSpell === spell}
+   294→                >
+   295→                  {spell === 'lumos' ? 'লুমোস' : spell === 'nox' ? 'নক্স' : spell === 'confundo' ? 'কনফুন্ডো' : 'ফাইনাইট'}
+   296→                </button>
+   297→              ))}
+   298→            </nav>
+   299→          </div>
+   300→        </header>
+   301→
+   302→        {/* মাস্টহেড */}
+   303→        <div className="masthead" role="img" aria-label="The Daily Pyhood পত্রিকার মাস্টহেড">
+   304→          <div className="masthead-decor" aria-hidden="true" />
+   305→          <div style={{ padding: '0 20px' }}>
+   306→            <h1 className="logo-title">THE DAILY PYHOOD</h1>
+   307→            <p className="logo-tagline">জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা • লন্ডন থেকে প্রকাশিত</p>
+   308→          </div>
+   309→          <div className="masthead-decor" aria-hidden="true" />
+   310→        </div>
+   311→
+   312→        {/* ইস্যু বার */}
+   313→        <div className="issue-bar" aria-label="প্রকাশনা তথ্য">
+   314→          <span>{generateWizardingDate()}</span>
+   315→          <span>মূল্য: {issue.priceGalleons} গ্যালিয়ন</span>
+   316→          <span>নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
+   317→        </div>
+   318→
+   319→        {/* টিকার */}
+   320→        <div className="ticker-container" role="marquee" aria-label="ব্রেকিং সংবাদ">
+   321→          <div className="ticker-label">ব্রেকিং:</div>
+   322→          <div className="ticker-wrap" aria-live="off">
+   323→            <div className="ticker-content">{tickerMessages} ⚡</div>
+   324→          </div>
+   325→        </div>
+   326→
+   327→        <hr className="double-divider" />
+   328→
+   329→        {/* মূল গ্রিড */}
+   330→        <main className="newspaper-grid" id="main-content">
+   331→          {/* === বাম কলাম === */}
+   332→          <aside className="left-column" aria-label="বাম কলাম: ওয়ান্টেড পোস্টার ও পার্শ্ব সংবাদ" style={{ display: 'flex', flexDirection: 'column' }}>
+   333→            {/* ওয়ান্টেড পোস্টার */}
+   334→            {issue.wantedPosters[0] && (
+   335→              <div className="wanted-poster" style={wantedRevealed ? { borderColor: 'var(--accent-gold)', boxShadow: '0 0 25px var(--accent-gold)' } : {}}>
+   336→                <div className="wanted-header">এই উইজার্ডকে দেখেছেন কি?</div>
+   337→                {issue.wantedPosters[0].imageUrl && (
+   338→                  <div className="wanted-img-frame">
+   339→                    <img
+   340→                      src={issue.wantedPosters[0].imageUrl}
+   341→                      alt="ওয়ান্টেড উইজার্ড"
+   342→                      className={`magical-photo ${wantedRevealed ? '' : 'grayscale-filter'}`}
+   343→                      style={wantedRevealed ? { filter: 'none', mixBlendMode: 'normal' } : {}}
+   344→                      loading="lazy"
+   345→                    />
+   346→                    <div className="wanted-label">ওয়ান্টেড</div>
+   347→                  </div>
+   348→                )}
+   349→                <h2 className="wanted-name">{wantedName}</h2>
+   350→                <p style={{ fontSize: '0.85rem', fontStyle: 'italic', lineHeight: 1.3, padding: '0 10px' }}>
+   351→                  {issue.wantedPosters[0].description}
+   352→                </p>
+   353→                <div className="reward-box">
+   354→                  <span style={{ display: 'block', fontSize: '0.75rem', letterSpacing: '1.5px', fontWeight: 700 }}>পুরস্কার</span>
+   355→                  <span className="reward-amount">{issue.wantedPosters[0].reward}</span>
+   356→                </div>
+   357→                <div style={{ marginTop: 15, paddingTop: 12, borderTop: '1px dashed rgba(74,65,42,0.3)' }}>
+   358→                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: 6 }}>
+   359→                    ওয়ান্টেড পোস্টারে নাম লিখুন:
+   360→                  </label>
+   361→                  <input
+   362→                    type="text"
+   363→                    className="parchment-input"
+   364→                    placeholder="নাম লিখুন..."
+   365→                    maxLength={20}
+   366→                    autoComplete="off"
+   367→                    value={wantedName === 'সিরিয়াস ব্ল্যাক' ? '' : wantedName}
+   368→                    onChange={e => setWantedName(e.target.value.trim().toUpperCase() || 'সিরিয়াস ব্ল্যাক')}
+   369→                  />
+   370→                  <button className="magic-btn" onClick={triggerRevelio}>
+   371→                    রেভেলিও মন্ত্র প্রয়োগ করুন
+   372→                  </button>
+   373→                </div>
+   374→              </div>
+   375→            )}
+   376→
+   377→            {/* বাম কলাম আর্টিকেল */}
+   378→            {leftArticles.map(article => (
+   379→              <div key={article.id} className="mini-article" style={{ marginTop: 15 }}>
+   380→                <h3 className="mini-title">
+   381→                  <a onClick={() => openArticle(article)}>{article.title}</a>
+   382→                </h3>
+   383→                <p className="mini-snippet">
+   384→                  {article.snippet} <a onClick={() => openArticle(article)} className="read-more">আরও পড়ুন...</a>
+   385→                </p>
+   386→              </div>
+   387→            ))}
+   388→
+   389→            <hr className="column-divider" />
+   390→
+   391→            {/* বিজ্ঞাপন */}
+   392→            {issue.ads[0] && (
+   393→              <div className="ad-container" aria-label="বিজ্ঞাপন">
+   394→                <div className="ad-label">বিজ্ঞাপন</div>
+   395→                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+   396→                  <h3 className="ad-title">
+   397→                    {issue.ads[0].articleSlug ? (
+   398→                      <a onClick={() => {
+   399→                        const linked = issue.articles.find(a => a.slug === issue.ads[0].articleSlug)
+   400→                        if (linked) openArticle(linked)
+   401→                      }}>{issue.ads[0].title}</a>
+   402→                    ) : issue.ads[0].title}
+   403→                  </h3>
+   404→                  {issue.ads[0].subtitle && <p className="ad-subtitle">{issue.ads[0].subtitle}</p>}
+   405→                  {issue.ads[0].imageUrl && (
+   406→                    <div className="potion-img-frame">
+   407→                      <img src={issue.ads[0].imageUrl} alt={issue.ads[0].title} className="magical-photo potion-photo" loading="lazy" />
+   408→                    </div>
+   409→                  )}
+   410→                  {issue.ads[0].description && (
+   411→                    <p style={{ fontSize: '0.85rem', lineHeight: 1.3, margin: '6px 0' }}>
+   412→                      &ldquo;{issue.ads[0].description}&rdquo;
+   413→                      {issue.ads[0].articleSlug && (
+   414→                        <a onClick={() => {
+   415→                          const linked = issue.articles.find(a => a.slug === issue.ads[0].articleSlug)
+   416→                          if (linked) openArticle(linked)
+   417→                        }} className="read-more"> বিস্তারিত...</a>
+   418→                      )}
+   419→                    </p>
+   420→                  )}
+   421→                  {issue.ads[0].price && <span className="ad-price">{issue.ads[0].price}</span>}
+   422→                </div>
+   423→              </div>
+   424→            )}
+   425→          </aside>
+   426→
+   427→          {/* === মধ্য কলাম === */}
+   428→          <section className="main-column" aria-label="প্রধান সংবাদ">
+   429→            {headline && (
+   430→              <article>
+   431→                <h2 className="main-headline">
+   432→                  <a onClick={() => openArticle(headline)}>{headline.title}</a>
+   433→                </h2>
+   434→                {headline.subtitle && (
+   435→                  <h3 className="main-subheadline">{headline.subtitle}</h3>
+   436→                )}
+   437→
+   438→                {headline.imageUrl && (
+   439→                  <div className="photo-frame">
+   440→                    <div className="photo-border">
+   441→                      <img
+   442→                        src={headline.imageUrl}
+   443→                        alt={headline.title}
+   444→                        className={`magical-photo ${headline.imageFilter || ''}`}
+   445→                        loading="lazy"
+   446→                      />
+   447→                    </div>
+   448→                    {headline.imageCaption && <p className="photo-caption">{headline.imageCaption}</p>}
+   449→                  </div>
+   450→                )}
+   451→
+   452→                <div className="article-columns">
+   453→                  <p className="lead-para">
+   454→                    {headline.snippet && (
+   455→                      <>
+   456→                        <span className="drop-cap">{headline.snippet.charAt(0)}</span>
+   457→                        {headline.snippet.slice(1)}
+   458→                      </>
+   459→                    )}
+   460→                    {' '}
+   461→                    <a onClick={() => openArticle(headline)} className="read-more">সম্পূর্ণ প্রতিবেদন পড়ুন...</a>
+   462→                  </p>
+   463→                </div>
+   464→              </article>
+   465→            )}
+   466→
+   467→            <hr className="column-divider" />
+   468→
+   469→            {/* সেকেন্ডারি আর্টিকেল */}
+   470→            {centerArticles.map(article => (
+   471→              <div key={article.id} className="news-block">
+   472→                <h3 className="block-title">
+   473→                  <a onClick={() => openArticle(article)}>{article.title}</a>
+   474→                </h3>
+   475→                <p className="block-snippet">
+   476→                  {article.snippet} <a onClick={() => openArticle(article)} className="read-more">সম্পূর্ণ গল্প...</a>
+   477→                </p>
+   478→              </div>
+   479→            ))}
+   480→
+   481→            <hr className="column-divider" />
+   482→
+   483→            {/* ডিক্রি */}
+   484→            {issue.decrees[0] && (
+   485→              <div className="decree-box" role="complementary" aria-label="মন্ত্রণালয় ডিক্রি">
+   486→                <div className="decree-header">{issue.decrees[0].title}</div>
+   487→                <div className="decree-number">{issue.decrees[0].decreeNumber}</div>
+   488→                <p className="decree-body">&ldquo;{issue.decrees[0].body}&rdquo;</p>
+   489→                <div className="decree-sign">স্বাক্ষরিত: {issue.decrees[0].signedBy}</div>
+   490→              </div>
+   491→            )}
+   492→          </section>
+   493→
+   494→          {/* === ডান কলাম === */}
+   495→          <aside className="right-column" aria-label="ডান কলাম: আবহাওয়া, সংবাদ ও ইন্টারেক্টিভ ফিচার" style={{ display: 'flex', flexDirection: 'column' }}>
+   496→            {/* আবহাওয়া */}
+   497→            <div aria-label="জাদুভিত্তিক আবহাওয়া পূর্বাভাস">
+   498→              <h2 className="widget-title">মন্ত্রণালয় আবহাওয়া পূর্বাভাস</h2>
+   499→              <div className="weather-grid">
+   500→                {issue.weathers.map(w => (
+   501→                  <div key={w.id} className="weather-item">
+   502→                    <span className="weather-location">{w.location}</span>
+   503→                    <div className="weather-emoji" aria-hidden="true">{w.emoji}</div>
+   504→                    <span className="weather-forecast">{w.forecast}</span>
+   505→                  </div>
+   506→                ))}
+   507→              </div>
+   508→            </div>
+   509→
+   510→            <hr className="column-divider" />
+   511→
+   512→            {/* স্কুপস ও চিঠি */}
+   513→            <div>
+   514→              <h2 className="widget-title">হগওয়ার্টস ও বিশ্বের স্কুপ</h2>
+   515→              {rightArticles.map(article => (
+   516→                <div key={article.id} style={{ marginTop: 15, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 10 }}>
+   517→                  <h3 style={{ fontFamily: 'var(--font-bn-headline)', fontSize: '1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: 5 }}>
+   518→                    <a onClick={() => openArticle(article)}>{article.title}</a>
+   519→                  </h3>
+   520→                  <p style={{ fontSize: '0.85rem', lineHeight: 1.4 }}>
+   521→                    {article.snippet} <a onClick={() => openArticle(article)} className="read-more">আরও পড়ুন...</a>
+   522→                  </p>
+   523→                </div>
+   524→              ))}
+   525→
+   526→              {/* পাঠকের চিঠি */}
+   527→              {issue.letters[0] && (
+   528→                <div style={{ marginTop: 15, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 10 }}>
+   529→                  <span className="letter-author">{issue.letters[0].author}:</span>
+   530→                  <p className="letter-body">&ldquo;{issue.letters[0].body}&rdquo;</p>
+   531→                </div>
+   532→              )}
+   533→            </div>
+   534→
+   535→            <hr className="column-divider" />
+   536→
+   537→            {/* ওয়ান্ড প্র্যাকটিস */}
+   538→            <div>
+   539→              <h2 className="widget-title">ওয়ান্ড প্র্যাকটিস</h2>
+   540→              <p style={{ fontSize: '0.85rem', marginBottom: 12, fontFamily: 'var(--font-bengali)' }}>
+   541→                পত্রিকার উপর আপনার ওয়ান্ড (মাউস) ঘুরিয়ে জাদুভিত্তিক স্পার্ক দেখুন!
+   542→              </p>
+   543→              <button className="magic-btn" onClick={() => { setSecretUnlocked(true); playSound('magic') }}>
+   544→                রেভেলিও (গোপন সেকশন উন্মোচন)
+   545→              </button>
+   546→              <div className={`secret-box ${secretUnlocked ? 'unlocked' : ''}`}>
+   547→                {!secretUnlocked ? (
+   548→                  <div className="lock-icon" onClick={() => { setSecretUnlocked(true); playSound('magic') }}>
+   549→                    🔒 লক করা সেকশন
+   550→                  </div>
+   551→                ) : (
+   552→                  <p className="secret-content">
+   553→                    <em>&ldquo;আমরা জানতে পেরেছি যে রহস্যময় বিভাগ সম্প্রতি মিশর থেকে একটি রহস্যময় জ্বলজ্বলে অর্ব অধিগ্রহণ করেছে। মন্ত্রণালয়ের কর্মকর্তারা বিবরণ দিতে অস্বীকার করছেন...&rdquo;</em>
+   554→                  </p>
+   555→                )}
+   556→              </div>
+   557→            </div>
+   558→
+   559→            <hr className="column-divider" />
+   560→
+   561→            {/* ক্লাসিফাইড */}
+   562→            <div aria-label="দৈনিক বিজ্ঞাপন">
+   563→              <h2 className="widget-title">দৈনিক বিজ্ঞাপন</h2>
+   564→              {issue.classifieds.map((c, i) => (
+   565→                <div key={c.id} style={i > 0 ? { marginTop: 10, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 8 } : {}}>
+   566→                  <span className="classified-heading">{c.heading}</span>
+   567→                  <p className="classified-body">{c.body}</p>
+   568→                </div>
+   569→              ))}
+   570→            </div>
+   571→
+   572→            <hr className="column-divider" />
+   573→
+   574→            {/* ওয়াক্স সিল */}
+   575→            <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0' }} aria-hidden="true">
+   576→              <div className="wax-seal">
+   577→                <div className="seal-inner">
+   578→                  <span className="seal-letter">P</span>
+   579→                  <span className="seal-text">PYHOOD APPROVED</span>
+   580→                </div>
+   581→              </div>
+   582→            </div>
+   583→          </aside>
+   584→        </main>
+   585→
+   586→        <hr className="double-divider" />
+   587→
+   588→        {/* নিচের সেকশন */}
+   589→        <section style={{ margin: '20px 0' }} aria-label="জাদুভিত্তিক বিশ্বের চারপাশে">
+   590→          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 900, textAlign: 'center', letterSpacing: '1px', marginBottom: 20, borderBottom: '1px solid var(--border-color)', paddingBottom: 8 }}>
+   591→            জাদুভিত্তিক বিশ্বের চারপাশে
+   592→          </h2>
+   593→          <div className="bottom-grid">
+   594→            {bottomArticles.map(article => (
+   595→              <div key={article.id} className="bottom-card">
+   596→                <span className="card-tag">{article.category}</span>
+   597→                <h3 className="card-title">
+   598→                  <a onClick={() => openArticle(article)}>{article.title}</a>
+   599→                </h3>
+   600→                <p className="card-snippet">
+   601→                  {article.snippet} <a onClick={() => openArticle(article)} className="read-more">আরও পড়ুন...</a>
+   602→                </p>
+   603→              </div>
+   604→            ))}
+   605→          </div>
+   606→        </section>
+   607→
+   608→        <hr className="double-divider" />
+   609→
+   610→        {/* ফুটার */}
+   611→        <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
+   612→          <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত। উইজার্ডিং প্রেস গিল্ডের অধীনে নিবন্ধিত। অননুমোদিত নকল ব্যাঙে রূপান্তরের সম্মুখীন হবে।</p>
+   613→        </footer>
+   614→      </div>
+   615→    </div>
+   616→  )
+   617→}

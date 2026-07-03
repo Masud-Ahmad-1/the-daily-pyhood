@@ -65,7 +65,6 @@ export default function Home() {
   const [data, setData] = useState<NewspaperData | null>(null)
   const [loading, setLoading] = useState(true)
   const [activeSpell, setActiveSpell] = useState('finite')
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null)
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [wantedName, setWantedName] = useState('সিরিয়াস ব্ল্যাক')
   const [secretUnlocked, setSecretUnlocked] = useState(false)
@@ -158,16 +157,9 @@ export default function Home() {
   }
 
   // ===== আর্টিকেল ওপেন =====
-  const openArticle = async (article: Article) => {
+  const openArticle = (article: Article) => {
     playSound('page')
-    setSelectedArticle(article)
-    try {
-      await fetch('/api/articles/view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ articleId: article.id }),
-      })
-    } catch {}
+    window.open('/article/' + article.slug, '_self')
   }
 
   // ===== রেভেলিও ওয়ান্টেড =====
@@ -204,63 +196,6 @@ export default function Home() {
 
   const tickerMessages = issue.tickers.map(t => `⚡ ${t.message}`).join(' ')
 
-  const parseContent = (jsonStr: string): string[] => {
-    try { return JSON.parse(jsonStr) } catch { return [jsonStr] }
-  }
-
-  // ===== আর্টিকেল ভিউ =====
-  if (selectedArticle) {
-    const paragraphs = parseContent(selectedArticle.content)
-    return (
-      <div className="article-overlay" onClick={() => setSelectedArticle(null)}>
-        <div className="spell-glow" aria-hidden="true" />
-        <div ref={sparkContainer} aria-hidden="true" />
-        <div className="article-scroll" onClick={e => e.stopPropagation()}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px' }}>
-            <span style={{ color: 'var(--accent-red)' }}>{selectedArticle.category.toUpperCase()}</span>
-            <span>{generateWizardingDate()}</span>
-          </div>
-
-          <h1 className="full-title">{selectedArticle.title}</h1>
-          {selectedArticle.subtitle && <p className="full-subtitle">{selectedArticle.subtitle}</p>}
-          <p className="article-author">লেখক: {selectedArticle.author}</p>
-
-          <hr className="double-divider" />
-
-          {selectedArticle.imageUrl && (
-            <div className="photo-frame" style={{ maxWidth: 450, margin: '10px auto' }}>
-              <div className="photo-border">
-                <img
-                  src={selectedArticle.imageUrl}
-                  alt={selectedArticle.title}
-                  className={`magical-photo ${selectedArticle.imageFilter || ''}`}
-                  loading="lazy"
-                />
-              </div>
-              {selectedArticle.imageCaption && <p className="photo-caption">{selectedArticle.imageCaption}</p>}
-            </div>
-          )}
-
-          <div className="article-body-text">
-            {paragraphs.map((para, i) => (
-              <p key={i} className={i === 0 ? 'lead-para' : ''}>
-                {i === 0 && para.length > 0 && (
-                  <span className="drop-cap">{para.charAt(0)}</span>
-                )}
-                {i === 0 ? para.slice(1) : para}
-              </p>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 30 }}>
-            <button className="article-back-btn" onClick={() => setSelectedArticle(null)}>
-              ডেইলি পাইহুডে ফিরে যান
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   // ===== মূল পত্রিকা পেজ =====
   return (
@@ -276,6 +211,11 @@ export default function Home() {
             <span aria-live="polite">✨ জাদুভিত্তিক সংযোগ: <span className="status-online">সক্রিয়</span></span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+            <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }} aria-label="পৃষ্ঠা নেভিগেশন">
+              <a href="/archive" className="spell-btn">📚 আর্কাইভ</a>
+              <a href="/sections" className="spell-btn">📂 বিভাগ</a>
+              <a href="/analytics" className="spell-btn">🔮 পরিসংখ্যান</a>
+            </nav>
             <button
               className="spell-btn"
               onClick={() => { setSoundEnabled(!soundEnabled); playSound('page') }}
@@ -609,6 +549,11 @@ export default function Home() {
 
         {/* ফুটার */}
         <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
+          <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8 }} aria-label="ফুটার নেভিগেশন">
+            <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📚 আর্কাইভ</a>
+            <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
+            <a href="/analytics" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 পরিসংখ্যান</a>
+          </nav>
           <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত। উইজার্ডিং প্রেস গিল্ডের অধীনে নিবন্ধিত। অননুমোদিত নকল ব্যাঙে রূপান্তরের সম্মুখীন হবে।</p>
         </footer>
       </div>
