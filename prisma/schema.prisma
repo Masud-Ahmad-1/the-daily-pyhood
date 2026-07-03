@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider     = "sqlite"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 // ========================
@@ -41,13 +42,13 @@ model Article {
   id          String   @id @default(cuid())
   slug        String   @unique
   issueId     String
-  section     String   // headline, lead, ministry, sports, world, security, gossip, economy, entertainment, local, mystery
+  section     String
   title       String
   subtitle    String?
   author      String
   category    String   @default("সংবাদ")
   snippet     String?
-  content     String   // JSON array of paragraphs
+  content     String
   imageUrl    String?
   imageFilter String?
   imageCaption String?
@@ -56,7 +57,7 @@ model Article {
   viewCount   Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
   views       ArticleView[]
 
   @@index([issueId])
@@ -74,7 +75,7 @@ model ArticleView {
   ipHash    String?
   userAgent String?
   viewedAt  DateTime @default(now())
-  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Restrict)
   issue     Issue?   @relation(fields: [issueId], references: [id], onDelete: SetNull)
 
   @@index([articleId])
@@ -89,7 +90,7 @@ model IssueView {
   ipHash    String?
   userAgent String?
   viewedAt  DateTime @default(now())
-  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
   @@index([viewedAt])
@@ -101,7 +102,7 @@ model Ticker {
   issueId   String
   message   String
   sortOrder Int      @default(0)
-  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -114,7 +115,7 @@ model Weather {
   emoji     String
   forecast  String
   sortOrder Int      @default(0)
-  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -128,7 +129,7 @@ model WantedPoster {
   reward      String   @default("১০,০০০ গ্যালিয়ন")
   imageUrl    String?
   isPublished Boolean  @default(true)
-  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -142,9 +143,9 @@ model Ad {
   description String?
   imageUrl    String?
   price       String?
-  articleSlug String?  // লিংক করা আর্টিকেল
+  articleSlug String?
   sortOrder   Int      @default(0)
-  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -156,7 +157,7 @@ model Classified {
   heading   String
   body      String
   sortOrder Int      @default(0)
-  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -170,7 +171,7 @@ model Decree {
   body        String
   signedBy    String
   sortOrder   Int      @default(0)
-  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue       Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -182,7 +183,7 @@ model Letter {
   author    String
   body      String
   sortOrder Int      @default(0)
-  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Restrict)
 
   @@index([issueId])
 }
@@ -194,16 +195,14 @@ model User {
   displayName   String
   email         String?  @unique
   passwordHash  String?
-  role          String   @default("reader") // reader, admin
-  provider      String   @default("credentials") // credentials, google
+  role          String   @default("reader")
+  provider      String   @default("credentials")
   
-  // ওয়ালেট
-  galleons      Int      @default(50) // স্বাগত বোনাস
+  galleons      Int      @default(50)
   sickles       Int      @default(0)
   knuts         Int      @default(0)
   
-  // সাবস্ক্রিপশন
-  subscriptionPlan String?  // owl, phoenix, dragon
+  subscriptionPlan String?
   subscriptionEnds DateTime?
   
   createdAt     DateTime @default(now())
@@ -219,26 +218,26 @@ model User {
 model Transaction {
   id          String   @id @default(cuid())
   userId      String
-  type        String   // purchase, subscription, bonus, earning, conversion
-  amountG     Int      @default(0)  // গ্যালিয়ন
-  amountS     Int      @default(0)  // সিকেল
-  amountK     Int      @default(0)  // নাট
+  type        String
+  amountG     Int      @default(0)
+  amountS     Int      @default(0)
+  amountK     Int      @default(0)
   description String
-  balanceG    Int      // লেনদেন পরবর্তী ব্যালেন্স
+  balanceG    Int
   createdAt   DateTime @default(now())
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@index([userId])
   @@index([createdAt])
 }
 
-// আর্টিকেল রিডিং ট্র্যাকিং (প্রিমিয়াম আর্টিকেল)
+// আর্টিকেল রিডিং ট্র্যাকিং
 model ArticleRead {
   id        String   @id @default(cuid())
   userId    String
   articleId String
   readAt    DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@unique([userId, articleId])
   @@index([userId])
