@@ -1,40 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArticleErrorBoundary } from '@/components/article-error-boundary'
-
-interface ArticleData {
-  article: {
-    id: string
-    slug: string
-    section: string
-    title: string
-    subtitle: string | null
-    author: string
-    category: string
-    snippet: string | null
-    content: string
-    imageUrl: string | null
-    imageFilter: string | null
-    imageCaption: string | null
-    viewCount: number
-    createdAt: string
-  }
-  relatedArticles: {
-    id: string
-    slug: string
-    title: string
-    section: string
-    author: string
-    snippet: string | null
-    viewCount: number
-  }[]
-  issue: {
-    id: string
-    issueNumber: number
-    publishDate: string
-  }
-}
 
 const sectionNames: Record<string, string> = {
   headline: 'শিরোনাম',
@@ -72,131 +38,150 @@ function parseContent(jsonStr: string): string[] {
   }
 }
 
-function ArticleContent({ data }: { data: ArticleData }) {
-  const { article, relatedArticles, issue } = data
-  const paragraphs = parseContent(article.content)
-  const safeViewCount = typeof article.viewCount === 'number' ? article.viewCount : 0
-  const safeIssueNumber = typeof issue.issueNumber === 'number' ? issue.issueNumber : 0
-  const safeDate = typeof issue.publishDate === 'string' ? issue.publishDate : ''
+function safeNum(val: unknown): number {
+  return typeof val === 'number' ? val : 0
+}
 
-  return (
-    <>
-      {/* ছোট মাস্টহেড */}
-      <header className="mini-masthead">
-        <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1 className="mini-logo-title">THE DAILY PYHOOD</h1>
-        </a>
-        <div className="mini-masthead-info">
-          <span>{safeDate ? formatBengaliDate(safeDate) : ''}</span>
-          <span>•</span>
-          <span>নং {safeIssueNumber.toLocaleString('bn-BD')}</span>
-        </div>
-      </header>
-
-      <hr className="double-divider" />
-
-      {/* আর্টিকেল হেডার */}
-      <article>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', flexWrap: 'wrap', gap: 4 }}>
-          <span style={{ color: 'var(--accent-red)' }}>{sectionNames[article.section] || article.section} • {article.category}</span>
-          <span className="article-view-count">👁 {safeViewCount.toLocaleString('bn-BD')} ভিউ</span>
-        </div>
-
-        <h1 className="full-title">{article.title}</h1>
-        {article.subtitle && <p className="full-subtitle">{article.subtitle}</p>}
-        <p className="article-author">লেখক: {article.author}</p>
-
-        <hr className="double-divider" />
-
-        {/* ছবি */}
-        {article.imageUrl && (
-          <div className="photo-frame" style={{ maxWidth: 450, margin: '15px auto' }}>
-            <div className="photo-border">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={article.imageUrl}
-                alt={article.title}
-                className={`magical-photo ${article.imageFilter || 'sepia-filter'}`}
-                loading="lazy"
-              />
-            </div>
-            {article.imageCaption && <p className="photo-caption">{article.imageCaption}</p>}
-          </div>
-        )}
-
-        {/* বডি */}
-        <div className="article-body-text">
-          {paragraphs.map((para, i) => (
-            <p key={i} className={i === 0 ? 'lead-para' : ''}>
-              {i === 0 && para && para.length > 0 && (
-                <span className="drop-cap">{para.charAt(0)}</span>
-              )}
-              {i === 0 ? (para || '').slice(1) : para}
-            </p>
-          ))}
-        </div>
-      </article>
-
-      <hr className="double-divider" />
-
-      {/* হোমপেজে ফিরে যাওয়া */}
-      <div style={{ textAlign: 'center', margin: '25px 0' }}>
-        <a href="/" className="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
-      </div>
-
-      {/* সম্পর্কিত সংবাদ */}
-      {relatedArticles && relatedArticles.length > 0 && (
-        <section>
-          <h2 className="widget-title" style={{ fontSize: '1.2rem', textAlign: 'center' }}>
-            📰 এই সংখ্যার অন্যান্য সংবাদ
-          </h2>
-          <div className="related-grid">
-            {relatedArticles.map((ra) => (
-              <a key={ra.id} href={`/article/${ra.slug}`} className="related-card">
-                <span className="card-tag">{sectionNames[ra.section] || ra.section}</span>
-                <h3 className="card-title">{ra.title}</h3>
-                <p style={{ fontSize: '0.82rem', color: 'rgba(0,0,0,0.6)', marginBottom: 6 }}>
-                  {ra.author}
-                </p>
-                {ra.snippet && <p className="card-snippet">{ra.snippet}</p>}
-                <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', marginTop: 8, fontWeight: 700 }}>
-                  👁 {(typeof ra.viewCount === 'number' ? ra.viewCount : 0).toLocaleString('bn-BD')}
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <hr className="double-divider" />
-
-      <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)', marginTop: 'auto' }}>
-        <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
-        <nav style={{ marginTop: 8, display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap' }}>
-          <a href="/" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>হোমপেজ</a>
-          <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>আর্কাইভ</a>
-          <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>বিভাগ</a>
-        </nav>
-      </footer>
-    </>
-  )
+function safeStr(val: unknown): string {
+  return typeof val === 'string' ? val : ''
 }
 
 export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const [data, setData] = useState<ArticleData | null>(null)
+  const [html, setHtml] = useState<string>('')
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    let cancelled = false
     params.then(p => {
-      fetch(`/api/articles/${p.slug}`)
+      const slug = p.slug
+      fetch(`/api/articles/${slug}`)
         .then(r => {
           if (!r.ok) throw new Error('আর্টিকেল পাওয়া যায়নি')
           return r.json()
         })
-        .then(d => { setData(d); setLoading(false) })
-        .catch(e => { setError(e.message); setLoading(false) })
+        .then(d => {
+          if (cancelled) return
+          try {
+            const article = d.article || {}
+            const issue = d.issue || {}
+            const relatedArticles = d.relatedArticles || []
+            const paragraphs = parseContent(article.content || '""')
+            const vc = safeNum(article.viewCount)
+            const inum = safeNum(issue.issueNumber)
+            const dateStr = safeStr(issue.publishDate)
+            const dateDisplay = dateStr ? formatBengaliDate(dateStr) : ''
+            const sectionLabel = sectionNames[article.section] || article.section || ''
+
+            let relatedHtml = ''
+            if (relatedArticles.length > 0) {
+              const cards = relatedArticles.map((ra: Record<string, unknown>) => {
+                const rSlug = safeStr(ra.slug)
+                const rTitle = safeStr(ra.title)
+                const rAuthor = safeStr(ra.author)
+                const rSection = sectionNames[safeStr(ra.section)] || safeStr(ra.section)
+                const rSnippet = safeStr(ra.snippet)
+                const rViews = safeNum(ra.viewCount)
+                return `<a href="/article/${rSlug}" class="related-card">
+                  <span class="card-tag">${rSection}</span>
+                  <h3 class="card-title">${rTitle}</h3>
+                  <p style="font-size:0.82rem;color:rgba(0,0,0,0.6);margin-bottom:6px">${rAuthor}</p>
+                  ${rSnippet ? `<p class="card-snippet">${rSnippet}</p>` : ''}
+                  <p style="font-size:0.75rem;color:var(--accent-gold);margin-top:8px;font-weight:700">👁 ${rViews.toLocaleString('bn-BD')}</p>
+                </a>`
+              }).join('')
+              relatedHtml = `
+                <section>
+                  <h2 class="widget-title" style="font-size:1.2rem;text-align:center">📰 এই সংখ্যার অন্যান্য সংবাদ</h2>
+                  <div class="related-grid">${cards}</div>
+                </section>
+                <hr class="double-divider" />`
+            }
+
+            let imageHtml = ''
+            if (article.imageUrl) {
+              const imgFilter = article.imageFilter || 'sepia-filter'
+              const caption = article.imageCaption ? `<p class="photo-caption">${article.imageCaption}</p>` : ''
+              imageHtml = `
+                <div class="photo-frame" style="max-width:450px;margin:15px auto">
+                  <div class="photo-border">
+                    <img src="${article.imageUrl}" alt="${article.title || ''}" class="magical-photo ${imgFilter}" loading="lazy" />
+                  </div>
+                  ${caption}
+                </div>`
+            }
+
+            const bodyHtml = paragraphs.map((para: string, i: number) => {
+              if (!para) return '<p></p>'
+              if (i === 0 && para.length > 0) {
+                return `<p class="lead-para"><span class="drop-cap">${para.charAt(0)}</span>${para.slice(1)}</p>`
+              }
+              return `<p>${para}</p>`
+            }).join('')
+
+            const subtitle = article.subtitle ? `<p class="full-subtitle">${article.subtitle}</p>` : ''
+
+            const fullHtml = `
+              <header class="mini-masthead">
+                <a href="/" style="text-decoration:none;color:inherit">
+                  <h1 class="mini-logo-title">THE DAILY PYHOOD</h1>
+                </a>
+                <div class="mini-masthead-info">
+                  <span>${dateDisplay}</span>
+                  <span>•</span>
+                  <span>নং ${inum.toLocaleString('bn-BD')}</span>
+                </div>
+              </header>
+              <hr class="double-divider" />
+              <article>
+                <div style="display:flex;justify-content:space-between;margin-bottom:12px;border-bottom:1px dashed rgba(74,65,42,0.25);padding-bottom:8px;font-size:0.85rem;font-weight:700;letter-spacing:1px;flex-wrap:wrap;gap:4px">
+                  <span style="color:var(--accent-red)">${sectionLabel} • ${article.category || 'সংবাদ'}</span>
+                  <span class="article-view-count">👁 ${vc.toLocaleString('bn-BD')} ভিউ</span>
+                </div>
+                <h1 class="full-title">${article.title || ''}</h1>
+                ${subtitle}
+                <p class="article-author">লেখক: ${article.author || ''}</p>
+                <hr class="double-divider" />
+                ${imageHtml}
+                <div class="article-body-text">${bodyHtml}</div>
+              </article>
+              <hr class="double-divider" />
+              <div style="text-align:center;margin:25px 0">
+                <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+              </div>
+              ${relatedHtml}
+              <footer style="text-align:center;padding:10px 0;font-size:0.85rem;font-family:var(--font-bengali);color:var(--border-color);margin-top:auto">
+                <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
+                <nav style="margin-top:8px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap">
+                  <a href="/" style="color:var(--accent-gold);font-weight:700">হোমপেজ</a>
+                  <a href="/archive" style="color:var(--accent-gold);font-weight:700">আর্কাইভ</a>
+                  <a href="/sections" style="color:var(--accent-gold);font-weight:700">বিভাগ</a>
+                </nav>
+              </footer>`
+            setHtml(fullHtml)
+          } catch (renderErr) {
+            setHtml(`<div style="text-align:center;padding:40px 20px">
+              <div style="font-size:3rem">🪄</div>
+              <h2 style="font-family:var(--font-display);color:var(--accent-red);margin:15px 0">জাদুভিত্তিক ত্রুটি</h2>
+              <p style="color:var(--border-color);margin-bottom:20px">প্রতিবেদন প্রদর্শনে সমস্যা হয়েছে।</p>
+              <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+            </div>`)
+          }
+          setLoading(false)
+        })
+        .catch(e => {
+          if (cancelled) return
+          const isSub = (e.message || '').toLowerCase().includes('subscri')
+          setHtml(`<div style="text-align:center;padding:40px 20px">
+            <div style="font-size:3rem">${isSub ? '🔮' : '🪄'}</div>
+            <h2 style="font-family:var(--font-display);color:var(--accent-red);margin:15px 0">${isSub ? 'সাবস্ক্রিপশন সমস্যা' : 'ত্রুটি'}</h2>
+            <p style="color:var(--border-color);margin-bottom:20px">${isSub ? 'এই প্রতিবেদন পড়তে সাবস্ক্রিপশন প্রয়োজন।' : e.message || 'প্রতিবেদন পাওয়া যায়নি'}</p>
+            ${isSub ? '<a href="/subscribe" class="article-back-btn" style="background:var(--accent-gold);color:#000;border-color:var(--accent-gold)">🔮 সাবস্ক্রিপশন পেজে যান</a><br/><br/>' : ''}
+            <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+          </div>`)
+          setLoading(false)
+        })
     })
+    return () => { cancelled = true }
   }, [params])
 
   if (loading) {
@@ -207,21 +192,10 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
     )
   }
 
-  if (error || !data) {
-    return (
-      <div className="parchment-bg min-h-screen flex items-center justify-center" style={{ flexDirection: 'column', gap: 20 }}>
-        <p className="loading-state">⚠️ {error || 'প্রতিবেদন পাওয়া যায়নি'}</p>
-        <a href="/" className="article-back-btn">ডেইলি পাইহুডে ফিরে যান</a>
-      </div>
-    )
-  }
-
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
       <div className="newspaper-container">
-        <ArticleErrorBoundary>
-          <ArticleContent data={data} />
-        </ArticleErrorBoundary>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </div>
   )
