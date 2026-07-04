@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Cinzel_Decorative, Playfair_Display } from "next/font/google";
-import CopyrightProtection from "@/components/copyright-protection";
-import AuthProvider from "@/components/auth-provider";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -68,10 +66,7 @@ export default function RootLayout({
       <body
         className={`${cinzelDecorative.variable} ${playfairDisplay.variable} antialiased`}
       >
-        <AuthProvider>
-          {children}
-          <CopyrightProtection />
-        </AuthProvider>
+        {children}
       </body>
     </html>
   );
