@@ -102,7 +102,7 @@ export default function AdminAnalyticsPage() {
           { label: 'সক্রিয় লেখক', value: data.topAuthors.length, icon: '✍️' },
         ].map(card => (
           <Card key={card.label} style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-            <CardContent className="p-4 text-center">
+            <CardContent className="p-4 sm:p-5 text-center">
               <div className="text-2xl mb-1">{card.icon}</div>
               <p className="text-2xl font-bold" style={{ color: '#8a1f1f' }}>
                 {card.value.toLocaleString('bn-BD')}
@@ -115,37 +115,37 @@ export default function AdminAnalyticsPage() {
 
       {/* ট্রেন্ডিং আর্টিকেল */}
       <Card style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 pt-5 px-5">
           <CardTitle className="text-lg" style={{ color: '#1f1f1e' }}>
             🔥 ট্রেন্ডিং সংবাদ
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
               <thead>
                 <tr>
-                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '8px 12px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>শিরোনাম</th>
-                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '8px 12px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>লেখক</th>
-                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '8px 12px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>বিভাগ</th>
-                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '8px 12px', textAlign: 'center', fontWeight: 800, fontSize: '0.8rem' }}>ভিউ</th>
+                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '10px 14px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>শিরোনাম</th>
+                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '10px 14px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>লেখক</th>
+                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '10px 14px', textAlign: 'left', fontWeight: 800, fontSize: '0.8rem' }}>বিভাগ</th>
+                  <th style={{ background: '#f5f0e6', border: '1px solid #e0d8c5', padding: '10px 14px', textAlign: 'center', fontWeight: 800, fontSize: '0.8rem' }}>ভিউ</th>
                 </tr>
               </thead>
               <tbody>
                 {data.trendingArticles.map((art, i) => (
                   <tr key={art.id}>
-                    <td style={{ border: '1px solid #e0d8c5', padding: '8px 12px' }}>
+                    <td style={{ border: '1px solid #e0d8c5', padding: '10px 14px' }}>
                       <a href={`/article/${art.slug}`} style={{ fontWeight: 600, fontSize: '0.9rem' }}>
                         {i + 1}. {art.title}
                       </a>
                     </td>
-                    <td style={{ border: '1px solid #e0d8c5', padding: '8px 12px' }}>{art.author}</td>
-                    <td style={{ border: '1px solid #e0d8c5', padding: '8px 12px' }}>
+                    <td style={{ border: '1px solid #e0d8c5', padding: '10px 14px' }}>{art.author}</td>
+                    <td style={{ border: '1px solid #e0d8c5', padding: '10px 14px' }}>
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#8a1f1f', letterSpacing: '1px' }}>
                         {sectionNames[art.section] || art.section}
                       </span>
                     </td>
-                    <td style={{ border: '1px solid #e0d8c5', padding: '8px 12px', fontWeight: 700, textAlign: 'center' }}>
+                    <td style={{ border: '1px solid #e0d8c5', padding: '10px 14px', fontWeight: 700, textAlign: 'center' }}>
                       👁 {art.viewCount.toLocaleString('bn-BD')}
                     </td>
                   </tr>
@@ -158,18 +158,18 @@ export default function AdminAnalyticsPage() {
 
       {/* বিভাগ অনুযায়ী ভিউ */}
       <Card style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 pt-5 px-5">
           <CardTitle className="text-lg" style={{ color: '#1f1f1e' }}>
             📊 বিভাগ অনুযায়ী ভিউ
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {data.sectionStats.map((s, i) => {
               const views = s._sum.viewCount || 0
               const pct = (views / maxSectionViews) * 100
               return (
-                <div key={s.section} style={{ display: 'grid', gridTemplateColumns: '80px 1fr 50px', alignItems: 'center', gap: 6 }}>
+                <div key={s.section} style={{ display: 'grid', gridTemplateColumns: '90px 1fr 60px', alignItems: 'center', gap: 6 }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 700, textAlign: 'right', whiteSpace: 'nowrap' }}>
                     {sectionNames[s.section] || s.section}
                   </div>
@@ -196,12 +196,12 @@ export default function AdminAnalyticsPage() {
 
       {/* দৈনিক ভিউ ট্রেন্ড */}
       <Card style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 pt-5 px-5">
           <CardTitle className="text-lg" style={{ color: '#1f1f1e' }}>
             📈 দৈনিক ভিউ ট্রেন্ড (শেষ ৭ দিন)
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8, height: 180 }}>
             {data.dailyViews.map(d => {
               const pct = (d.count / maxDailyViews) * 100
@@ -234,12 +234,12 @@ export default function AdminAnalyticsPage() {
 
       {/* জনপ্রিয় লেখক */}
       <Card style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 pt-5 px-5">
           <CardTitle className="text-lg" style={{ color: '#1f1f1e' }}>
             ✍️ সবচেয়ে জনপ্রিয় লেখক
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {data.topAuthors.map((a, i) => (
               <div key={a.author} style={{ display: 'flex', alignItems: 'center', gap: 15, padding: '12px 15px', border: '1px solid #e0d8c5', background: '#f5f0e6' }}>

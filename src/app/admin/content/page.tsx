@@ -339,7 +339,7 @@ function ContentManager({ tab, issues }: { tab: ContentTab; issues: Issue[] }) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex-1 min-w-[180px]">
           <Select value={filterIssue} onValueChange={setFilterIssue}>
@@ -431,7 +431,7 @@ function ContentManager({ tab, issues }: { tab: ContentTab; issues: Issue[] }) {
 
       {/* তৈরি/সম্পাদনা ডায়ালগ */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto" style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto p-5 sm:p-6" style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
           <DialogHeader>
             <DialogTitle style={{ color: '#1f1f1e' }}>
               {editingId ? `${tab.label} সম্পাদনা` : `নতুন ${tab.label}`}

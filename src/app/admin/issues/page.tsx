@@ -159,8 +159,8 @@ export default function IssuesPage() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
+    <div className="space-y-5">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-xl font-bold" style={{ color: '#1f1f1e' }}>সংখ্যা পরিচালনা</h1>
           <p className="text-sm" style={{ color: '#8a7a5a' }}>পত্রিকার সকল সংখ্যা পরিচালনা করুন</p>
@@ -274,7 +274,7 @@ export default function IssuesPage() {
 
       {/* তৈরি/সম্পাদনা ডায়ালগ */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
+        <DialogContent className="p-5 sm:p-6" style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
           <DialogHeader>
             <DialogTitle style={{ color: '#1f1f1e' }}>
               {editingId ? 'সংখ্যা সম্পাদনা' : 'নতুন সংখ্যা তৈরি'}

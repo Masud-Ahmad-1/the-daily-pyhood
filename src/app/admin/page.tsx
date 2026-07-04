@@ -85,7 +85,6 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="space-y-6">
-      {/* স্বাগতম */}
       <div>
         <h1 className="text-2xl font-bold" style={{ color: '#1f1f1e' }}>
           স্বাগতম, সম্পাদক 🪄
@@ -104,7 +103,7 @@ export default function AdminDashboardPage() {
               key={card.label}
               style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}
             >
-              <CardContent className="p-4 flex items-center gap-3">
+              <CardContent className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4">
                 <div
                   className="p-2.5 rounded-lg"
                   style={{ background: `${card.color}15` }}
@@ -154,7 +153,7 @@ export default function AdminDashboardPage() {
 
       {/* সাম্প্রতিক আর্টিকেল */}
       <Card style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 pt-5 px-5">
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg" style={{ color: '#1f1f1e' }}>
               সাম্প্রতিক আর্টিকেল
@@ -169,7 +168,7 @@ export default function AdminDashboardPage() {
             </Button>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           {recentArticles.length === 0 ? (
             <p className="text-center py-8" style={{ color: '#8a7a5a' }}>
               কোনো আর্টিকেল নেই
@@ -179,7 +178,7 @@ export default function AdminDashboardPage() {
               {recentArticles.map((article) => (
                 <div
                   key={article.id}
-                  className="flex items-center justify-between p-3 rounded-lg"
+                  className="flex items-center justify-between p-3 sm:p-4 rounded-lg"
                   style={{ background: '#f5f0e6' }}
                 >
                   <div className="flex-1 min-w-0">

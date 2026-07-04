@@ -41,8 +41,8 @@ export default function AdminLoginPage() {
 
   return (
     <div className="parchment-bg min-h-screen flex items-center justify-center px-4">
-      <Card className="w-full max-w-md" style={{ background: '#f2ebd9', border: '2px solid #4a412a' }}>
-        <CardHeader className="text-center pb-2">
+      <Card className="w-full max-w-md mx-4" style={{ background: '#f2ebd9', border: '2px solid #4a412a' }}>
+        <CardHeader className="text-center pb-2 pt-6 px-6">
           <div className="text-4xl mb-2">🪄</div>
           <CardTitle
             className="text-2xl"
@@ -54,8 +54,8 @@ export default function AdminLoginPage() {
             মন্ত্রণালয় সম্পাদক প্যানেলে প্রবেশ করুন
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <CardContent className="px-6 pb-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
               <div className="p-3 rounded-md text-sm text-center" style={{ background: '#fef2f2', color: '#8a1f1f', border: '1px solid #8a1f1f' }}>
                 {error}
@@ -111,7 +111,7 @@ export default function AdminLoginPage() {
               {loading ? '✨ যাচাই হচ্ছে...' : '🪄 প্রবেশ করুন'}
             </Button>
           </form>
-          <p className="text-center mt-4 text-xs" style={{ color: '#8a7a5a', fontFamily: 'var(--font-bengali)' }}>
+          <p className="text-center mt-5 text-xs" style={{ color: '#8a7a5a', fontFamily: 'var(--font-bengali)' }}>
             অননুমোদিত প্রবেশ মন্ত্রণালয় আইনে শাস্তিযোগ্য অপরাধ
           </p>
         </CardContent>

@@ -243,7 +243,7 @@ export default function ArticlesPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-xl font-bold" style={{ color: '#1f1f1e' }}>আর্টিকেল পরিচালনা</h1>
@@ -255,7 +255,7 @@ export default function ArticlesPage() {
       </div>
 
       {/* ফিল্টার */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 sm:gap-4">
         <div className="flex-1 min-w-[180px]">
           <Select value={filterIssue} onValueChange={(v) => { setFilterIssue(v); setPage(1) }}>
             <SelectTrigger style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
@@ -380,13 +380,13 @@ export default function ArticlesPage() {
 
       {/* তৈরি/সম্পাদনা ডায়ালগ */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-5 sm:p-6" style={{ background: '#fffdf7', border: '1px solid #e0d8c5' }}>
           <DialogHeader>
             <DialogTitle style={{ color: '#1f1f1e' }}>
               {editingId ? 'আর্টিকেল সম্পাদনা' : 'নতুন আর্টিকেল তৈরি'}
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-4">
+          <div className="space-y-4 sm:space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label style={{ color: '#4a412a' }}>সংখ্যা *</Label>

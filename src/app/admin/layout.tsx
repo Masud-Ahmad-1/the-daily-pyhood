@@ -108,7 +108,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         style={{ background: '#1a1816', borderRight: '1px solid #2d2820' }}
       >
         {/* হেডার */}
-        <div className="p-4 flex items-center justify-between" style={{ borderBottom: '1px solid #2d2820' }}>
+        <div className="p-4 sm:p-5 flex items-center justify-between" style={{ borderBottom: '1px solid #2d2820' }}>
           <div>
             <h1
               className="text-lg font-bold"
@@ -238,7 +238,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="flex-1 flex flex-col min-w-0">
         {/* টপ বার */}
         <header
-          className="sticky top-0 z-30 flex items-center gap-3 px-4 py-3"
+          className="sticky top-0 z-30 flex items-center gap-3 px-4 sm:px-6 py-3.5"
           style={{ background: '#fffdf7', borderBottom: '1px solid #e0d8c5' }}
         >
           <button
@@ -256,7 +256,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </header>
 
         {/* পেজ কন্টেন্ট */}
-        <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto">
+        <main className="flex-1 p-4 sm:p-5 md:p-6 lg:p-8 overflow-auto">
           {children}
         </main>
       </div>
