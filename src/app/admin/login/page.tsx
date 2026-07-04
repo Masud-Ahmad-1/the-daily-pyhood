@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: '#1a1816' }}>
+    <div className="parchment-bg min-h-screen flex items-center justify-center px-4">
       <Card className="w-full max-w-md" style={{ background: '#f2ebd9', border: '2px solid #4a412a' }}>
         <CardHeader className="text-center pb-2">
           <div className="text-4xl mb-2">🪄</div>
