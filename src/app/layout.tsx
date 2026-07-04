@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cinzel_Decorative, Playfair_Display } from "next/font/google";
 import CopyrightProtection from "@/components/copyright-protection";
 import AuthProvider from "@/components/auth-provider";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#1a1816",
+};
 
 const cinzelDecorative = Cinzel_Decorative({
   variable: "--font-display",

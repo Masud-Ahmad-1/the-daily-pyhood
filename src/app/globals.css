@@ -912,7 +912,7 @@ body.nox-active .ad-price { color: var(--accent-gold); }
 }
 
 @media (max-width: 768px) {
-  .newspaper-container { padding: 15px 20px; }
+  .newspaper-container { padding: 12px 16px; }
   .logo-title { font-size: 2.8rem; }
   .newspaper-grid { grid-template-columns: 1fr; }
   .left-column, .right-column {
@@ -940,37 +940,44 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .top-toolbar button[aria-label="সাউন্ড টগল"] { display: none; }
   .bottom-grid { grid-template-columns: 1fr; }
   .article-scroll {
-    padding: 40px 25px;
-    border-left-width: 10px;
-    border-right-width: 10px;
+    padding: 30px 18px;
+    border-left-width: 8px;
+    border-right-width: 8px;
   }
-  .full-title { font-size: 1.6rem; }
-  .main-headline { font-size: 1.6rem; }
+  .full-title { font-size: 1.5rem; }
+  .main-headline { font-size: 1.5rem; }
   .masthead-decor { display: none; }
   .main-column { border-left: none; border-right: none; padding: 0; }
   .wanted-poster { border-width: 5px; padding: 12px; }
   .wanted-name { font-size: 1.3rem; }
+  .wanted-header { font-size: 1.1rem; }
   .reward-box { margin-top: 8px; }
   .secret-box { padding: 12px; }
   .magic-btn { width: 100%; text-align: center; }
   .parchment-input { width: 100%; }
-  .photo-frame { margin: 10px 0; }
+  .photo-frame { margin: 10px 0; max-width: 100%; }
   .decree-box { padding: 12px; }
   .decree-body { font-size: 0.9rem; }
+  .mini-article { padding: 10px 8px; }
+  .article-body-text { font-size: 1rem; }
+  .article-author { font-size: 0.85rem; }
+  .ad-container { padding: 10px 8px; }
+  .potion-img-frame { width: 60px; height: 80px; }
 }
 
 @media (max-width: 480px) {
-  .newspaper-container { padding: 10px 10px; }
+  .newspaper-container { padding: 8px 8px; }
   .logo-title { font-size: 1.8rem; letter-spacing: 0; margin-bottom: 0; }
   .logo-tagline { font-size: 0.7rem; letter-spacing: 1px; }
   .top-toolbar { padding: 6px 0; gap: 6px; }
+  .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 4px; }
   .spell-btn { font-size: 0.65rem; padding: 3px 6px; }
   .ticker-container { flex-direction: column; height: auto; padding: 6px 8px; }
   .ticker-label { font-size: 0.7rem; }
-  .main-headline { font-size: 1.2rem; }
-  .main-subheadline { font-size: 0.9rem; }
+  .main-headline { font-size: 1.15rem; }
+  .main-subheadline { font-size: 0.85rem; }
   .full-title { font-size: 1.1rem; }
-  .full-subtitle { font-size: 0.85rem; }
+  .full-subtitle { font-size: 0.82rem; }
   .bottom-card { padding: 10px; }
   .issue-bar { font-size: 0.7rem; padding: 4px 8px; }
   .wax-seal { width: 56px; height: 56px; }
@@ -988,12 +995,29 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .classified-heading { font-size: 0.9rem; }
   .classified-body { font-size: 0.8rem; }
   .lead-para { font-size: 0.9rem; }
-  .drop-cap { font-size: 3rem; }
+  .drop-cap { font-size: 2.8rem; padding-right: 6px; }
   .ad-title { font-size: 1rem; }
   .ad-subtitle { font-size: 0.75rem; }
+  .wanted-header { font-size: 1rem; }
+  .wanted-name { font-size: 1.1rem; }
+  .wanted-poster { border-width: 4px; padding: 10px 8px; }
+  .wanted-img-frame { border-width: 3px; }
+  .article-body-text { font-size: 0.95rem; line-height: 1.7; }
+  .decree-box { border-width: 2px; padding: 10px 8px; }
+  .decree-body { font-size: 0.85rem; }
+  .magic-btn { font-size: 0.82rem; padding: 8px 6px; }
+  .secret-box { padding: 10px 8px; }
   footer p { font-size: 0.7rem; }
-  footer nav { gap: 10px; }
+  footer nav { gap: 10px; flex-wrap: wrap; }
   footer nav a { font-size: 0.75rem; }
+  .article-back-btn { font-size: 0.82rem; padding: 8px 16px; }
+  .archive-issue-header { padding: 12px; }
+  .archive-issue-number { font-size: 1rem; }
+  .archive-issue-stats { gap: 10px; font-size: 0.8rem; flex-wrap: wrap; }
+  .archive-article-row { padding: 8px; }
+  .section-tab { padding: 4px 7px; font-size: 0.7rem; }
+  .parchment-page-inner { padding: 15px 12px; }
+  .parchment-page-title { font-size: 1.4rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -23,6 +23,7 @@ import {
   Wallet,
   UserCircle,
   CreditCard,
+  BarChart3,
 } from 'lucide-react'
 
 const menuItems = [
@@ -30,6 +31,7 @@ const menuItems = [
   { href: '/admin/issues', label: 'সংখ্যা পরিচালনা', icon: Newspaper },
   { href: '/admin/articles', label: 'আর্টিকেল পরিচালনা', icon: FileText },
   { href: '/admin/content', label: 'কন্টেন্ট পরিচালনা', icon: ScrollText },
+  { href: '/admin/analytics', label: 'পরিসংখ্যান', icon: BarChart3 },
 ]
 
 const contentSubItems = [

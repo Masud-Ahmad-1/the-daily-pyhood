@@ -118,7 +118,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
         {/* আর্টিকেল হেডার */}
         <article>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', flexWrap: 'wrap', gap: 4 }}>
             <span style={{ color: 'var(--accent-red)' }}>{sectionNames[article.section] || article.section} • {article.category}</span>
             <span className="article-view-count">👁 {article.viewCount.toLocaleString('bn-BD')} ভিউ</span>
           </div>
@@ -192,11 +192,10 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
         <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)', marginTop: 'auto' }}>
           <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
-          <nav style={{ marginTop: 8, display: 'flex', justifyContent: 'center', gap: 15 }}>
+          <nav style={{ marginTop: 8, display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap' }}>
             <a href="/" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>হোমপেজ</a>
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>আর্কাইভ</a>
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>বিভাগ</a>
-            <a href="/analytics" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>পরিসংখ্যান</a>
           </nav>
         </footer>
       </div>
