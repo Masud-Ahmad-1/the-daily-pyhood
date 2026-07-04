@@ -45,15 +45,14 @@ body {
   min-height: 100vh;
   background-color: var(--bg-parchment);
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.1) 100%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.05) 100%),
     repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
-  box-shadow: inset 0 0 100px rgba(80,60,30,0.4);
 }
 
 .newspaper-container {
-  max-width: 1200px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 20px 24px;
   position: relative;
   z-index: 2;
 }
@@ -230,22 +229,6 @@ a:hover { color: var(--accent-red); }
   border: none;
   border-top: 1px dashed rgba(74,65,42,0.3);
   margin: 20px 0;
-}
-
-/* ==============================
-   গ্রিড লেআউট
-   ============================== */
-.newspaper-grid {
-  display: grid;
-  grid-template-columns: 280px 1fr 280px;
-  gap: 30px;
-  margin-top: 10px;
-}
-
-.main-column {
-  border-left: 1px solid rgba(74,65,42,0.2);
-  border-right: 1px solid rgba(74,65,42,0.2);
-  padding: 0 15px;
 }
 
 /* ==============================
@@ -889,64 +872,40 @@ body.nox-active .ad-price { color: var(--accent-gold); }
    রেসপন্সিভ
    ============================== */
 @media (max-width: 1024px) {
-  .newspaper-grid {
-    grid-template-columns: 240px 1fr;
-    gap: 20px;
-  }
-  .right-column {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .right-column > .column-divider { display: none; }
   .bottom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .newspaper-container { padding: 12px 16px; }
-  .logo-title { font-size: 2.8rem; }
-  .newspaper-grid { grid-template-columns: 1fr; }
-  .left-column, .right-column {
-    grid-column: span 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .right-column { grid-template-columns: 1fr; }
+  .newspaper-container { padding: 12px 14px; }
+  .logo-title { font-size: 2.2rem; letter-spacing: -1px; }
+  .logo-tagline { font-size: 0.8rem; }
   .article-columns { column-count: 1; }
   .issue-bar {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
   }
   .top-toolbar {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     align-items: stretch;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
   }
   .top-toolbar > div { flex-wrap: wrap; justify-content: center; }
-  .top-toolbar nav[aria-label="মন্ত্র নিয়ন্ত্র"] { display: none; }
-  .top-toolbar button[aria-label="সাউন্ড টগল"] { display: none; }
   .bottom-grid { grid-template-columns: 1fr; }
-  .article-scroll {
-    padding: 30px 18px;
-    border-left-width: 8px;
-    border-right-width: 8px;
-  }
-  .full-title { font-size: 1.5rem; }
-  .main-headline { font-size: 1.5rem; }
+  .full-title { font-size: 1.4rem; }
+  .main-headline { font-size: 1.4rem; }
+  .main-subheadline { font-size: 0.95rem; }
   .masthead-decor { display: none; }
-  .main-column { border-left: none; border-right: none; padding: 0; }
   .wanted-poster { border-width: 5px; padding: 12px; }
-  .wanted-name { font-size: 1.3rem; }
-  .wanted-header { font-size: 1.1rem; }
+  .wanted-name { font-size: 1.2rem; }
+  .wanted-header { font-size: 1rem; }
   .reward-box { margin-top: 8px; }
   .secret-box { padding: 12px; }
   .magic-btn { width: 100%; text-align: center; }
-  .parchment-input { width: 100%; }
+  .parchment-input { width: 100%; box-sizing: border-box; }
   .photo-frame { margin: 10px 0; max-width: 100%; }
   .decree-box { padding: 12px; }
   .decree-body { font-size: 0.9rem; }
@@ -955,6 +914,7 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .article-author { font-size: 0.85rem; }
   .ad-container { padding: 10px 8px; }
   .potion-img-frame { width: 60px; height: 80px; }
+  .widget-title { font-size: 1.05rem; }
 }
 
 @media (max-width: 480px) {
