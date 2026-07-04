@@ -1,39 +1,5 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
-interface ArticleData {
-  article: {
-    id: string
-    slug: string
-    section: string
-    title: string
-    subtitle: string | null
-    author: string
-    category: string
-    snippet: string | null
-    content: string
-    imageUrl: string | null
-    imageFilter: string | null
-    imageCaption: string | null
-    viewCount: number
-    createdAt: string
-  }
-  relatedArticles: {
-    id: string
-    slug: string
-    title: string
-    section: string
-    author: string
-    snippet: string | null
-    viewCount: number
-  }[]
-  issue: {
-    id: string
-    issueNumber: number
-    publishDate: string
-  }
-}
+import { db } from '@/lib/db'
+import { notFound } from 'next/navigation'
 
 const sectionNames: Record<string, string> = {
   headline: 'শিরোনাম',
@@ -56,48 +22,70 @@ function formatBengaliDate(dateStr: string): string {
   return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`
 }
 
-export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const [slug, setSlug] = useState<string>('')
-  const [data, setData] = useState<ArticleData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+function parseContent(jsonStr: string): string[] {
+  try { return JSON.parse(jsonStr) } catch { return [jsonStr] }
+}
 
-  useEffect(() => {
-    params.then(p => {
-      setSlug(p.slug)
-      fetch(`/api/articles/${p.slug}`)
-        .then(r => {
-          if (!r.ok) throw new Error('আর্টিকেল পাওয়া যায়নি')
-          return r.json()
-        })
-        .then(d => { setData(d); setLoading(false) })
-        .catch(e => { setError(e.message); setLoading(false) })
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+
+  let article: Awaited<ReturnType<typeof db.article.findUnique>> | null = null
+
+  try {
+    article = await db.article.findUnique({
+      where: { slug, isPublished: true },
+      include: { issue: true },
     })
-  }, [params])
 
-  const parseContent = (jsonStr: string): string[] => {
-    try { return JSON.parse(jsonStr) } catch { return [jsonStr] }
+    if (!article) {
+      notFound()
+    }
+
+    // ভিউ কাউন্ট ইনক্রিমেন্ট (নন-ব্লকিং)
+    db.article.update({
+      where: { id: article.id },
+      data: { viewCount: { increment: 1 } },
+    }).catch(() => {})
+
+    // ArticleView রেকর্ড তৈরি (নন-ব্লকিং)
+    if (article.issueId) {
+      db.articleView.create({
+        data: { articleId: article.id, issueId: article.issueId },
+      }).catch(() => {})
+    }
+  } catch {
+    notFound()
   }
 
-  if (loading) {
-    return (
-      <div className="parchment-bg min-h-screen flex items-center justify-center">
-        <p className="loading-state">📜 প্রতিবেদন লোড হচ্ছে...</p>
-      </div>
-    )
+  // একই ইস্যুতে থাকা অন্যান্য আর্টিকেল
+  let relatedArticles: { id: string; slug: string; title: string; section: string; author: string; snippet: string | null; viewCount: number }[] = []
+  if (article.issueId) {
+    try {
+      relatedArticles = await db.article.findMany({
+        where: {
+          issueId: article.issueId,
+          isPublished: true,
+          id: { not: article.id },
+        },
+        orderBy: { sortOrder: 'asc' },
+        select: {
+          id: true,
+          slug: true,
+          title: true,
+          section: true,
+          author: true,
+          snippet: true,
+          viewCount: true,
+        },
+      })
+    } catch {
+      // related articles fetch ব্যর্থ হলে মূল আর্টিকেল দেখাও
+    }
   }
 
-  if (error || !data) {
-    return (
-      <div className="parchment-bg min-h-screen flex items-center justify-center" style={{ flexDirection: 'column', gap: 20 }}>
-        <p className="loading-state">⚠️ {error || 'প্রতিবেদন পাওয়া যায়নি'}</p>
-        <a href="/" className="article-back-btn">ডেইলি পাইহুডে ফিরে যান</a>
-      </div>
-    )
-  }
-
-  const { article, relatedArticles, issue } = data
   const paragraphs = parseContent(article.content)
+  const issue = article.issue!
+  const viewCount = article.viewCount + 1
 
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
@@ -108,9 +96,9 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             <h1 className="mini-logo-title">THE DAILY PYHOOD</h1>
           </a>
           <div className="mini-masthead-info">
-            <span>{formatBengaliDate(issue.publishDate)}</span>
+            <span>{formatBengaliDate(issue.publishDate as string)}</span>
             <span>•</span>
-            <span>নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
+            <span>নং {(issue.issueNumber as number).toLocaleString('bn-BD')}</span>
           </div>
         </header>
 
@@ -119,34 +107,35 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
         {/* আর্টিকেল হেডার */}
         <article>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', flexWrap: 'wrap', gap: 4 }}>
-            <span style={{ color: 'var(--accent-red)' }}>{sectionNames[article.section] || article.section} • {article.category}</span>
-            <span className="article-view-count">👁 {article.viewCount.toLocaleString('bn-BD')} ভিউ</span>
+            <span style={{ color: 'var(--accent-red)' }}>{sectionNames[article.section as string] || article.section} • {article.category as string}</span>
+            <span className="article-view-count">👁 {viewCount.toLocaleString('bn-BD')} ভিউ</span>
           </div>
 
-          <h1 className="full-title">{article.title}</h1>
-          {article.subtitle && <p className="full-subtitle">{article.subtitle}</p>}
-          <p className="article-author">লেখক: {article.author}</p>
+          <h1 className="full-title">{article.title as string}</h1>
+          {article.subtitle && <p className="full-subtitle">{article.subtitle as string}</p>}
+          <p className="article-author">লেখক: {article.author as string}</p>
 
           <hr className="double-divider" />
 
           {/* ছবি */}
           {article.imageUrl && (
-            <div className="photo-frame copyright-overlay" style={{ maxWidth: 450, margin: '15px auto' }}>
+            <div className="photo-frame" style={{ maxWidth: 450, margin: '15px auto' }}>
               <div className="photo-border">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={article.imageUrl}
-                  alt={article.title}
+                  src={article.imageUrl as string}
+                  alt={article.title as string}
                   className={`magical-photo ${article.imageFilter || 'sepia-filter'}`}
                   loading="lazy"
                 />
               </div>
-              {article.imageCaption && <p className="photo-caption">{article.imageCaption}</p>}
+              {article.imageCaption && <p className="photo-caption">{article.imageCaption as string}</p>}
             </div>
           )}
 
           {/* বডি */}
           <div className="article-body-text">
-            {paragraphs.map((para, i) => (
+            {paragraphs.map((para: string, i: number) => (
               <p key={i} className={i === 0 ? 'lead-para' : ''}>
                 {i === 0 && para.length > 0 && (
                   <span className="drop-cap">{para.charAt(0)}</span>
@@ -171,7 +160,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
               📰 এই সংখ্যার অন্যান্য সংবাদ
             </h2>
             <div className="related-grid">
-              {relatedArticles.map(ra => (
+              {relatedArticles.map((ra) => (
                 <a key={ra.id} href={`/article/${ra.slug}`} className="related-card">
                   <span className="card-tag">{sectionNames[ra.section] || ra.section}</span>
                   <h3 className="card-title">{ra.title}</h3>

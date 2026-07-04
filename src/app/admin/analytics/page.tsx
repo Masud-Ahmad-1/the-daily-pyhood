@@ -169,7 +169,7 @@ export default function AdminAnalyticsPage() {
               const views = s._sum.viewCount || 0
               const pct = (views / maxSectionViews) * 100
               return (
-                <div key={s.section} style={{ display: 'grid', gridTemplateColumns: '100px 1fr 60px', alignItems: 'center', gap: 10 }}>
+                <div key={s.section} style={{ display: 'grid', gridTemplateColumns: '80px 1fr 50px', alignItems: 'center', gap: 6 }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 700, textAlign: 'right', whiteSpace: 'nowrap' }}>
                     {sectionNames[s.section] || s.section}
                   </div>

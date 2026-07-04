@@ -191,13 +191,22 @@ export default function Home() {
   }
 
   const { issue } = data
-  const headline = issue.articles.find(a => a.section === 'headline')
-  const leftArticles = issue.articles.filter(a => ['local', 'ministry'].includes(a.section))
-  const centerArticles = issue.articles.filter(a => a.section === 'entertainment')
-  const rightArticles = issue.articles.filter(a => ['mystery', 'economy'].includes(a.section))
-  const bottomArticles = issue.articles.filter(a => ['sports', 'world', 'security', 'gossip'].includes(a.section))
+  const articles = Array.isArray(issue.articles) ? issue.articles : []
+  const headline = articles.find(a => a.section === 'headline')
+  const leftArticles = articles.filter(a => ['local', 'ministry'].includes(a.section))
+  const centerArticles = articles.filter(a => a.section === 'entertainment')
+  const rightArticles = articles.filter(a => ['mystery', 'economy'].includes(a.section))
+  const bottomArticles = articles.filter(a => ['sports', 'world', 'security', 'gossip'].includes(a.section))
 
-  const tickerMessages = issue.tickers.map(t => `⚡ ${t.message}`).join(' ')
+  const tickers = Array.isArray(issue.tickers) ? issue.tickers : []
+  const weathers = Array.isArray(issue.weathers) ? issue.weathers : []
+  const wantedPosters = Array.isArray(issue.wantedPosters) ? issue.wantedPosters : []
+  const classifieds = Array.isArray(issue.classifieds) ? issue.classifieds : []
+  const decrees = Array.isArray(issue.decrees) ? issue.decrees : []
+  const letters = Array.isArray(issue.letters) ? issue.letters : []
+  const ads = Array.isArray(issue.ads) ? issue.ads : []
+
+  const tickerMessages = tickers.map(t => `⚡ ${t.message}`).join(' ')
 
 
   // ===== মূল পত্রিকা পেজ =====
@@ -274,13 +283,14 @@ export default function Home() {
           {/* === বাম কলাম === */}
           <aside className="left-column" aria-label="বাম কলাম: ওয়ান্টেড পোস্টার ও পার্শ্ব সংবাদ" style={{ display: 'flex', flexDirection: 'column' }}>
             {/* ওয়ান্টেড পোস্টার */}
-            {issue.wantedPosters[0] && (
+            {wantedPosters[0] && (
               <div className="wanted-poster" style={wantedRevealed ? { borderColor: 'var(--accent-gold)', boxShadow: '0 0 25px var(--accent-gold)' } : {}}>
                 <div className="wanted-header">এই উইজার্ডকে দেখেছেন কি?</div>
-                {issue.wantedPosters[0].imageUrl && (
+                {wantedPosters[0].imageUrl && (
                   <div className="wanted-img-frame">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={issue.wantedPosters[0].imageUrl}
+                      src={wantedPosters[0].imageUrl}
                       alt="ওয়ান্টেড উইজার্ড"
                       className={`magical-photo ${wantedRevealed ? '' : 'grayscale-filter'}`}
                       style={wantedRevealed ? { filter: 'none', mixBlendMode: 'normal' } : {}}
@@ -291,11 +301,11 @@ export default function Home() {
                 )}
                 <h2 className="wanted-name">{wantedName}</h2>
                 <p style={{ fontSize: '0.85rem', fontStyle: 'italic', lineHeight: 1.3, padding: '0 10px' }}>
-                  {issue.wantedPosters[0].description}
+                  {wantedPosters[0].description}
                 </p>
                 <div className="reward-box">
                   <span style={{ display: 'block', fontSize: '0.75rem', letterSpacing: '1.5px', fontWeight: 700 }}>পুরস্কার</span>
-                  <span className="reward-amount">{issue.wantedPosters[0].reward}</span>
+                  <span className="reward-amount">{wantedPosters[0].reward}</span>
                 </div>
                 <div style={{ marginTop: 15, paddingTop: 12, borderTop: '1px dashed rgba(74,65,42,0.3)' }}>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: 6 }}>
@@ -332,36 +342,37 @@ export default function Home() {
             <hr className="column-divider" />
 
             {/* বিজ্ঞাপন */}
-            {issue.ads[0] && (
+            {ads[0] && (
               <div className="ad-container" aria-label="বিজ্ঞাপন">
                 <div className="ad-label">বিজ্ঞাপন</div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <h3 className="ad-title">
-                    {issue.ads[0].articleSlug ? (
+                    {ads[0].articleSlug ? (
                       <a onClick={() => {
-                        const linked = issue.articles.find(a => a.slug === issue.ads[0].articleSlug)
+                        const linked = articles.find(a => a.slug === ads[0].articleSlug)
                         if (linked) openArticle(linked)
-                      }}>{issue.ads[0].title}</a>
-                    ) : issue.ads[0].title}
+                      }}>{ads[0].title}</a>
+                    ) : ads[0].title}
                   </h3>
-                  {issue.ads[0].subtitle && <p className="ad-subtitle">{issue.ads[0].subtitle}</p>}
-                  {issue.ads[0].imageUrl && (
+                  {ads[0].subtitle && <p className="ad-subtitle">{ads[0].subtitle}</p>}
+                  {ads[0].imageUrl && (
                     <div className="potion-img-frame">
-                      <img src={issue.ads[0].imageUrl} alt={issue.ads[0].title} className="magical-photo potion-photo" loading="lazy" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={ads[0].imageUrl} alt={ads[0].title} className="magical-photo potion-photo" loading="lazy" />
                     </div>
                   )}
-                  {issue.ads[0].description && (
+                  {ads[0].description && (
                     <p style={{ fontSize: '0.85rem', lineHeight: 1.3, margin: '6px 0' }}>
-                      &ldquo;{issue.ads[0].description}&rdquo;
-                      {issue.ads[0].articleSlug && (
+                      &ldquo;{ads[0].description}&rdquo;
+                      {ads[0].articleSlug && (
                         <a onClick={() => {
-                          const linked = issue.articles.find(a => a.slug === issue.ads[0].articleSlug)
+                          const linked = articles.find(a => a.slug === ads[0].articleSlug)
                           if (linked) openArticle(linked)
                         }} className="read-more"> বিস্তারিত...</a>
                       )}
                     </p>
                   )}
-                  {issue.ads[0].price && <span className="ad-price">{issue.ads[0].price}</span>}
+                  {ads[0].price && <span className="ad-price">{ads[0].price}</span>}
                 </div>
               </div>
             )}
@@ -381,6 +392,7 @@ export default function Home() {
                 {headline.imageUrl && (
                   <div className="photo-frame">
                     <div className="photo-border">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={headline.imageUrl}
                         alt={headline.title}
@@ -424,12 +436,12 @@ export default function Home() {
             <hr className="column-divider" />
 
             {/* ডিক্রি */}
-            {issue.decrees[0] && (
+            {decrees[0] && (
               <div className="decree-box" role="complementary" aria-label="মন্ত্রণালয় ডিক্রি">
-                <div className="decree-header">{issue.decrees[0].title}</div>
-                <div className="decree-number">{issue.decrees[0].decreeNumber}</div>
-                <p className="decree-body">&ldquo;{issue.decrees[0].body}&rdquo;</p>
-                <div className="decree-sign">স্বাক্ষরিত: {issue.decrees[0].signedBy}</div>
+                <div className="decree-header">{decrees[0].title}</div>
+                <div className="decree-number">{decrees[0].decreeNumber}</div>
+                <p className="decree-body">&ldquo;{decrees[0].body}&rdquo;</p>
+                <div className="decree-sign">স্বাক্ষরিত: {decrees[0].signedBy}</div>
               </div>
             )}
           </section>
@@ -440,7 +452,7 @@ export default function Home() {
             <div aria-label="জাদুভিত্তিক আবহাওয়া পূর্বাভাস">
               <h2 className="widget-title">মন্ত্রণালয় আবহাওয়া পূর্বাভাস</h2>
               <div className="weather-grid">
-                {issue.weathers.map(w => (
+                {weathers.map(w => (
                   <div key={w.id} className="weather-item">
                     <span className="weather-location">{w.location}</span>
                     <div className="weather-emoji" aria-hidden="true">{w.emoji}</div>
@@ -467,10 +479,10 @@ export default function Home() {
               ))}
 
               {/* পাঠকের চিঠি */}
-              {issue.letters[0] && (
+              {letters[0] && (
                 <div style={{ marginTop: 15, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 10 }}>
-                  <span className="letter-author">{issue.letters[0].author}:</span>
-                  <p className="letter-body">&ldquo;{issue.letters[0].body}&rdquo;</p>
+                  <span className="letter-author">{letters[0].author}:</span>
+                  <p className="letter-body">&ldquo;{letters[0].body}&rdquo;</p>
                 </div>
               )}
             </div>
@@ -504,7 +516,7 @@ export default function Home() {
             {/* ক্লাসিফাইড */}
             <div aria-label="দৈনিক বিজ্ঞাপন">
               <h2 className="widget-title">দৈনিক বিজ্ঞাপন</h2>
-              {issue.classifieds.map((c, i) => (
+              {classifieds.map((c, i) => (
                 <div key={c.id} style={i > 0 ? { marginTop: 10, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 8 } : {}}>
                   <span className="classified-heading">{c.heading}</span>
                   <p className="classified-body">{c.body}</p>

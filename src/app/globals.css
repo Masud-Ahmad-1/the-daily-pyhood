@@ -41,6 +41,8 @@ body {
    ============================== */
 .parchment-bg {
   position: relative;
+  width: 100%;
+  min-height: 100vh;
   background-color: var(--bg-parchment);
   background-image:
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.1) 100%),
@@ -54,15 +56,6 @@ body {
   padding: 20px 40px;
   position: relative;
   z-index: 2;
-}
-
-.newspaper-container::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  box-shadow: inset 0 0 80px rgba(0,0,0,0.3);
-  z-index: 10;
 }
 
 /* ==============================
@@ -801,7 +794,6 @@ body.nox-active .parchment-bg {
 }
 body.nox-active { background-color: #080807; }
 body.nox-active .spell-glow { display: none; }
-body.nox-active .newspaper-container::before { box-shadow: inset 0 0 100px rgba(0,0,0,0.85); }
 body.nox-active { color: #e4d8bc; }
 body.nox-active a:hover { color: #ffdf7a; }
 body.nox-active .magical-photo {
