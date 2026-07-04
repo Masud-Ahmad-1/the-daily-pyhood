@@ -78,12 +78,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     )
   }
 
-  if (!authenticated) return null
+  if (!authenticated && pathname !== '/admin/login') return null
+  if (pathname === '/admin/login') return <>{children}</>
 
   const isActive = (href: string) => {
     if (href === '/admin') return pathname === '/admin'
     return pathname.startsWith(href.split('?')[0])
   }
+
+  if (!authenticated) return <>{children}</>
 
   return (
     <div className="min-h-screen flex" style={{ background: '#f5f0e6', fontFamily: 'var(--font-bengali)' }}>
