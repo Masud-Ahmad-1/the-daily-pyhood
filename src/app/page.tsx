@@ -217,9 +217,6 @@ export default function Home() {
             <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }} aria-label="পৃষ্ঠা নেভিগেশন">
               <a href="/archive" className="spell-btn">📚 আর্কাইভ</a>
               <a href="/sections" className="spell-btn">📂 বিভাগ</a>
-              <a href="/analytics" className="spell-btn">🔮 পরিসংখ্যান</a>
-              <a href="/wallet" className="spell-btn">🪙 ওয়ালেট</a>
-              <a href="/profile" className="spell-btn">👤 প্রোফাইল</a>
               <a href="/subscribe" className="spell-btn">🔮 সাবস্ক্রিপশন</a>
             </nav>
             <button
@@ -558,9 +555,6 @@ export default function Home() {
           <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8, flexWrap: 'wrap' }} aria-label="ফুটার নেভিগেশন">
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📚 আর্কাইভ</a>
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
-            <a href="/analytics" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 পরিসংখ্যান</a>
-            <a href="/wallet" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🪙 ওয়ালেট</a>
-            <a href="/profile" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>👤 প্রোফাইল</a>
             <a href="/subscribe" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 সাবস্ক্রিপশন</a>
           </nav>
           <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত। উইজার্ডিং প্রেস গিল্ডের অধীনে নিবন্ধিত। অননুমোদিত নকল ব্যাঙে রূপান্তরের সম্মুখীন হবে।</p>
