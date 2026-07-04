@@ -75,6 +75,9 @@ function parseContent(jsonStr: string): string[] {
 function ArticleContent({ data }: { data: ArticleData }) {
   const { article, relatedArticles, issue } = data
   const paragraphs = parseContent(article.content)
+  const safeViewCount = typeof article.viewCount === 'number' ? article.viewCount : 0
+  const safeIssueNumber = typeof issue.issueNumber === 'number' ? issue.issueNumber : 0
+  const safeDate = typeof issue.publishDate === 'string' ? issue.publishDate : ''
 
   return (
     <>
@@ -84,9 +87,9 @@ function ArticleContent({ data }: { data: ArticleData }) {
           <h1 className="mini-logo-title">THE DAILY PYHOOD</h1>
         </a>
         <div className="mini-masthead-info">
-          <span>{formatBengaliDate(issue.publishDate)}</span>
+          <span>{safeDate ? formatBengaliDate(safeDate) : ''}</span>
           <span>•</span>
-          <span>নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
+          <span>নং {safeIssueNumber.toLocaleString('bn-BD')}</span>
         </div>
       </header>
 
@@ -96,7 +99,7 @@ function ArticleContent({ data }: { data: ArticleData }) {
       <article>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, borderBottom: '1px dashed rgba(74,65,42,0.25)', paddingBottom: 8, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', flexWrap: 'wrap', gap: 4 }}>
           <span style={{ color: 'var(--accent-red)' }}>{sectionNames[article.section] || article.section} • {article.category}</span>
-          <span className="article-view-count">👁 {article.viewCount.toLocaleString('bn-BD')} ভিউ</span>
+          <span className="article-view-count">👁 {safeViewCount.toLocaleString('bn-BD')} ভিউ</span>
         </div>
 
         <h1 className="full-title">{article.title}</h1>
@@ -157,7 +160,7 @@ function ArticleContent({ data }: { data: ArticleData }) {
                 </p>
                 {ra.snippet && <p className="card-snippet">{ra.snippet}</p>}
                 <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', marginTop: 8, fontWeight: 700 }}>
-                  👁 {ra.viewCount.toLocaleString('bn-BD')}
+                  👁 {(typeof ra.viewCount === 'number' ? ra.viewCount : 0).toLocaleString('bn-BD')}
                 </p>
               </a>
             ))}
