@@ -205,7 +205,7 @@ export default function Home() {
     <div className="parchment-bg min-h-screen flex flex-col">
       <a href="#main-content" className="skip-link">সরাসরি বিষয়বস্তুতে যান</a>
       <div className="spell-glow" aria-hidden="true" />
-      <div ref={sparkContainer} aria-hidden="true" />
+      <div ref={sparkContainer} className="sparkle-layer" aria-hidden="true" />
 
       <div className="newspaper-container">
         {/* টপ টুলবার */}

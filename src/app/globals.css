@@ -828,6 +828,14 @@ body.nox-active .decree-box { border-color: rgba(228,216,188,0.25); background: 
 body.nox-active .ad-price { color: var(--accent-gold); }
 
 /* স্পার্কল */
+.sparkle-layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
 .sparkle {
   position: fixed;
   width: 6px;
