@@ -31,8 +31,13 @@ function parseContent(jsonStr: string): string[] {
   if (!jsonStr) return ['']
   try {
     const parsed = JSON.parse(jsonStr)
-    if (Array.isArray(parsed)) return parsed
-    return [String(parsed)]
+    if (!Array.isArray(parsed)) return [String(parsed)]
+    return parsed.map((item: unknown) => {
+      if (typeof item === 'string') return item
+      if (item && typeof item === 'object' && 'text' in item) return String((item as Record<string, unknown>).text)
+      if (item && typeof item === 'object' && 'content' in item) return String((item as Record<string, unknown>).content)
+      return String(item)
+    })
   } catch {
     return [jsonStr]
   }
