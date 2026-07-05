@@ -1109,7 +1109,7 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     grid-row: auto;
     border: none;
     border-bottom: 1px solid rgba(74,65,42,0.12);
-    padding: 8px 0;
+    padding: 6px 0;
     min-width: 0;
     overflow: visible;
   }
@@ -1130,12 +1130,13 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     grid-column: 1 / -1;
     border-top: 1px solid var(--border-color);
     overflow: visible;
-    padding: 8px 0;
+    padding: 6px 0;
   }
   /* মাস্টহেড কমপ্যাক্ট */
   .logo-title { font-size: 2rem; letter-spacing: -1px; }
-  .logo-tagline { font-size: 0.7rem; }
-  .masthead { margin: 6px 0; }
+  .logo-tagline { font-size: 0.7rem; margin-top: 2px; }
+  .masthead { margin: 4px 0; }
+  .masthead-decor { height: 6px; }
   /* টুলবার কমপ্যাক্ট */
   .top-toolbar {
     flex-direction: column;
@@ -1167,20 +1168,20 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     height: 4px;
   }
   /* ওয়ান্টেড কমপ্যাক্ট */
-  .wanted-poster { border-width: 4px; padding: 8px; }
-  .wanted-header { font-size: 0.95rem; margin-bottom: 6px; padding-bottom: 4px; border-bottom-width: 1px; }
-  .wanted-name { font-size: 1.1rem; margin: 8px 0 2px; }
-  .reward-box { margin-top: 6px; padding: 3px; }
+  .wanted-poster { border-width: 3px; padding: 6px; }
+  .wanted-header { font-size: 0.95rem; margin-bottom: 4px; padding-bottom: 3px; border-bottom-width: 1px; }
+  .wanted-name { font-size: 1.1rem; margin: 4px 0 2px; }
+  .reward-box { margin-top: 4px; padding: 2px; }
   .reward-amount { font-size: 1rem; }
-  .grid-wanted .wanted-poster { padding: 8px; font-size: 0.9rem; }
+  .grid-wanted .wanted-poster { padding: 6px; font-size: 0.9rem; }
   .grid-wanted .wanted-name { font-size: 1.1rem; }
   .grid-wanted .wanted-header { font-size: 0.95rem; }
   .grid-wanted .parchment-input { font-size: 0.85rem; padding: 5px 8px; }
   .grid-wanted .magic-btn { font-size: 0.8rem; padding: 6px 8px; }
-  .grid-wanted .wanted-img-frame { width: 100px; height: 120px; }
+  .grid-wanted .wanted-img-frame { width: 90px; height: 108px; }
   /* সাইডবার উইজেট কমপ্যাক্ট */
-  .sidebar-widget { padding: 6px 0; }
-  .sidebar-widget .widget-title { margin-bottom: 4px; }
+  .sidebar-widget { padding: 4px 0; }
+  .sidebar-widget .widget-title { margin-bottom: 3px; }
   .widget-title { font-size: 0.85rem; }
   .decree-box { padding: 8px; }
   .decree-body { font-size: 0.85rem; }
@@ -1194,15 +1195,15 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .weather-sym { font-size: 1.3rem; }
   .weather-desc { font-size: 0.62rem; }
   /* হেডলাইন কমপ্যাক্ট */
-  .main-headline { font-size: 1.2rem; line-height: 1.35; margin-bottom: 4px; }
-  .main-subheadline { font-size: 0.85rem; margin-bottom: 6px; }
+  .main-headline { font-size: 1.2rem; line-height: 1.3; margin-bottom: 3px; }
+  .main-subheadline { font-size: 0.85rem; margin-bottom: 4px; padding-bottom: 4px; }
   .headline-body-text {
     column-count: 1 !important;
     font-size: 0.85rem !important;
     line-height: 1.65 !important;
   }
-  .headline-body-text p { margin-bottom: 4px; }
-  .photo-frame { margin: 6px 0; max-width: 100%; }
+  .headline-body-text p { margin-bottom: 3px; }
+  .photo-frame { margin: 4px 0; max-width: 100%; padding: 8px; }
   .photo-border img { max-width: 100%; height: auto; }
   .read-more { font-size: 0.8rem; }
   /* আর্টিকেল কার্ড কমপ্যাক্ট */
@@ -1210,22 +1211,25 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .grid-article-snippet { font-size: 0.8rem; line-height: 1.45; }
   .grid-article-meta { font-size: 0.7rem; margin-top: 3px; }
   /* ওয়ান্ড প্র্যাকটিস কমপ্যাক্ট */
-  .grid-full-row > div { flex-direction: column !important; gap: 10px !important; }
+  .grid-full-row > div { flex-direction: column !important; gap: 8px !important; }
   .grid-full-row > div > div { flex: 1 1 100% !important; min-width: 0 !important; }
   .spell-btn { font-size: 0.72rem; padding: 4px 8px; }
-  .magic-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 8px; }
-  .secret-box { padding: 8px; }
-  .parchment-input { width: 100%; box-sizing: border-box; }
+  .magic-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 6px; }
+  .secret-box { padding: 6px; margin-top: 6px; }
+  .parchment-input { width: 100%; box-sizing: border-box; margin-bottom: 4px; }
+  /* ওয়ান্ড প্র্যাকটিস gap কমানো */
+  .wand-practice-inner { gap: 10px !important; }
+  .wand-practice-inner p { margin-bottom: 4px; }
   /* ওয়াক্স সিল কমপ্যাক্ট */
-  .wax-seal { width: 60px; height: 60px; }
-  .seal-inner { width: 48px; height: 48px; top: 6px; left: 6px; }
-  .seal-letter { font-size: 1.4rem; }
-  .seal-text { font-size: 0.4rem; letter-spacing: 0.5px; }
+  .wax-seal { width: 50px; height: 50px; }
+  .seal-inner { width: 40px; height: 40px; top: 5px; left: 5px; }
+  .seal-letter { font-size: 1.2rem; }
+  .seal-text { font-size: 0.35rem; letter-spacing: 0.5px; }
   /* ফুটার কমপ্যাক্ট */
-  footer { padding: 6px 0; }
-  footer nav { gap: 8px; }
-  footer nav a { font-size: 0.75rem; }
-  footer p { font-size: 0.7rem; }
+  footer { padding: 4px 0 !important; }
+  footer nav { gap: 6px; margin-bottom: 4px; }
+  footer nav a { font-size: 0.7rem; }
+  footer p { font-size: 0.65rem; }
   /* অন্যান্য */
   .bottom-grid { grid-template-columns: 1fr; }
   .article-columns { column-count: 1; }
@@ -1261,10 +1265,10 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .main-subheadline { font-size: 0.78rem; margin-bottom: 4px; }
   .full-title { font-size: 1rem; line-height: 1.3; }
   .full-subtitle { font-size: 0.75rem; }
-  .wax-seal { width: 44px; height: 44px; }
-  .seal-inner { width: 34px; height: 34px; top: 5px; left: 5px; }
-  .seal-letter { font-size: 1rem; }
-  .seal-text { font-size: 0.35rem; letter-spacing: 0.3px; }
+  .wax-seal { width: 36px; height: 36px; }
+  .seal-inner { width: 28px; height: 28px; top: 4px; left: 4px; }
+  .seal-letter { font-size: 0.85rem; }
+  .seal-text { font-size: 0.3rem; letter-spacing: 0.3px; }
   .widget-title { font-size: 0.82rem; margin-bottom: 3px; }
   .mini-title { font-size: 0.85rem; }
   .mini-snippet { font-size: 0.75rem; }
@@ -1278,10 +1282,10 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .drop-cap { font-size: 2.2rem; padding-right: 3px; }
   .ad-title { font-size: 0.85rem; }
   .ad-subtitle { font-size: 0.68rem; }
-  .wanted-header { font-size: 0.85rem; margin-bottom: 4px; padding-bottom: 3px; }
-  .wanted-name { font-size: 1rem; margin: 6px 0 2px; }
-  .wanted-poster { border-width: 3px; padding: 6px 4px; }
-  .wanted-img-frame { width: 80px; height: 96px; }
+  .wanted-header { font-size: 0.85rem; margin-bottom: 3px; padding-bottom: 2px; }
+  .wanted-name { font-size: 1rem; margin: 4px 0 1px; }
+  .wanted-poster { border-width: 2px; padding: 4px 3px; }
+  .wanted-img-frame { width: 70px; height: 84px; }
   .wanted-img-frame img { width: 100%; height: 100%; object-fit: cover; }
   .reward-box { margin-top: 4px; padding: 2px; }
   .reward-amount { font-size: 0.9rem; }
@@ -1290,7 +1294,9 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .grid-wanted .wanted-header { font-size: 0.85rem; }
   .grid-wanted .parchment-input { font-size: 0.8rem; padding: 4px 6px; }
   .grid-wanted .magic-btn { font-size: 0.75rem; padding: 5px 6px; }
-  .grid-wanted .wanted-img-frame { width: 80px; height: 96px; }
+  .grid-wanted .wanted-img-frame { width: 70px; height: 84px; }
+  .wand-practice-inner { gap: 6px !important; }
+  .wand-practice-inner p { margin-bottom: 2px; }
   .grid-article-title { font-size: 0.85rem; line-height: 1.25; margin-bottom: 2px; }
   .grid-article-snippet { font-size: 0.75rem; line-height: 1.4; }
   .grid-article-meta { font-size: 0.65rem; margin-top: 2px; }

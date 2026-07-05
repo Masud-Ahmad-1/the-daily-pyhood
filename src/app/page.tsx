@@ -464,7 +464,7 @@ export default function Home() {
 
             {/* ---- রো ৫: ওয়ান্ড প্র্যাকটিস (ফুল উইডথ) ---- */}
             <div className="grid-full-row">
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'flex-start' }}>
+              <div className="wand-practice-inner" style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'flex-start' }}>
                 <div style={{ flex: '1 1 300px' }}>
                   <h2 className="widget-title">ওয়ান্ড প্র্যাকটিস</h2>
                   <p style={{ fontSize: '0.85rem', marginBottom: 10 }}>
@@ -506,7 +506,7 @@ export default function Home() {
         </main>
 
         {/* ===== ওয়াক্স সিল + ফুটার ===== */}
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }} aria-hidden="true">
+        <div className="wax-seal-wrap" style={{ display: 'flex', justifyContent: 'center', padding: '4px 0' }} aria-hidden="true">
           <div className="wax-seal">
             <div className="seal-inner">
               <span className="seal-letter">P</span>
@@ -517,7 +517,7 @@ export default function Home() {
 
         <hr className="double-divider" />
 
-        <footer style={{ textAlign: 'center', padding: '15px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
+        <footer className="site-footer" style={{ textAlign: 'center', padding: '8px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
           <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8, flexWrap: 'wrap' }} aria-label="ফুটার নেভিগেশন">
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📚 আর্কাইভ</a>
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
