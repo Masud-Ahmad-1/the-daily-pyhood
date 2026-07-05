@@ -192,83 +192,88 @@ export default function Home() {
       <div ref={sparkContainer} className="sparkle-layer" aria-hidden="true" />
 
       <div className="newspaper-container">
-        {/* ===== নেভিগেশন বার ===== */}
-        <nav className="top-nav-bar" aria-label="পৃষ্ঠা নেভিগেশন">
-          <a href="/archive" className="nav-link-sm">আর্কাইভ</a>
-          <span className="nav-divider-dot" aria-hidden="true">·</span>
-          <a href="/sections" className="nav-link-sm">বিভাগ</a>
-          <span className="nav-divider-dot" aria-hidden="true">·</span>
-          <a href="/subscribe" className="nav-link-sm">সাবস্ক্রিপশন</a>
-          <span className="nav-divider-dot" aria-hidden="true">·</span>
-          <span className="nav-status" aria-live="polite">জাদুভিত্তিক সংযোগ: <span className="status-online">সক্রিয়</span></span>
-        </nav>
+        {/* ===== মাস্টহেড ব্লক (ক্লাসিক ব্রডশিট) ===== */}
+        <div className="masthead-block">
+          {/* নেভিগেশন বার — ভেতরে */}
+          <nav className="top-nav-bar" aria-label="পৃষ্ঠা নেভিগেশন">
+            <a href="/archive" className="nav-link-sm">আর্কাইভ</a>
+            <span className="nav-divider-dot" aria-hidden="true">·</span>
+            <a href="/sections" className="nav-link-sm">বিভাগ</a>
+            <span className="nav-divider-dot" aria-hidden="true">·</span>
+            <a href="/subscribe" className="nav-link-sm">সাবস্ক্রিপশন</a>
+            <span className="nav-divider-dot" aria-hidden="true">·</span>
+            <span className="nav-status" aria-live="polite">জাদুভিত্তিক সংযোগ: <span className="status-online">সক্রিয়</span></span>
+          </nav>
 
-        {/* ===== শীর্ষ কীওয়ার্ড বার ===== */}
-        <div className="masthead-keywords" aria-hidden="true">
-          <span>জাদু</span>
-          <span className="kw-sep">✦</span>
-          <span>রহস্য</span>
-          <span className="kw-sep">✦</span>
-          <span>মন্ত্র</span>
-          <span className="kw-sep">✦</span>
-          <span>প্রভাব</span>
-          <span className="kw-sep">✦</span>
-          <span>আদেশ</span>
-          <span className="kw-sep">✦</span>
-          <span>রহস্যময়</span>
-        </div>
-
-        {/* ===== মাস্টহেড (Daily Prophet প্যাটার্ন) ===== */}
-        <header className="masthead-v2" role="banner" aria-label="The Daily Pyhood পত্রিকার মাস্টহেড">
-          {/* বাম: সূর্যরশ্মি এমবলেম */}
-          <div className="masthead-emblem" aria-hidden="true">
-            <div className="emblem-outer">
-              <div className="emblem-sunburst">
-                {[...Array(12)].map((_, i) => (
-                  <span key={i} className="sun-ray" style={{ transform: `rotate(${i * 30}deg)` }} />
-                ))}
-              </div>
-              <div className="emblem-inner">
-                <span className="emblem-letter">P</span>
+          {/* মূল মাস্টহেড */}
+          <header className="masthead-v2" role="banner" aria-label="The Daily Pyhood পত্রিকার মাস্টহেড">
+            {/* বাম: সূর্যরশ্মি এমবলেম */}
+            <div className="masthead-emblem" aria-hidden="true">
+              <div className="emblem-outer">
+                <div className="emblem-sunburst">
+                  {[...Array(12)].map((_, i) => (
+                    <span key={i} className="sun-ray" style={{ transform: `rotate(${i * 30}deg)` }} />
+                  ))}
+                </div>
+                <div className="emblem-inner">
+                  <span className="emblem-letter">P</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* কেন্দ্র: শিরোনাম */}
-          <div className="masthead-center">
-            <p className="masthead-tagline-v2">জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা</p>
-            <h1 className="logo-title-v2">THE DAILY PYHOOD</h1>
-            <p className="masthead-subtitle-v2">লন্ডন থেকে প্রকাশিত</p>
-          </div>
-
-          {/* ডান: ইস্যু স্ট্যাম্প */}
-          <div className="masthead-stamp" aria-hidden="true">
-            <div className="stamp-box">
-              <div className="stamp-number">{String(issue.issueNumber).padStart(5, '0')}</div>
-              <div className="stamp-label">WIZARDING WORLD</div>
+            {/* কেন্দ্র: শিরোনাম */}
+            <div className="masthead-center">
+              <p className="masthead-tagline-v2">জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা</p>
+              <h1 className="logo-title-v2">THE DAILY PYHOOD</h1>
+              <p className="masthead-subtitle-v2">লন্ডন থেকে প্রকাশিত</p>
             </div>
+
+            {/* ডান: ইস্যু স্ট্যাম্প */}
+            <div className="masthead-stamp" aria-hidden="true">
+              <div className="stamp-box">
+                <div className="stamp-number">{String(issue.issueNumber).padStart(5, '0')}</div>
+                <div className="stamp-label">WIZARDING WORLD</div>
+              </div>
+            </div>
+          </header>
+
+          {/* অলংকারিক ডিভাইডার */}
+          <div className="masthead-ornament" aria-hidden="true">
+            <span className="ornament-wing left">&#10040;</span>
+            <span className="ornament-line" />
+            <span className="ornament-fleur">&#10053;</span>
+            <span className="ornament-diamond">&#9670;</span>
+            <span className="ornament-fleur">&#10053;</span>
+            <span className="ornament-line" />
+            <span className="ornament-wing right">&#10040;</span>
           </div>
-        </header>
 
-        {/* ===== অলংকারিক ডিভাইডার ===== */}
-        <div className="masthead-ornament" aria-hidden="true">
-          <span className="ornament-line" />
-          <span className="ornament-fleur left">&#10053;</span>
-          <span className="ornament-diamond">&#9670;</span>
-          <span className="ornament-fleur right">&#10053;</span>
-          <span className="ornament-line" />
+          {/* ইস্যু তথ্য বার */}
+          <div className="issue-bar-v2" aria-label="প্রকাশনা তথ্য">
+            <span className="issue-date">{generateWizardingDate()}</span>
+            <span className="issue-sep">|</span>
+            <span className="issue-price">মূল্য: {issue.priceGalleons} গ্যালিয়ন</span>
+            <span className="issue-sep">|</span>
+            <span className="issue-num">নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
+          </div>
+
+          {/* শীর্ষ কীওয়ার্ড বার */}
+          <div className="masthead-keywords" aria-hidden="true">
+            <span>জাদু</span>
+            <span className="kw-sep">✦</span>
+            <span>রহস্য</span>
+            <span className="kw-sep">✦</span>
+            <span>মন্ত্র</span>
+            <span className="kw-sep">✦</span>
+            <span>প্রভাব</span>
+            <span className="kw-sep">✦</span>
+            <span>আদেশ</span>
+            <span className="kw-sep">✦</span>
+            <span>রহস্যময়</span>
+          </div>
         </div>
 
-        {/* ===== ইস্যু তথ্য বার ===== */}
-        <div className="issue-bar-v2" aria-label="প্রকাশনা তথ্য">
-          <span className="issue-date">{generateWizardingDate()}</span>
-          <span className="issue-sep">|</span>
-          <span className="issue-price">মূল্য: {issue.priceGalleons} গ্যালিয়ন</span>
-          <span className="issue-sep">|</span>
-          <span className="issue-num">নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
-        </div>
-
-        {/* ===== ব্রেকিং টিকার ===== */}
+        {/* ব্রেকিং টিকার */}
         <div className="ticker-container" role="marquee" aria-label="ব্রেকিং সংবাদ">
           <div className="ticker-label">ব্রেকিং:</div>
           <div className="ticker-wrap" aria-live="off">
