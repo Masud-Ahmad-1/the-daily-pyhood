@@ -306,7 +306,249 @@ a:hover { color: var(--accent-red); }
 }
 
 /* ==============================
-   মাস্টহেড
+   টপ নেভিগেশন বার (নতুন)
+   ============================== */
+.top-nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 0 2px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(74,65,42,0.5);
+}
+.nav-link-sm {
+  color: var(--border-color);
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.nav-link-sm:hover { color: var(--accent-red); }
+.nav-divider-dot {
+  font-size: 0.6rem;
+  color: rgba(74,65,42,0.3);
+}
+.nav-status { font-style: italic; text-transform: none; letter-spacing: 0.5px; }
+
+/* ==============================
+   মাস্টহেড কীওয়ার্ড বার
+   ============================== */
+.masthead-keywords {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 8px 0 4px;
+  font-family: var(--font-bengali);
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(74,65,42,0.35);
+  letter-spacing: 2px;
+}
+.kw-sep {
+  margin: 0 10px;
+  font-size: 0.5rem;
+  color: rgba(74,65,42,0.2);
+}
+
+/* ==============================
+   মাস্টহেড V2 (Daily Prophet প্যাটার্ন)
+   ============================== */
+.masthead-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 10px 8px;
+  position: relative;
+}
+
+/* — বাম: সূর্যরশ্মি এমবলেম — */
+.masthead-emblem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emblem-outer {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emblem-sunburst {
+  position: absolute;
+  inset: 0;
+}
+.sun-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 50%;
+  background: linear-gradient(to top, transparent 20%, var(--border-color) 80%);
+  transform-origin: bottom center;
+  opacity: 0.45;
+}
+.emblem-inner {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border: 2.5px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-parchment);
+  z-index: 2;
+  box-shadow: 0 0 0 3px var(--bg-parchment), 0 0 0 5px rgba(74,65,42,0.15);
+}
+.emblem-letter {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--border-color);
+  line-height: 1;
+}
+
+/* — কেন্দ্র: শিরোনাম — */
+.masthead-center {
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+.masthead-tagline-v2 {
+  font-family: var(--font-bengali);
+  font-size: 0.82rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(74,65,42,0.55);
+  letter-spacing: 1.5px;
+  margin: 0 0 2px;
+  text-transform: uppercase;
+}
+.logo-title-v2 {
+  font-family: var(--font-gothic);
+  font-size: 3.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1;
+  color: var(--ink-color);
+  margin: 0;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.08);
+  white-space: nowrap;
+}
+.masthead-subtitle-v2 {
+  font-family: var(--font-bengali);
+  font-size: 0.78rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(74,65,42,0.4);
+  letter-spacing: 3px;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+}
+
+/* — ডান: ইস্যু স্ট্যাম্প — */
+.masthead-stamp {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stamp-box {
+  border: 2.5px solid var(--border-color);
+  padding: 8px 14px 6px;
+  text-align: center;
+  background: rgba(74,65,42,0.03);
+  position: relative;
+}
+.stamp-box::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(74,65,42,0.15);
+  pointer-events: none;
+}
+.stamp-number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ink-color);
+  line-height: 1;
+  letter-spacing: 1px;
+}
+.stamp-label {
+  font-family: var(--font-body);
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: var(--border-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ==============================
+   অলংকারিক ডিভাইডার (মাস্টহেড নিচে)
+   ============================== */
+.masthead-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+.ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  max-width: 180px;
+}
+.ornament-fleur {
+  font-size: 0.7rem;
+  color: var(--border-color);
+  opacity: 0.5;
+  line-height: 1;
+}
+.ornament-fleur.left { transform: scaleX(-1); }
+.ornament-diamond {
+  font-size: 0.55rem;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+/* ==============================
+   ইস্যু বার V2
+   ============================== */
+.issue-bar-v2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 4px 10px;
+  font-family: var(--font-bengali);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-color);
+  letter-spacing: 0.5px;
+  border-top: 1px solid rgba(74,65,42,0.2);
+  border-bottom: 1px solid rgba(74,65,42,0.2);
+}
+.issue-sep {
+  margin: 0 12px;
+  color: rgba(74,65,42,0.25);
+  font-weight: 300;
+}
+
+/* ==============================
+   পুরাতন মাস্টহেড (সাব-পেজের জন্য)
    ============================== */
 .masthead {
   display: flex;
@@ -972,6 +1214,25 @@ body.nox-active .magical-photo {
   mix-blend-mode: normal;
 }
 body.nox-active .logo-title { color: #ffdf7a; text-shadow: 0 0 12px rgba(255,223,122,0.4); }
+body.nox-active .logo-title-v2 { color: #ffdf7a; text-shadow: 0 0 12px rgba(255,223,122,0.4); }
+body.nox-active .masthead-tagline-v2,
+body.nox-active .masthead-subtitle-v2 { color: rgba(228,216,188,0.5); }
+body.nox-active .masthead-keywords { color: rgba(228,216,188,0.25); }
+body.nox-active .emblem-inner { background: #1a1816; border-color: rgba(228,216,188,0.4); box-shadow: 0 0 0 3px #1a1816, 0 0 0 5px rgba(228,216,188,0.1); }
+body.nox-active .emblem-letter { color: #ffdf7a; }
+body.nox-active .sun-ray { background: linear-gradient(to top, transparent 20%, rgba(228,216,188,0.5) 80%); }
+body.nox-active .stamp-box { border-color: rgba(228,216,188,0.4); background: rgba(255,255,255,0.02); }
+body.nox-active .stamp-box::before { border-color: rgba(228,216,188,0.1); }
+body.nox-active .stamp-number { color: #ffdf7a; }
+body.nox-active .stamp-label { color: rgba(228,216,188,0.5); }
+body.nox-active .issue-bar-v2 { color: #e4d8bc; border-color: rgba(228,216,188,0.15); }
+body.nox-active .issue-sep { color: rgba(228,216,188,0.15); }
+body.nox-active .ornament-line { background: linear-gradient(to right, transparent, rgba(228,216,188,0.3), transparent); }
+body.nox-active .ornament-fleur { color: rgba(228,216,188,0.4); }
+body.nox-active .top-nav-bar { color: rgba(228,216,188,0.4); }
+body.nox-active .nav-link-sm { color: rgba(228,216,188,0.5); }
+body.nox-active .nav-link-sm:hover { color: #ffdf7a; }
+body.nox-active .nav-divider-dot { color: rgba(228,216,188,0.15); }
 body.nox-active .wanted-poster { background: #24221d; }
 body.nox-active .wanted-label { background: var(--accent-gold); color: #000; }
 body.nox-active .reward-amount { color: var(--accent-gold); }
@@ -1132,11 +1393,33 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     overflow: visible;
     padding: 6px 0;
   }
-  /* মাস্টহেড কমপ্যাক্ট */
+  /* মাস্টহেড কমপ্যাক্ট (পুরাতন) */
   .logo-title { font-size: 2rem; letter-spacing: -1px; }
   .logo-tagline { font-size: 0.7rem; margin-top: 2px; }
   .masthead { margin: 4px 0; }
   .masthead-decor { height: 6px; }
+  /* মাস্টহেড V2 মোবাইল */
+  .top-nav-bar { font-size: 0.65rem; gap: 3px; padding: 4px 0 1px; }
+  .nav-status { display: none; }
+  .masthead-keywords { font-size: 0.65rem; padding: 4px 0 2px; letter-spacing: 1px; }
+  .kw-sep { margin: 0 6px; font-size: 0.4rem; }
+  .masthead-v2 { gap: 12px; padding: 6px 4px 4px; }
+  .emblem-outer { width: 52px; height: 52px; }
+  .emblem-inner { width: 34px; height: 34px; }
+  .emblem-letter { font-size: 1.2rem; }
+  .sun-ray { width: 1.5px; opacity: 0.35; }
+  .logo-title-v2 { font-size: 2rem; letter-spacing: 1px; }
+  .masthead-tagline-v2 { font-size: 0.65rem; letter-spacing: 1px; }
+  .masthead-subtitle-v2 { font-size: 0.6rem; letter-spacing: 2px; margin-top: 2px; }
+  .stamp-box { padding: 4px 8px 3px; }
+  .stamp-number { font-size: 1.1rem; }
+  .stamp-label { font-size: 0.4rem; letter-spacing: 1px; }
+  .masthead-ornament { padding: 2px 0; gap: 4px; }
+  .ornament-line { max-width: 80px; }
+  .ornament-fleur { font-size: 0.5rem; }
+  .ornament-diamond { font-size: 0.4rem; }
+  .issue-bar-v2 { font-size: 0.65rem; padding: 3px 6px; }
+  .issue-sep { margin: 0 6px; }
   /* টুলবার কমপ্যাক্ট */
   .top-toolbar {
     flex-direction: column;
@@ -1256,6 +1539,24 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .top-toolbar { padding: 2px 0; gap: 3px; margin-bottom: 2px; }
   .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 3px; }
   .spell-btn { font-size: 0.6rem; padding: 2px 5px; }
+  /* মাস্টহেড V2 োট মোবাইল */
+  .top-nav-bar { font-size: 0.55rem; gap: 2px; padding: 2px 0 0; }
+  .masthead-keywords { font-size: 0.55rem; padding: 2px 0 1px; gap: 0; }
+  .kw-sep { margin: 0 4px; }
+  .masthead-v2 { gap: 8px; padding: 4px 0 2px; }
+  .emblem-outer { width: 38px; height: 38px; }
+  .emblem-inner { width: 26px; height: 26px; border-width: 2px; }
+  .emblem-letter { font-size: 0.9rem; }
+  .sun-ray { width: 1px; }
+  .logo-title-v2 { font-size: 1.5rem; letter-spacing: 0; }
+  .masthead-tagline-v2 { font-size: 0.55rem; }
+  .masthead-subtitle-v2 { font-size: 0.5rem; letter-spacing: 1.5px; margin-top: 1px; }
+  .masthead-stamp { display: none; }
+  .masthead-ornament { padding: 1px 0; gap: 3px; }
+  .ornament-line { max-width: 50px; }
+  .ornament-fleur, .ornament-diamond { font-size: 0.35rem; }
+  .issue-bar-v2 { font-size: 0.58rem; padding: 2px 4px; flex-wrap: wrap; gap: 0; }
+  .issue-sep { margin: 0 4px; }
   .ticker-container { flex-direction: column; height: auto; padding: 3px 4px; }
   .ticker-label { font-size: 0.6rem; }
   .ticker-wrap { font-size: 0.65rem; }
