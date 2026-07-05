@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel+Decorative:wght@700;900&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+:root {
+  --bg: #f2ebd9;
+  --bg-dark: #e6dfcb;
+  --primary: #1f1f1e;
+  --accent: #8a1f1f;
+  --gold: #b59449;
+  --border: #4a412a;
+  --muted: rgba(31,31,30,0.55);
+  --card-bg: rgba(226,218,198,0.6);
+  --card-border: rgba(74,65,42,0.2);
+
+  --font-heading: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+  --font-body: 'Noto Sans Bengali', sans-serif;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-gothic: 'Playfair Display', serif;
+  --font-num: 'Spectral', serif;
+
+  --fs-display: 2.6rem;
+  --fs-h1: 1.8rem;
+  --fs-h2: 1.25rem;
+  --fs-h3: 1rem;
+  --fs-body: 0.88rem;
+  --fs-small: 0.72rem;
+  --fs-micro: 0.6rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--primary);
+}
+
+.slide {
+  width: 1280px;
+  min-height: 720px;
+  overflow: hidden;
+  padding: 48px 56px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.05) 100%),
+    repeating-linear-gradient(rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px),
+    var(--bg);
+  position: relative;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 3px double var(--border);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 16px 18px;
+  position: relative;
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.card-gold {
+  border-left: 3px solid var(--gold);
+}
+
+.divider {
+  border: none;
+  border-top: 2px double var(--border);
+  margin: 12px 0;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  flex-shrink: 0;
+}

@@ -59,6 +59,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+img { max-width: 100%; height: auto; }
+
 body {
   background-color: var(--bg-parchment);
   color: var(--ink-color);
@@ -87,6 +89,152 @@ body {
   padding: 20px 40px;
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+/* ==============================
+   ঐতিহ্যবাহী পত্রিকা গ্রিড (ডেস্কটপ)
+   ============================== */
+.newspaper-content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr;
+  border-top: 3px double var(--border-color);
+  border-bottom: 3px double var(--border-color);
+  overflow: hidden;
+}
+
+/* গ্রিড আইটেম বেস */
+.grid-cell {
+  padding: 0 14px;
+  border-right: 1px solid rgba(74,65,42,0.18);
+  min-width: 0;
+  overflow: hidden;
+}
+.grid-cell:last-child { border-right: none; }
+
+/* প্রধান শিরোনাম: ৩ কলাম span */
+.grid-headline {
+  grid-column: 2 / 5;
+  grid-row: 1 / 3;
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  padding: 0 18px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ওয়ান্টেড: ১ কলাম, ২ রো span */
+.grid-wanted {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* সাইডবার: ১ কলাম, ২ রো */
+.grid-sidebar-top {
+  grid-column: 5 / 6;
+  grid-row: 1 / 3;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* আর্টিকেল কার্ড গ্রিড - ৩য় রো */
+.grid-articles-row-1 {
+  grid-column: 1 / 6;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 2px solid var(--border-color);
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* আর্টিকেল কার্ড গ্রিড - ৪র্থ রো */
+.grid-articles-row-2 {
+  grid-column: 1 / 6;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(74,65,42,0.15);
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* আর্টিকেল কার্ড */
+.grid-article-card {
+  padding: 12px 14px;
+  border-right: 1px solid rgba(74,65,42,0.18);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+.grid-article-card:last-child { border-right: none; }
+
+/* গ্রিডের নিচের ফুল-উইডথ সেকশন */
+.grid-full-row {
+  grid-column: 1 / 6;
+  border-top: 2px solid var(--border-color);
+  padding: 15px 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* গ্রিডের ভেতরের ওয়ান্টেড পোস্টার স্টাইল */
+.grid-wanted .wanted-poster {
+  border-width: 5px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+.grid-wanted .wanted-name { font-size: 1.1rem; }
+.grid-wanted .wanted-header { font-size: 0.95rem; }
+.grid-wanted .reward-amount { font-size: 1rem; }
+.grid-wanted .parchment-input { font-size: 0.8rem; padding: 5px 8px; }
+.grid-wanted .magic-btn { font-size: 0.75rem; padding: 6px 10px; }
+.grid-wanted .wanted-img-frame { width: 100px; height: 120px; }
+
+/* আর্টিকেল কার্ডের ভেতরের শিরোনাম */
+.grid-article-title {
+  font-family: var(--font-bn-headline);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  color: var(--ink-color);
+  cursor: pointer;
+}
+
+/* হেডলাইন বডি টেক্সট — ডেস্কটপে ৩ কলাম */
+.headline-body-text {
+  column-count: 3;
+}
+.grid-article-title:hover { color: var(--accent-red); }
+
+/* গ্রিড আর্টিকেল স্নিপেট */
+.grid-article-snippet {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(31,31,30,0.8);
+  text-align: justify;
+  flex: 1;
+}
+.grid-article-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* সাইডবার ভেতরের উইজেট */
+.sidebar-widget {
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(74,65,42,0.2);
+}
+.sidebar-widget:last-child { border-bottom: none; }
+.sidebar-widget .widget-title {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
 }
 
 /* ==============================
@@ -456,36 +604,44 @@ a:hover { color: var(--accent-red); }
   margin-bottom: 12px;
 }
 
-.weather-grid {
+/* আবহাওয়া — এক কলাম, ৩টি পাশাপাশি */
+.weather-single-col {
   display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
 }
 
-.weather-item {
+.weather-item-horiz {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  border: 1px solid rgba(74,65,42,0.3);
-  padding: 8px 4px;
-  background: rgba(255,255,255,0.2);
+  padding: 6px 2px;
+  border: 1px solid rgba(74,65,42,0.2);
+  background: rgba(255,255,255,0.15);
 }
 
-.weather-location {
-  display: block;
-  font-size: 0.8rem;
+.weather-loc {
+  font-family: var(--font-bn-headline);
+  font-size: 0.75rem;
   font-weight: 700;
+  color: var(--ink-color);
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.weather-sym {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  display: block;
+}
+
+.weather-desc {
   font-family: var(--font-bengali);
-}
-
-.weather-emoji {
-  font-size: 1.8rem;
-  margin: 4px 0;
-}
-
-.weather-forecast {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-style: italic;
-  font-family: var(--font-bengali);
+  color: var(--muted, rgba(31,31,30,0.6));
+  line-height: 1.3;
 }
 
 /* বিজ্ঞাপন */
@@ -904,61 +1060,106 @@ body.nox-active .ad-price { color: var(--accent-gold); }
    রেসপন্সিভ
    ============================== */
 
-/* ট্যাবলেট */
+/* ট্যাবলেট: ৩ কলাম গ্রিড */
 @media (max-width: 1024px) {
+  .newspaper-content-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .grid-headline {
+    grid-column: 1 / 4;
+    grid-row: auto;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+  }
+  .headline-body-text { column-count: 2 !important; }
+  .grid-wanted {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+  .grid-sidebar-top {
+    grid-column: 2 / 4;
+    grid-row: auto;
+  }
+  .grid-articles-row-1,
+  .grid-articles-row-2 {
+    grid-column: 1 / 4;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-full-row { grid-column: 1 / 4; }
   .bottom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* মোবাইল পোর্ট্রেট */
+/* মোবাইল: ১ কলাম */
 @media (max-width: 768px) {
-  .newspaper-container { padding: 12px 16px; }
-  .logo-title { font-size: 2.2rem; letter-spacing: -1px; }
-  .logo-tagline { font-size: 0.8rem; }
+  .newspaper-container {
+    padding: 10px 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .newspaper-content-grid {
+    grid-template-columns: 1fr;
+    border: none;
+    overflow: visible;
+  }
+  .grid-headline,
+  .grid-wanted,
+  .grid-sidebar-top {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    border: none;
+    border-bottom: 1px solid rgba(74,65,42,0.15);
+    padding: 12px 0;
+    min-width: 0;
+    overflow: visible;
+  }
+  .grid-articles-row-1,
+  .grid-articles-row-2 {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+  }
+  .grid-article-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(74,65,42,0.15);
+    padding: 10px 8px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .grid-full-row {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border-color);
+    overflow: visible;
+  }
+  .logo-title { font-size: 2rem; letter-spacing: -1px; }
+  .logo-tagline { font-size: 0.75rem; }
+  .masthead { margin: 12px 0; }
   .article-columns { column-count: 1; }
   .issue-bar {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    padding: 5px 10px;
   }
   .top-toolbar {
     flex-direction: column;
     gap: 6px;
     align-items: stretch;
     padding-bottom: 6px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .top-toolbar > div { flex-wrap: wrap; justify-content: center; }
+  .ticker-container {
+    height: auto;
+    padding: 6px 10px;
+  }
   .bottom-grid { grid-template-columns: 1fr; }
-  .full-title { font-size: 1.4rem; }
-  .main-headline { font-size: 1.4rem; }
-  .main-subheadline { font-size: 0.95rem; }
+  .full-title { font-size: 1.3rem; line-height: 1.4; }
+  .main-headline { font-size: 1.3rem; line-height: 1.4; }
+  .main-subheadline { font-size: 0.9rem; }
   .masthead-decor { display: none; }
-  .wanted-poster { border-width: 5px; padding: 12px; }
-  .wanted-name { font-size: 1.3rem; }
-  .wanted-header { font-size: 1.1rem; }
-  .reward-box { margin-top: 8px; }
-  .secret-box { padding: 12px; }
-  .magic-btn { width: 100%; text-align: center; }
-  .parchment-input { width: 100%; }
-  .photo-frame { margin: 10px 0; max-width: 100%; }
-  .decree-box { padding: 12px; }
-  .decree-body { font-size: 0.9rem; }
-  .mini-article { padding: 10px 8px; }
-  .article-body-text { font-size: 1rem; }
-  .article-author { font-size: 0.85rem; }
-  .ad-container { padding: 10px 8px; }
-  .potion-img-frame { width: 60px; height: 80px; }
-  .section-article-grid { grid-template-columns: 1fr; }
-  .related-grid { grid-template-columns: 1fr; }
-  .other-articles-grid { grid-template-columns: 1fr; }
-}
-
-/* ছোট মোবাইল */
-@media (max-width: 480px) {
-  .newspaper-container { padding: 8px 8px; }
-  .masthead-decor { display: none; }
-  .wanted-poster { border-width: 5px; padding: 12px; }
+  .wanted-poster { border-width: 4px; padding: 10px; }
   .wanted-name { font-size: 1.2rem; }
   .wanted-header { font-size: 1rem; }
   .reward-box { margin-top: 8px; }
@@ -966,69 +1167,149 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .magic-btn { width: 100%; text-align: center; }
   .parchment-input { width: 100%; box-sizing: border-box; }
   .photo-frame { margin: 10px 0; max-width: 100%; }
-  .decree-box { padding: 12px; }
-  .decree-body { font-size: 0.9rem; }
+  .photo-border img { max-width: 100%; height: auto; }
+  .decree-box { padding: 10px; }
+  .decree-body { font-size: 0.88rem; }
   .mini-article { padding: 10px 8px; }
-  .article-body-text { font-size: 1rem; }
+  .article-body-text { font-size: 1rem; line-height: 1.8; }
   .article-author { font-size: 0.85rem; }
   .ad-container { padding: 10px 8px; }
   .potion-img-frame { width: 60px; height: 80px; }
-  .widget-title { font-size: 1.05rem; }
+  .section-article-grid { grid-template-columns: 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  .other-articles-grid { grid-template-columns: 1fr; }
+  .grid-wanted .wanted-poster { padding: 10px; font-size: 0.95rem; }
+  .grid-wanted .wanted-name { font-size: 1.2rem; }
+  .grid-wanted .wanted-header { font-size: 1rem; }
+  .grid-wanted .parchment-input { font-size: 0.88rem; }
+  .grid-wanted .magic-btn { font-size: 0.82rem; }
+  .grid-wanted .wanted-img-frame { width: 110px; height: 130px; }
+  .grid-article-title { font-size: 0.95rem; line-height: 1.35; }
+  .grid-article-snippet { font-size: 0.82rem; line-height: 1.5; }
+  .headline-body-text {
+    column-count: 1 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+  }
+  /* আবহাওয়া মোবাইল */
+  .weather-single-col {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .weather-item-horiz {
+    flex: 1 1 calc(33.33% - 4px);
+    min-width: 80px;
+    padding: 6px 2px;
+  }
+  .weather-loc { font-size: 0.7rem; }
+  .weather-sym { font-size: 1.4rem; }
+  .weather-desc { font-size: 0.65rem; }
+  /* ওয়ান্ড প্র্যাকটিস মোবাইল */
+  .grid-full-row > div {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  .grid-full-row > div > div {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+  .spell-btn { font-size: 0.75rem; padding: 5px 10px; }
+  /* ফুটার মোবাইল */
+  footer { padding: 10px 0; }
+  footer nav { gap: 10px; }
+  footer nav a { font-size: 0.8rem; }
+  footer p { font-size: 0.75rem; }
 }
 
+/* ছোট মোবাইল (< 480px) */
 @media (max-width: 480px) {
-  .newspaper-container { padding: 8px 8px; }
-  .logo-title { font-size: 1.8rem; letter-spacing: 0; margin-bottom: 0; }
-  .logo-tagline { font-size: 0.7rem; letter-spacing: 1px; }
-  .top-toolbar { padding: 6px 0; gap: 6px; }
+  .newspaper-container { padding: 6px; width: 100%; max-width: 100%; }
+  .grid-articles-row-1,
+  .grid-articles-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .logo-title { font-size: 1.6rem; letter-spacing: 0; margin-bottom: 0; }
+  .logo-tagline { font-size: 0.65rem; letter-spacing: 0.5px; }
+  .masthead { margin: 8px 0; }
+  .top-toolbar { padding: 4px 0; gap: 4px; }
   .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 4px; }
-  .spell-btn { font-size: 0.65rem; padding: 3px 6px; }
-  .ticker-container { flex-direction: column; height: auto; padding: 6px 8px; }
-  .ticker-label { font-size: 0.7rem; }
-  .main-headline { font-size: 1.15rem; }
-  .main-subheadline { font-size: 0.85rem; }
-  .full-title { font-size: 1.1rem; }
-  .full-subtitle { font-size: 0.82rem; }
-  .bottom-card { padding: 10px; }
-  .issue-bar { font-size: 0.7rem; padding: 4px 8px; }
-  .wax-seal { width: 56px; height: 56px; }
-  .seal-inner { width: 44px; height: 44px; top: 6px; left: 6px; }
-  .seal-letter { font-size: 1.3rem; }
-  .weather-grid { flex-direction: column; }
-  .weather-item { padding: 8px; }
-  .widget-title { font-size: 0.95rem; }
-  .mini-title { font-size: 0.95rem; }
-  .mini-snippet { font-size: 0.8rem; }
-  .block-title { font-size: 1rem; }
-  .block-snippet { font-size: 0.85rem; }
-  .card-title { font-size: 1rem; }
-  .card-snippet { font-size: 0.8rem; }
-  .classified-heading { font-size: 0.9rem; }
-  .classified-body { font-size: 0.8rem; }
-  .lead-para { font-size: 0.9rem; }
-  .drop-cap { font-size: 2.8rem; padding-right: 6px; }
-  .ad-title { font-size: 1rem; }
-  .ad-subtitle { font-size: 0.75rem; }
-  .wanted-header { font-size: 1rem; }
-  .wanted-name { font-size: 1.1rem; }
-  .wanted-poster { border-width: 4px; padding: 10px 8px; }
-  .wanted-img-frame { border-width: 3px; }
-  .article-body-text { font-size: 0.95rem; line-height: 1.7; }
-  .decree-box { border-width: 2px; padding: 10px 8px; }
-  .decree-body { font-size: 0.85rem; }
-  .magic-btn { font-size: 0.82rem; padding: 8px 6px; }
-  .secret-box { padding: 10px 8px; }
-  footer p { font-size: 0.7rem; }
-  footer nav { gap: 10px; flex-wrap: wrap; }
-  footer nav a { font-size: 0.75rem; }
-  .article-back-btn { font-size: 0.82rem; padding: 8px 16px; }
-  .archive-issue-header { padding: 12px; }
-  .archive-issue-number { font-size: 1rem; }
-  .archive-issue-stats { gap: 10px; font-size: 0.8rem; flex-wrap: wrap; }
-  .archive-article-row { padding: 8px; }
-  .section-tab { padding: 4px 7px; font-size: 0.7rem; }
-  .parchment-page-inner { padding: 15px 12px; }
-  .parchment-page-title { font-size: 1.4rem; }
+  .spell-btn { font-size: 0.62rem; padding: 3px 6px; }
+  .ticker-container { flex-direction: column; height: auto; padding: 5px 6px; }
+  .ticker-label { font-size: 0.65rem; }
+  .ticker-wrap { font-size: 0.7rem; }
+  .main-headline { font-size: 1.1rem; line-height: 1.35; }
+  .main-subheadline { font-size: 0.82rem; }
+  .full-title { font-size: 1.05rem; line-height: 1.35; }
+  .full-subtitle { font-size: 0.78rem; }
+  .issue-bar { font-size: 0.68rem; padding: 3px 6px; }
+  .wax-seal { width: 48px; height: 48px; }
+  .seal-inner { width: 38px; height: 38px; top: 5px; left: 5px; }
+  .seal-letter { font-size: 1.1rem; }
+  .seal-text { font-size: 0.4rem; letter-spacing: 0.5px; }
+  .widget-title { font-size: 0.9rem; }
+  .mini-title { font-size: 0.9rem; }
+  .mini-snippet { font-size: 0.78rem; }
+  .block-title { font-size: 0.95rem; }
+  .block-snippet { font-size: 0.8rem; }
+  .card-title { font-size: 0.95rem; }
+  .card-snippet { font-size: 0.78rem; }
+  .classified-heading { font-size: 0.85rem; }
+  .classified-body { font-size: 0.75rem; }
+  .lead-para { font-size: 0.85rem; }
+  .drop-cap { font-size: 2.5rem; padding-right: 4px; }
+  .ad-title { font-size: 0.9rem; }
+  .ad-subtitle { font-size: 0.7rem; }
+  .wanted-header { font-size: 0.9rem; }
+  .wanted-name { font-size: 1.05rem; }
+  .wanted-poster { border-width: 3px; padding: 8px 6px; }
+  .wanted-img-frame { width: 90px; height: 108px; }
+  .wanted-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .article-body-text { font-size: 0.92rem; line-height: 1.75; }
+  .decree-box { border-width: 2px; padding: 8px 6px; }
+  .decree-body { font-size: 0.82rem; }
+  .decree-header { font-size: 0.85rem; }
+  .decree-number { font-size: 0.7rem; }
+  .magic-btn { font-size: 0.78rem; padding: 7px 6px; }
+  .secret-box { padding: 8px 6px; }
+  .article-back-btn { font-size: 0.78rem; padding: 7px 14px; }
+  .archive-issue-header { padding: 10px; }
+  .archive-issue-number { font-size: 0.95rem; }
+  .archive-issue-stats { gap: 8px; font-size: 0.75rem; flex-wrap: wrap; }
+  .archive-article-row { padding: 6px; }
+  .section-tab { padding: 3px 6px; font-size: 0.65rem; }
+  .parchment-page-inner { padding: 12px 10px; }
+  .parchment-page-title { font-size: 1.2rem; }
+  .bottom-card { padding: 8px; }
+  .sidebar-widget { padding: 8px 0; }
+  /* আবহাওয়া ছোট মোবাইল */
+  .weather-item-horiz {
+    flex: 1 1 calc(33.33% - 3px);
+    min-width: 70px;
+    padding: 4px 1px;
+  }
+  .weather-loc { font-size: 0.62rem; }
+  .weather-sym { font-size: 1.2rem; }
+  .weather-desc { font-size: 0.58rem; }
+  /* আর্টিকেল কার্ড ছোট মোবাইল */
+  .grid-article-card { padding: 8px 4px; }
+  .grid-article-title { font-size: 0.88rem; }
+  .grid-article-snippet { font-size: 0.78rem; }
+  .grid-article-meta { font-size: 0.68rem; }
+  /* ফুটার ছোট মোবাইল */
+  footer { padding: 8px 0; }
+  footer p { font-size: 0.68rem; }
+  footer nav { gap: 8px; flex-wrap: wrap; justify-content: center; }
+  footer nav a { font-size: 0.7rem; }
+  /* গ্রিড আইটেম ছোট মোবাইল */
+  .grid-wanted .wanted-poster { padding: 8px 6px; font-size: 0.9rem; }
+  .grid-wanted .wanted-name { font-size: 1.05rem; }
+  .grid-wanted .wanted-header { font-size: 0.9rem; }
+  .grid-wanted .parchment-input { font-size: 0.82rem; padding: 6px 8px; }
+  .grid-wanted .magic-btn { font-size: 0.78rem; padding: 7px 8px; }
+  .grid-wanted .wanted-img-frame { width: 90px; height: 108px; }
+  /* অ্যাডমিন ও অন্যান্য পেজ */
+  .auth-container { margin: 12px 10px; padding: 20px 16px; }
+  .parchment-page-inner { padding: 12px 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

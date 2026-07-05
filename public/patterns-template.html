@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>গ্রহণযোগ্য প্যাটার্ন — The Daily Pyhood টেমপ্লেট</title>
+<link rel="stylesheet" href="global-patterns.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { overflow: hidden; }
+  .slide { overflow: hidden; display: flex; flex-direction: column; }
+
+  .wax-seal {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #b33a3a, #8a1f1f 50%, #5c1212);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 -2px 6px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .wax-seal::before {
+    content: '';
+    position: absolute;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(181,148,73,0.35);
+  }
+  .wax-seal-letter {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #b59449;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    line-height: 1;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    flex: 1;
+  }
+
+  .bento-card {
+    background: var(--card-bg);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .bento-card.border-accent { border-left: 3px solid var(--accent); }
+  .bento-card.border-gold   { border-left: 3px solid var(--gold); }
+
+  .bento-card .card-num {
+    font-family: 'Spectral', serif;
+    font-size: var(--fs-micro);
+    color: var(--muted);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .bento-card .card-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .bento-card .card-desc {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .slide-footer {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: var(--fs-micro);
+    color: var(--muted);
+    font-style: italic;
+    padding-top: 10px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- HEADER -->
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:10px; flex-shrink:0;">
+    <!-- Tag -->
+    <div style="padding-top:6px;">
+      <span class="tag">টেমপ্লেট বিশ্লেষণ</span>
+    </div>
+    <!-- Title + Subtitle -->
+    <div style="text-align:center;">
+      <h1 style="font-family:var(--font-heading); font-size:var(--fs-display); font-weight:700; color:var(--primary); line-height:1.15;">গ্রহণযোগ্য প্যাটার্ন</h1>
+      <p style="font-family:var(--font-gothic); font-size:var(--fs-body); font-style:italic; color:var(--muted); margin-top:4px;">The Daily Pyhood পত্রিকা টেমপ্লেট থেকে</p>
+    </div>
+    <!-- Wax Seal -->
+    <div class="wax-seal" aria-hidden="true" data-decor>
+      <span class="wax-seal-letter">P</span>
+    </div>
+  </div>
+
+  <!-- Double Divider -->
+  <hr class="divider" style="margin-bottom:14px;">
+
+  <!-- BENTO GRID: 5 columns × 2 rows -->
+  <div class="bento-grid">
+
+    <!-- 01 -->
+    <div class="bento-card border-accent">
+      <span class="card-num">01</span>
+      <span class="card-title">CSS Grid + Named Areas</span>
+      <span class="card-desc">৫-কলাম মাস্টার গ্রিড ও সাব-গ্রিড ব্যবহার করে পত্রিকা লেআউট</span>
+    </div>
+
+    <!-- 02 -->
+    <div class="bento-card border-gold">
+      <span class="card-num">02</span>
+      <span class="card-title">column-count + column-rule</span>
+      <span class="card-desc">কার্ডের ভেতরে বহু-কলাম টেক্সট ফ্লো, কাগজের পত্রিকার মতো</span>
+    </div>
+
+    <!-- 03 -->
+    <div class="bento-card border-accent">
+      <span class="card-num">03</span>
+      <span class="card-title">ফন্ট পরিবারের স্তরবিন্যাস</span>
+      <span class="card-desc">Display, BN Headline, Body, Gothic ফন্টের স্পষ্ট হায়ারার্কি</span>
+    </div>
+
+    <!-- 04 -->
+    <div class="bento-card border-gold">
+      <span class="card-num">04</span>
+      <span class="card-title">পার্চমেন্ট টেক্সচার</span>
+      <span class="card-desc">repeating-linear-gradient দিয়ে কাগজের ফাইবার সিমুলেশন</span>
+    </div>
+
+    <!-- 05 -->
+    <div class="bento-card border-accent">
+      <span class="card-num">05</span>
+      <span class="card-title">GPU-accelerated অ্যানিমেশন</span>
+      <span class="card-desc">translate3d ও will-change ব্যবহারে স্মুথ পারফরম্যান্স</span>
+    </div>
+
+    <!-- 06 -->
+    <div class="bento-card border-gold">
+      <span class="card-num">06</span>
+      <span class="card-title">থ্রটলড ইভেন্ট</span>
+      <span class="card-desc">15ms থ্রটলিং দিয়ে 60fps-এ স্পার্কল ইফেক্ট</span>
+    </div>
+
+    <!-- 07 -->
+    <div class="bento-card border-accent">
+      <span class="card-num">07</span>
+      <span class="card-title">ক্লাস-টগল থিমিং</span>
+      <span class="card-desc">body.lumos-active দিয়ে গ্লোবাল থিম পরিবর্তন</span>
+    </div>
+
+    <!-- 08 -->
+    <div class="bento-card border-gold">
+      <span class="card-num">08</span>
+      <span class="card-title">তিন স্তরের রেসপন্সিভ</span>
+      <span class="card-desc">1024/768/480 ব্রেকপয়েন্টে গ্রিড কলাম কমিয়ে মোবাইল অ্যাডাপ্টেশন</span>
+    </div>
+
+    <!-- 09 -->
+    <div class="bento-card border-accent">
+      <span class="card-num">09</span>
+      <span class="card-title">CSS Custom Properties</span>
+      <span class="card-desc">--bg-parchment, --ink-color ইত্যাদি দিয়ে কেন্দ্রীয় থিম কন্ট্রোল</span>
+    </div>
+
+    <!-- 10 -->
+    <div class="bento-card border-gold">
+      <span class="card-num">10</span>
+      <span class="card-title">prefers-reduced-motion</span>
+      <span class="card-desc">অ্যাক্সেসিবিলিটি-ফার্স্ট অ্যানিমেশন হ্যান্ডলিং</span>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="slide-footer">The Daily Pyhood — জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা</div>
+
+</div>
+</body>
+</html>
