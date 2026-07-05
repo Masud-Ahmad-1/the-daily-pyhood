@@ -1093,7 +1093,7 @@ body.nox-active .ad-price { color: var(--accent-gold); }
 /* মোবাইল: ১ কলাম */
 @media (max-width: 768px) {
   .newspaper-container {
-    padding: 10px 12px;
+    padding: 6px 10px;
     width: 100%;
     max-width: 100%;
   }
@@ -1108,8 +1108,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     grid-column: 1 / -1;
     grid-row: auto;
     border: none;
-    border-bottom: 1px solid rgba(74,65,42,0.15);
-    padding: 12px 0;
+    border-bottom: 1px solid rgba(74,65,42,0.12);
+    padding: 8px 0;
     min-width: 0;
     overflow: visible;
   }
@@ -1121,8 +1121,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   }
   .grid-article-card {
     border-right: none;
-    border-bottom: 1px solid rgba(74,65,42,0.15);
-    padding: 10px 8px;
+    border-bottom: 1px solid rgba(74,65,42,0.12);
+    padding: 8px 6px;
     word-break: break-word;
     overflow-wrap: break-word;
   }
@@ -1130,186 +1130,209 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     grid-column: 1 / -1;
     border-top: 1px solid var(--border-color);
     overflow: visible;
+    padding: 8px 0;
   }
+  /* মাস্টহেড কমপ্যাক্ট */
   .logo-title { font-size: 2rem; letter-spacing: -1px; }
-  .logo-tagline { font-size: 0.75rem; }
-  .masthead { margin: 12px 0; }
-  .article-columns { column-count: 1; }
-  .issue-bar {
-    font-size: 0.78rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    padding: 5px 10px;
-  }
+  .logo-tagline { font-size: 0.7rem; }
+  .masthead { margin: 6px 0; }
+  /* টুলবার কমপ্যাক্ট */
   .top-toolbar {
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     align-items: stretch;
-    padding-bottom: 6px;
-    margin-bottom: 8px;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
   }
   .top-toolbar > div { flex-wrap: wrap; justify-content: center; }
+  /* ইস্যু বার কমপ্যাক্ট */
+  .issue-bar {
+    font-size: 0.75rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px 10px;
+    padding: 3px 8px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+  }
+  /* টিকার কমপ্যাক্ট */
   .ticker-container {
     height: auto;
-    padding: 6px 10px;
+    padding: 4px 8px;
   }
-  .bottom-grid { grid-template-columns: 1fr; }
-  .full-title { font-size: 1.3rem; line-height: 1.4; }
-  .main-headline { font-size: 1.3rem; line-height: 1.4; }
-  .main-subheadline { font-size: 0.9rem; }
-  .masthead-decor { display: none; }
-  .wanted-poster { border-width: 4px; padding: 10px; }
-  .wanted-name { font-size: 1.2rem; }
-  .wanted-header { font-size: 1rem; }
-  .reward-box { margin-top: 8px; }
-  .secret-box { padding: 12px; }
-  .magic-btn { width: 100%; text-align: center; }
-  .parchment-input { width: 100%; box-sizing: border-box; }
-  .photo-frame { margin: 10px 0; max-width: 100%; }
+  /* ডিভাইডার কমপ্যাক্ট */
+  .double-divider {
+    margin: 6px 0;
+    height: 4px;
+  }
+  /* ওয়ান্টেড কমপ্যাক্ট */
+  .wanted-poster { border-width: 4px; padding: 8px; }
+  .wanted-header { font-size: 0.95rem; margin-bottom: 6px; padding-bottom: 4px; border-bottom-width: 1px; }
+  .wanted-name { font-size: 1.1rem; margin: 8px 0 2px; }
+  .reward-box { margin-top: 6px; padding: 3px; }
+  .reward-amount { font-size: 1rem; }
+  .grid-wanted .wanted-poster { padding: 8px; font-size: 0.9rem; }
+  .grid-wanted .wanted-name { font-size: 1.1rem; }
+  .grid-wanted .wanted-header { font-size: 0.95rem; }
+  .grid-wanted .parchment-input { font-size: 0.85rem; padding: 5px 8px; }
+  .grid-wanted .magic-btn { font-size: 0.8rem; padding: 6px 8px; }
+  .grid-wanted .wanted-img-frame { width: 100px; height: 120px; }
+  /* সাইডবার উইজেট কমপ্যাক্ট */
+  .sidebar-widget { padding: 6px 0; }
+  .sidebar-widget .widget-title { margin-bottom: 4px; }
+  .widget-title { font-size: 0.85rem; }
+  .decree-box { padding: 8px; }
+  .decree-body { font-size: 0.85rem; }
+  .letter-body { font-size: 0.85rem; }
+  .ad-container { padding: 6px 0; }
+  .potion-img-frame { width: 50px; height: 66px; }
+  /* আবহাওয়া মোবাইল */
+  .weather-single-col { flex-wrap: wrap; gap: 3px; }
+  .weather-item-horiz { flex: 1 1 calc(33.33% - 3px); min-width: 80px; padding: 4px 2px; }
+  .weather-loc { font-size: 0.68rem; }
+  .weather-sym { font-size: 1.3rem; }
+  .weather-desc { font-size: 0.62rem; }
+  /* হেডলাইন কমপ্যাক্ট */
+  .main-headline { font-size: 1.2rem; line-height: 1.35; margin-bottom: 4px; }
+  .main-subheadline { font-size: 0.85rem; margin-bottom: 6px; }
+  .headline-body-text {
+    column-count: 1 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.65 !important;
+  }
+  .headline-body-text p { margin-bottom: 4px; }
+  .photo-frame { margin: 6px 0; max-width: 100%; }
   .photo-border img { max-width: 100%; height: auto; }
-  .decree-box { padding: 10px; }
-  .decree-body { font-size: 0.88rem; }
-  .mini-article { padding: 10px 8px; }
-  .article-body-text { font-size: 1rem; line-height: 1.8; }
-  .article-author { font-size: 0.85rem; }
-  .ad-container { padding: 10px 8px; }
-  .potion-img-frame { width: 60px; height: 80px; }
+  .read-more { font-size: 0.8rem; }
+  /* আর্টিকেল কার্ড কমপ্যাক্ট */
+  .grid-article-title { font-size: 0.9rem; line-height: 1.3; margin-bottom: 3px; }
+  .grid-article-snippet { font-size: 0.8rem; line-height: 1.45; }
+  .grid-article-meta { font-size: 0.7rem; margin-top: 3px; }
+  /* ওয়ান্ড প্র্যাকটিস কমপ্যাক্ট */
+  .grid-full-row > div { flex-direction: column !important; gap: 10px !important; }
+  .grid-full-row > div > div { flex: 1 1 100% !important; min-width: 0 !important; }
+  .spell-btn { font-size: 0.72rem; padding: 4px 8px; }
+  .magic-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 8px; }
+  .secret-box { padding: 8px; }
+  .parchment-input { width: 100%; box-sizing: border-box; }
+  /* ওয়াক্স সিল কমপ্যাক্ট */
+  .wax-seal { width: 60px; height: 60px; }
+  .seal-inner { width: 48px; height: 48px; top: 6px; left: 6px; }
+  .seal-letter { font-size: 1.4rem; }
+  .seal-text { font-size: 0.4rem; letter-spacing: 0.5px; }
+  /* ফুটার কমপ্যাক্ট */
+  footer { padding: 6px 0; }
+  footer nav { gap: 8px; }
+  footer nav a { font-size: 0.75rem; }
+  footer p { font-size: 0.7rem; }
+  /* অন্যান্য */
+  .bottom-grid { grid-template-columns: 1fr; }
+  .article-columns { column-count: 1; }
+  .article-body-text { font-size: 0.95rem; line-height: 1.7; }
+  .article-author { font-size: 0.82rem; }
+  .mini-article { padding: 6px 4px; }
   .section-article-grid { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr; }
   .other-articles-grid { grid-template-columns: 1fr; }
-  .grid-wanted .wanted-poster { padding: 10px; font-size: 0.95rem; }
-  .grid-wanted .wanted-name { font-size: 1.2rem; }
-  .grid-wanted .wanted-header { font-size: 1rem; }
-  .grid-wanted .parchment-input { font-size: 0.88rem; }
-  .grid-wanted .magic-btn { font-size: 0.82rem; }
-  .grid-wanted .wanted-img-frame { width: 110px; height: 130px; }
-  .grid-article-title { font-size: 0.95rem; line-height: 1.35; }
-  .grid-article-snippet { font-size: 0.82rem; line-height: 1.5; }
-  .headline-body-text {
-    column-count: 1 !important;
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-  }
-  /* আবহাওয়া মোবাইল */
-  .weather-single-col {
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  .weather-item-horiz {
-    flex: 1 1 calc(33.33% - 4px);
-    min-width: 80px;
-    padding: 6px 2px;
-  }
-  .weather-loc { font-size: 0.7rem; }
-  .weather-sym { font-size: 1.4rem; }
-  .weather-desc { font-size: 0.65rem; }
-  /* ওয়ান্ড প্র্যাকটিস মোবাইল */
-  .grid-full-row > div {
-    flex-direction: column !important;
-    gap: 15px !important;
-  }
-  .grid-full-row > div > div {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-  }
-  .spell-btn { font-size: 0.75rem; padding: 5px 10px; }
-  /* ফুটার মোবাইল */
-  footer { padding: 10px 0; }
-  footer nav { gap: 10px; }
-  footer nav a { font-size: 0.8rem; }
-  footer p { font-size: 0.75rem; }
+  .full-title { font-size: 1.2rem; line-height: 1.35; }
 }
 
 /* ছোট মোবাইল (< 480px) */
 @media (max-width: 480px) {
-  .newspaper-container { padding: 6px; width: 100%; max-width: 100%; }
+  .newspaper-container { padding: 4px; width: 100%; max-width: 100%; }
   .grid-articles-row-1,
   .grid-articles-row-2 {
     grid-template-columns: 1fr;
   }
-  .logo-title { font-size: 1.6rem; letter-spacing: 0; margin-bottom: 0; }
-  .logo-tagline { font-size: 0.65rem; letter-spacing: 0.5px; }
-  .masthead { margin: 8px 0; }
-  .top-toolbar { padding: 4px 0; gap: 4px; }
-  .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 4px; }
-  .spell-btn { font-size: 0.62rem; padding: 3px 6px; }
-  .ticker-container { flex-direction: column; height: auto; padding: 5px 6px; }
-  .ticker-label { font-size: 0.65rem; }
-  .ticker-wrap { font-size: 0.7rem; }
-  .main-headline { font-size: 1.1rem; line-height: 1.35; }
-  .main-subheadline { font-size: 0.82rem; }
-  .full-title { font-size: 1.05rem; line-height: 1.35; }
-  .full-subtitle { font-size: 0.78rem; }
-  .issue-bar { font-size: 0.68rem; padding: 3px 6px; }
-  .wax-seal { width: 48px; height: 48px; }
-  .seal-inner { width: 38px; height: 38px; top: 5px; left: 5px; }
-  .seal-letter { font-size: 1.1rem; }
-  .seal-text { font-size: 0.4rem; letter-spacing: 0.5px; }
-  .widget-title { font-size: 0.9rem; }
-  .mini-title { font-size: 0.9rem; }
-  .mini-snippet { font-size: 0.78rem; }
-  .block-title { font-size: 0.95rem; }
-  .block-snippet { font-size: 0.8rem; }
-  .card-title { font-size: 0.95rem; }
-  .card-snippet { font-size: 0.78rem; }
-  .classified-heading { font-size: 0.85rem; }
-  .classified-body { font-size: 0.75rem; }
-  .lead-para { font-size: 0.85rem; }
-  .drop-cap { font-size: 2.5rem; padding-right: 4px; }
-  .ad-title { font-size: 0.9rem; }
-  .ad-subtitle { font-size: 0.7rem; }
-  .wanted-header { font-size: 0.9rem; }
-  .wanted-name { font-size: 1.05rem; }
-  .wanted-poster { border-width: 3px; padding: 8px 6px; }
-  .wanted-img-frame { width: 90px; height: 108px; }
+  .grid-article-card { padding: 6px 2px; }
+  .logo-title { font-size: 1.5rem; letter-spacing: 0; margin-bottom: 0; }
+  .logo-tagline { font-size: 0.6rem; letter-spacing: 0.5px; }
+  .masthead { margin: 4px 0; }
+  .top-toolbar { padding: 2px 0; gap: 3px; margin-bottom: 2px; }
+  .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 3px; }
+  .spell-btn { font-size: 0.6rem; padding: 2px 5px; }
+  .ticker-container { flex-direction: column; height: auto; padding: 3px 4px; }
+  .ticker-label { font-size: 0.6rem; }
+  .ticker-wrap { font-size: 0.65rem; }
+  .issue-bar { font-size: 0.65rem; padding: 2px 4px; gap: 1px 6px; }
+  .double-divider { margin: 4px 0; height: 3px; }
+  .main-headline { font-size: 1.05rem; line-height: 1.3; margin-bottom: 3px; }
+  .main-subheadline { font-size: 0.78rem; margin-bottom: 4px; }
+  .full-title { font-size: 1rem; line-height: 1.3; }
+  .full-subtitle { font-size: 0.75rem; }
+  .wax-seal { width: 44px; height: 44px; }
+  .seal-inner { width: 34px; height: 34px; top: 5px; left: 5px; }
+  .seal-letter { font-size: 1rem; }
+  .seal-text { font-size: 0.35rem; letter-spacing: 0.3px; }
+  .widget-title { font-size: 0.82rem; margin-bottom: 3px; }
+  .mini-title { font-size: 0.85rem; }
+  .mini-snippet { font-size: 0.75rem; }
+  .block-title { font-size: 0.9rem; }
+  .block-snippet { font-size: 0.78rem; }
+  .card-title { font-size: 0.9rem; }
+  .card-snippet { font-size: 0.75rem; }
+  .classified-heading { font-size: 0.82rem; }
+  .classified-body { font-size: 0.72rem; }
+  .lead-para { font-size: 0.82rem; }
+  .drop-cap { font-size: 2.2rem; padding-right: 3px; }
+  .ad-title { font-size: 0.85rem; }
+  .ad-subtitle { font-size: 0.68rem; }
+  .wanted-header { font-size: 0.85rem; margin-bottom: 4px; padding-bottom: 3px; }
+  .wanted-name { font-size: 1rem; margin: 6px 0 2px; }
+  .wanted-poster { border-width: 3px; padding: 6px 4px; }
+  .wanted-img-frame { width: 80px; height: 96px; }
   .wanted-img-frame img { width: 100%; height: 100%; object-fit: cover; }
-  .article-body-text { font-size: 0.92rem; line-height: 1.75; }
-  .decree-box { border-width: 2px; padding: 8px 6px; }
-  .decree-body { font-size: 0.82rem; }
-  .decree-header { font-size: 0.85rem; }
-  .decree-number { font-size: 0.7rem; }
-  .magic-btn { font-size: 0.78rem; padding: 7px 6px; }
-  .secret-box { padding: 8px 6px; }
-  .article-back-btn { font-size: 0.78rem; padding: 7px 14px; }
-  .archive-issue-header { padding: 10px; }
-  .archive-issue-number { font-size: 0.95rem; }
-  .archive-issue-stats { gap: 8px; font-size: 0.75rem; flex-wrap: wrap; }
-  .archive-article-row { padding: 6px; }
-  .section-tab { padding: 3px 6px; font-size: 0.65rem; }
-  .parchment-page-inner { padding: 12px 10px; }
-  .parchment-page-title { font-size: 1.2rem; }
-  .bottom-card { padding: 8px; }
-  .sidebar-widget { padding: 8px 0; }
+  .reward-box { margin-top: 4px; padding: 2px; }
+  .reward-amount { font-size: 0.9rem; }
+  .grid-wanted .wanted-poster { padding: 6px 4px; font-size: 0.85rem; }
+  .grid-wanted .wanted-name { font-size: 1rem; }
+  .grid-wanted .wanted-header { font-size: 0.85rem; }
+  .grid-wanted .parchment-input { font-size: 0.8rem; padding: 4px 6px; }
+  .grid-wanted .magic-btn { font-size: 0.75rem; padding: 5px 6px; }
+  .grid-wanted .wanted-img-frame { width: 80px; height: 96px; }
+  .grid-article-title { font-size: 0.85rem; line-height: 1.25; margin-bottom: 2px; }
+  .grid-article-snippet { font-size: 0.75rem; line-height: 1.4; }
+  .grid-article-meta { font-size: 0.65rem; margin-top: 2px; }
+  .headline-body-text { font-size: 0.82rem !important; line-height: 1.6 !important; }
+  .headline-body-text p { margin-bottom: 3px; }
+  .sidebar-widget { padding: 4px 0; }
+  .decree-box { border-width: 2px; padding: 6px 4px; }
+  .decree-body { font-size: 0.8rem; }
+  .decree-header { font-size: 0.8rem; }
+  .decree-number { font-size: 0.65rem; }
+  .magic-btn { font-size: 0.75rem; padding: 6px; }
+  .secret-box { padding: 6px 4px; }
+  .potion-img-frame { width: 44px; height: 58px; }
+  .article-body-text { font-size: 0.9rem; line-height: 1.7; }
+  .article-author { font-size: 0.8rem; }
+  .article-back-btn { font-size: 0.75rem; padding: 6px 12px; }
+  .mini-article { padding: 4px 2px; }
+  .bottom-card { padding: 6px; }
+  .archive-issue-header { padding: 8px; }
+  .archive-issue-number { font-size: 0.9rem; }
+  .archive-issue-stats { gap: 6px; font-size: 0.72rem; flex-wrap: wrap; }
+  .archive-article-row { padding: 4px; }
+  .section-tab { padding: 2px 5px; font-size: 0.62rem; }
+  .parchment-page-inner { padding: 10px 8px; }
+  .parchment-page-title { font-size: 1.1rem; }
   /* আবহাওয়া ছোট মোবাইল */
   .weather-item-horiz {
-    flex: 1 1 calc(33.33% - 3px);
-    min-width: 70px;
-    padding: 4px 1px;
+    flex: 1 1 calc(33.33% - 2px);
+    min-width: 60px;
+    padding: 3px 1px;
   }
-  .weather-loc { font-size: 0.62rem; }
-  .weather-sym { font-size: 1.2rem; }
-  .weather-desc { font-size: 0.58rem; }
-  /* আর্টিকেল কার্ড ছোট মোবাইল */
-  .grid-article-card { padding: 8px 4px; }
-  .grid-article-title { font-size: 0.88rem; }
-  .grid-article-snippet { font-size: 0.78rem; }
-  .grid-article-meta { font-size: 0.68rem; }
+  .weather-loc { font-size: 0.58rem; }
+  .weather-sym { font-size: 1.1rem; }
+  .weather-desc { font-size: 0.55rem; }
   /* ফুটার ছোট মোবাইল */
-  footer { padding: 8px 0; }
-  footer p { font-size: 0.68rem; }
-  footer nav { gap: 8px; flex-wrap: wrap; justify-content: center; }
-  footer nav a { font-size: 0.7rem; }
-  /* গ্রিড আইটেম ছোট মোবাইল */
-  .grid-wanted .wanted-poster { padding: 8px 6px; font-size: 0.9rem; }
-  .grid-wanted .wanted-name { font-size: 1.05rem; }
-  .grid-wanted .wanted-header { font-size: 0.9rem; }
-  .grid-wanted .parchment-input { font-size: 0.82rem; padding: 6px 8px; }
-  .grid-wanted .magic-btn { font-size: 0.78rem; padding: 7px 8px; }
-  .grid-wanted .wanted-img-frame { width: 90px; height: 108px; }
+  footer { padding: 4px 0; }
+  footer p { font-size: 0.65rem; }
+  footer nav { gap: 6px; flex-wrap: wrap; justify-content: center; }
+  footer nav a { font-size: 0.68rem; }
   /* অ্যাডমিন ও অন্যান্য পেজ */
-  .auth-container { margin: 12px 10px; padding: 20px 16px; }
-  .parchment-page-inner { padding: 12px 10px; }
+  .auth-container { margin: 10px 8px; padding: 16px 12px; }
+  .parchment-page-inner { padding: 10px 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

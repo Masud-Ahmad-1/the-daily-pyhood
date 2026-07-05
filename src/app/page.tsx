@@ -260,8 +260,8 @@ export default function Home() {
                     <span style={{ display: 'block', fontSize: '0.7rem', letterSpacing: '1.5px', fontWeight: 700 }}>পুরস্কার</span>
                     <span className="reward-amount">{wantedPosters[0].reward}</span>
                   </div>
-                  <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px dashed rgba(74,65,42,0.3)' }}>
-                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: 4 }}>
+                  <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px dashed rgba(74,65,42,0.3)' }}>
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: 3 }}>
                       নাম লিখুন:
                     </label>
                     <input
@@ -506,7 +506,7 @@ export default function Home() {
         </main>
 
         {/* ===== ওয়াক্স সিল + ফুটার ===== */}
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '15px 0' }} aria-hidden="true">
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }} aria-hidden="true">
           <div className="wax-seal">
             <div className="seal-inner">
               <span className="seal-letter">P</span>
