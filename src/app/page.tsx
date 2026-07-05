@@ -63,9 +63,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [activeSpell, setActiveSpell] = useState('finite')
   const [soundEnabled, setSoundEnabled] = useState(false)
-  const [wantedName, setWantedName] = useState('সিরিয়াস ব্ল্যাক')
   const [secretUnlocked, setSecretUnlocked] = useState(false)
-  const [wantedRevealed, setWantedRevealed] = useState(false)
 
   const sparkContainer = useRef<HTMLDivElement>(null)
   const spellThrottle = useRef(false)
@@ -144,11 +142,7 @@ export default function Home() {
     window.open('/article/' + article.slug, '_self')
   }
 
-  const triggerRevelio = () => {
-    playSound('magic')
-    setWantedRevealed(true)
-    setTimeout(() => setWantedRevealed(false), 4000)
-  }
+
 
   // ===== লোডিং স্টেট =====
   if (loading) {
@@ -172,8 +166,6 @@ export default function Home() {
   const headline = articles.find(a => a.section === 'headline')
   const otherArticles = articles.filter(a => a.section !== 'headline')
   const tickers = Array.isArray(issue.tickers) ? issue.tickers : []
-  const weathers = Array.isArray(issue.weathers) ? issue.weathers : []
-  const wantedPosters = Array.isArray(issue.wantedPosters) ? issue.wantedPosters : []
   const classifieds = Array.isArray(issue.classifieds) ? issue.classifieds : []
   const decrees = Array.isArray(issue.decrees) ? issue.decrees : []
   const letters = Array.isArray(issue.letters) ? issue.letters : []
@@ -287,56 +279,9 @@ export default function Home() {
         <main id="main-content">
           <div className="newspaper-content-grid">
 
-            {/* ---- রো ১-২: ওয়ান্টেড | প্রধান শিরোনাম (৩ col) | সাইডবার ---- */}
+            {/* ---- রো ১-২: প্রধান শিরোনাম (৩ col) | সাইডবার (১ col) ---- */}
 
-            {/* কলাম ১: ওয়ান্টেড পোস্টার */}
-            {wantedPosters[0] && (
-              <div className="grid-wanted grid-cell">
-                <div className="wanted-poster" style={wantedRevealed ? { borderColor: 'var(--accent-gold)', boxShadow: '0 0 25px var(--accent-gold)' } : {}}>
-                  <div className="wanted-header">এই উইজার্ডকে দেখেছেন কি?</div>
-                  {wantedPosters[0].imageUrl && (
-                    <div className="wanted-img-frame" style={{ margin: '0 auto' }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={wantedPosters[0].imageUrl}
-                        alt="ওয়ান্টেড উইজার্ড"
-                        className={`magical-photo ${wantedRevealed ? '' : 'grayscale-filter'}`}
-                        style={wantedRevealed ? { filter: 'none', mixBlendMode: 'normal' } : {}}
-                        loading="lazy"
-                      />
-                      <div className="wanted-label">ওয়ান্টেড</div>
-                    </div>
-                  )}
-                  <h2 className="wanted-name">{wantedName}</h2>
-                  <p style={{ fontSize: '0.82rem', fontStyle: 'italic', lineHeight: 1.3, padding: '0 8px' }}>
-                    {wantedPosters[0].description}
-                  </p>
-                  <div className="reward-box">
-                    <span style={{ display: 'block', fontSize: '0.7rem', letterSpacing: '1.5px', fontWeight: 700 }}>পুরস্কার</span>
-                    <span className="reward-amount">{wantedPosters[0].reward}</span>
-                  </div>
-                  <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px dashed rgba(74,65,42,0.3)' }}>
-                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: 3 }}>
-                      নাম লিখুন:
-                    </label>
-                    <input
-                      type="text"
-                      className="parchment-input"
-                      placeholder="নাম..."
-                      maxLength={20}
-                      autoComplete="off"
-                      value={wantedName === 'সিরিয়াস ব্ল্যাক' ? '' : wantedName}
-                      onChange={e => setWantedName(e.target.value.trim().toUpperCase() || 'সিরিয়াস ব্ল্যাক')}
-                    />
-                    <button className="magic-btn" onClick={triggerRevelio}>
-                      রেভেলিও
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* কলাম ২-৪: প্রধান শিরোনাম */}
+            {/* কলাম ১-৩: প্রধান শিরোনাম */}
             {headline && (() => {
               const headlineParagraphs = parseContent(headline.content)
               const firstThree = headlineParagraphs.slice(0, 3)
@@ -380,27 +325,8 @@ export default function Home() {
               )
             })()}
 
-            {/* কলাম ৫: সাইডবার (আবহাওয়া + ডিক্রি + চিঠি) */}
+            {/* কলাম ৪: সাইডবার (ডিক্রি + চিঠি + বিজ্ঞাপন) */}
             <div className="grid-sidebar-top grid-cell">
-              {/* আবহাওয়া */}
-              {weathers.length > 0 && (
-                <div className="sidebar-widget">
-                  <h2 className="widget-title">আবহাওয়া</h2>
-                  <div className="weather-single-col">
-                    {weathers.slice(0, 3).map(w => {
-                      const short = w.forecast.split(/[।\,\.\!]/)[0].trim().split(' ').slice(0, 2).join(' ')
-                      return (
-                        <div key={w.id} className="weather-item-horiz">
-                          <span className="weather-loc">{w.location}</span>
-                          <span className="weather-sym" aria-hidden="true">{w.emoji}</span>
-                          <span className="weather-desc">{short}</span>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
-
               {/* ডিক্রি */}
               {decrees[0] && (
                 <div className="sidebar-widget">
@@ -450,10 +376,10 @@ export default function Home() {
               )}
             </div>
 
-            {/* ---- রো ৩: প্রথম ৫টি আর্টিকেল ---- */}
+            {/* ---- রো ৩: প্রথম ৪টি আর্টিকেল ---- */}
             {row1Articles.length > 0 && (
               <div className="grid-articles-row-1">
-                {row1Articles.map(article => (
+                {row1Articles.slice(0, 4).map(article => (
                   <div key={article.id} className="grid-article-card">
                     <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                       {article.title}
@@ -464,8 +390,8 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-                {/* ফাঁকা কার্ড পূরণ যদি ৫টির কম হয় */}
-                {Array.from({ length: Math.max(0, 5 - row1Articles.length) }).map((_, i) => (
+                {/* ফাঁকা কার্ড পূরণ */}
+                {Array.from({ length: Math.max(0, 4 - row1Articles.length) }).map((_, i) => (
                   <div key={`empty-r1-${i}`} className="grid-article-card" />
                 ))}
               </div>
@@ -511,7 +437,7 @@ export default function Home() {
 
               {/* ফাঁকা কার্ড পূরণ */}
               {Array.from({
-                length: Math.max(0, 4 - (classifieds.length > 0 ? row2Articles.length : row2Articles.length - 1))
+                length: Math.max(0, 3 - (classifieds.length > 0 ? row2Articles.length : row2Articles.length - 1))
               }).map((_, i) => (
                 <div key={`empty-r2-${i}`} className="grid-article-card" />
               ))}

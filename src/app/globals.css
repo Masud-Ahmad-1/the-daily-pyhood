@@ -93,11 +93,11 @@ body {
 }
 
 /* ==============================
-   ঐতিহ্যবাহী পত্রিকা গ্রিড (ডেস্কটপ)
+   ঐতিহ্যবাহী পত্রিকা গ্রিড (ডেস্কটপ — ৪ কলাম)
    ============================== */
 .newspaper-content-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr;
+  grid-template-columns: 1.2fr 1fr 1fr 0.85fr;
   border-top: 3px double var(--border-color);
   border-bottom: 3px double var(--border-color);
   overflow: hidden;
@@ -114,26 +114,17 @@ body {
 
 /* প্রধান শিরোনাম: ৩ কলাম span */
 .grid-headline {
-  grid-column: 2 / 5;
+  grid-column: 1 / 4;
   grid-row: 1 / 3;
-  border-left: 2px solid var(--border-color);
   border-right: 2px solid var(--border-color);
   padding: 0 18px;
   min-width: 0;
   overflow: hidden;
 }
 
-/* ওয়ান্টেড: ১ কলাম, ২ রো span */
-.grid-wanted {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
-  min-width: 0;
-  overflow: hidden;
-}
-
 /* সাইডবার: ১ কলাম, ২ রো */
 .grid-sidebar-top {
-  grid-column: 5 / 6;
+  grid-column: 4 / 5;
   grid-row: 1 / 3;
   min-width: 0;
   overflow: hidden;
@@ -141,9 +132,9 @@ body {
 
 /* আর্টিকেল কার্ড গ্রিড - ৩য় রো */
 .grid-articles-row-1 {
-  grid-column: 1 / 6;
+  grid-column: 1 / 5;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 2px solid var(--border-color);
   min-width: 0;
   overflow: hidden;
@@ -151,9 +142,9 @@ body {
 
 /* আর্টিকেল কার্ড গ্রিড - ৪র্থ রো */
 .grid-articles-row-2 {
-  grid-column: 1 / 6;
+  grid-column: 1 / 5;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid rgba(74,65,42,0.15);
   min-width: 0;
   overflow: hidden;
@@ -172,25 +163,12 @@ body {
 
 /* গ্রিডের নিচের ফুল-উইডথ সেকশন */
 .grid-full-row {
-  grid-column: 1 / 6;
+  grid-column: 1 / 5;
   border-top: 2px solid var(--border-color);
   padding: 15px 0;
   min-width: 0;
   overflow: hidden;
 }
-
-/* গ্রিডের ভেতরের ওয়ান্টেড পোস্টার স্টাইল */
-.grid-wanted .wanted-poster {
-  border-width: 5px;
-  padding: 10px;
-  font-size: 0.9rem;
-}
-.grid-wanted .wanted-name { font-size: 1.1rem; }
-.grid-wanted .wanted-header { font-size: 0.95rem; }
-.grid-wanted .reward-amount { font-size: 1rem; }
-.grid-wanted .parchment-input { font-size: 0.8rem; padding: 5px 8px; }
-.grid-wanted .magic-btn { font-size: 0.75rem; padding: 6px 10px; }
-.grid-wanted .wanted-img-frame { width: 100px; height: 120px; }
 
 /* আর্টিকেল কার্ডের ভেতরের শিরোনাম */
 .grid-article-title {
@@ -1359,33 +1337,29 @@ body.nox-active .ad-price { color: var(--accent-gold); }
    রেসপন্সিভ
    ============================== */
 
-/* ট্যাবলেট: ৩ কলাম গ্রিড */
+/* ট্যাবলেট: ২ কলাম গ্রিড */
 @media (max-width: 1024px) {
   .newspaper-content-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   .grid-headline {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
     grid-row: auto;
     border-left: none;
     border-right: none;
     border-bottom: 2px solid var(--border-color);
   }
   .headline-body-text { column-count: 2 !important; }
-  .grid-wanted {
-    grid-column: 1 / 2;
-    grid-row: auto;
-  }
   .grid-sidebar-top {
-    grid-column: 2 / 4;
+    grid-column: 1 / 3;
     grid-row: auto;
   }
   .grid-articles-row-1,
   .grid-articles-row-2 {
-    grid-column: 1 / 4;
-    grid-template-columns: repeat(3, 1fr);
+    grid-column: 1 / 3;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .grid-full-row { grid-column: 1 / 4; }
+  .grid-full-row { grid-column: 1 / 3; }
   .bottom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1402,7 +1376,6 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     overflow: visible;
   }
   .grid-headline,
-  .grid-wanted,
   .grid-sidebar-top {
     grid-column: 1 / -1;
     grid-row: auto;
@@ -1499,12 +1472,6 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .wanted-name { font-size: 1.1rem; margin: 4px 0 2px; }
   .reward-box { margin-top: 4px; padding: 2px; }
   .reward-amount { font-size: 1rem; }
-  .grid-wanted .wanted-poster { padding: 6px; font-size: 0.9rem; }
-  .grid-wanted .wanted-name { font-size: 1.1rem; }
-  .grid-wanted .wanted-header { font-size: 0.95rem; }
-  .grid-wanted .parchment-input { font-size: 0.85rem; padding: 5px 8px; }
-  .grid-wanted .magic-btn { font-size: 0.8rem; padding: 6px 8px; }
-  .grid-wanted .wanted-img-frame { width: 90px; height: 108px; }
   /* সাইডবার উইজেট কমপ্যাক্ট */
   .sidebar-widget { padding: 4px 0; }
   .sidebar-widget .widget-title { margin-bottom: 3px; }
@@ -1637,12 +1604,6 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .wanted-img-frame img { width: 100%; height: 100%; object-fit: cover; }
   .reward-box { margin-top: 4px; padding: 2px; }
   .reward-amount { font-size: 0.9rem; }
-  .grid-wanted .wanted-poster { padding: 6px 4px; font-size: 0.85rem; }
-  .grid-wanted .wanted-name { font-size: 1rem; }
-  .grid-wanted .wanted-header { font-size: 0.85rem; }
-  .grid-wanted .parchment-input { font-size: 0.8rem; padding: 4px 6px; }
-  .grid-wanted .magic-btn { font-size: 0.75rem; padding: 5px 6px; }
-  .grid-wanted .wanted-img-frame { width: 70px; height: 84px; }
   .wand-practice-inner { gap: 6px !important; }
   .wand-practice-inner p { margin-bottom: 2px; }
   .grid-article-title { font-size: 0.85rem; line-height: 1.25; margin-bottom: 2px; }
