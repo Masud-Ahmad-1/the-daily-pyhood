@@ -82,9 +82,9 @@ body {
 }
 
 .newspaper-container {
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 20px 40px;
   position: relative;
   z-index: 2;
 }
@@ -904,38 +904,14 @@ body.nox-active .ad-price { color: var(--accent-gold); }
    রেসপন্সিভ
    ============================== */
 
-/* পোর্ট্রেট মোবাইল: সম্পূর্ণ এক কলাম, পুরো স্ক্রিন জুড়ে */
-@media (orientation: portrait) and (max-width: 900px) {
-  .newspaper-container {
-    max-width: 100%;
-    padding: 10px 12px;
-  }
-  .article-columns { column-count: 1; }
-  .bottom-grid { grid-template-columns: 1fr; }
-  .weather-grid { flex-direction: column; }
-  .related-grid { grid-template-columns: 1fr; }
-  .section-article-grid { grid-template-columns: 1fr; }
-}
-
-/* ল্যান্ডস্কেপ মোবাইল: কমপক্ষে দুই কলাম */
-@media (orientation: landscape) and (max-width: 900px) {
-  .newspaper-container {
-    max-width: 100%;
-    padding: 10px 18px;
-  }
-  .other-articles-grid,
-  .bottom-grid { grid-template-columns: 1fr 1fr; }
-  .weather-grid { flex-wrap: wrap; }
-  .related-grid { grid-template-columns: 1fr 1fr; }
-  .section-article-grid { grid-template-columns: 1fr 1fr; }
-}
-
+/* ট্যাবলেট */
 @media (max-width: 1024px) {
   .bottom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* মোবাইল পোর্ট্রেট */
 @media (max-width: 768px) {
-  .newspaper-container { padding: 12px 14px; }
+  .newspaper-container { padding: 12px 16px; }
   .logo-title { font-size: 2.2rem; letter-spacing: -1px; }
   .logo-tagline { font-size: 0.8rem; }
   .article-columns { column-count: 1; }
@@ -957,6 +933,30 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .full-title { font-size: 1.4rem; }
   .main-headline { font-size: 1.4rem; }
   .main-subheadline { font-size: 0.95rem; }
+  .masthead-decor { display: none; }
+  .wanted-poster { border-width: 5px; padding: 12px; }
+  .wanted-name { font-size: 1.3rem; }
+  .wanted-header { font-size: 1.1rem; }
+  .reward-box { margin-top: 8px; }
+  .secret-box { padding: 12px; }
+  .magic-btn { width: 100%; text-align: center; }
+  .parchment-input { width: 100%; }
+  .photo-frame { margin: 10px 0; max-width: 100%; }
+  .decree-box { padding: 12px; }
+  .decree-body { font-size: 0.9rem; }
+  .mini-article { padding: 10px 8px; }
+  .article-body-text { font-size: 1rem; }
+  .article-author { font-size: 0.85rem; }
+  .ad-container { padding: 10px 8px; }
+  .potion-img-frame { width: 60px; height: 80px; }
+  .section-article-grid { grid-template-columns: 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  .other-articles-grid { grid-template-columns: 1fr; }
+}
+
+/* ছোট মোবাইল */
+@media (max-width: 480px) {
+  .newspaper-container { padding: 8px 8px; }
   .masthead-decor { display: none; }
   .wanted-poster { border-width: 5px; padding: 12px; }
   .wanted-name { font-size: 1.2rem; }
