@@ -10,6 +10,38 @@
   --font-headline: var(--font-playfair-display);
 }
 
+/* ==============================
+   July Font (বাংলা টেক্সট ফন্ট)
+   ============================== */
+@font-face {
+  font-family: 'July';
+  src: url('/fonts/july/July-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'July';
+  src: url('/fonts/july/July-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'July';
+  src: url('/fonts/july/July-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'July';
+  src: url('/fonts/july/July-Bold-Italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* পার্চমেন্ট থিম */
   --bg-parchment: #f2ebd9;
@@ -17,7 +49,7 @@
   --accent-gold: #b59449;
   --accent-red: #8a1f1f;
   --border-color: #4a412a;
-  --font-bengali: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
+  --font-bengali: 'July', 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
   --font-gothic: 'UnifrakturMaguntia', serif;
   --font-display: 'Cinzel Decorative', serif;
   --font-headline: 'Playfair Display', serif;
