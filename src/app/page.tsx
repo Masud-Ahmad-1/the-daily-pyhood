@@ -480,21 +480,20 @@ export default function Home() {
                     )}
                   </div>
                 </div>
+                {/* ওয়াক্স সিল — ডান পাশে */}
+                <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 100 }} aria-hidden="true">
+                  <div className="wax-seal">
+                    <div className="seal-inner">
+                      <span className="seal-letter">P</span>
+                      <span className="seal-text">PYHOOD APPROVED</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
         </main>
-
-        {/* ===== ওয়াক্স সিল + ফুটার ===== */}
-        <div className="wax-seal-wrap" style={{ display: 'flex', justifyContent: 'center', padding: '4px 0' }} aria-hidden="true">
-          <div className="wax-seal">
-            <div className="seal-inner">
-              <span className="seal-letter">P</span>
-              <span className="seal-text">PYHOOD APPROVED</span>
-            </div>
-          </div>
-        </div>
 
         <hr className="double-divider" />
 
