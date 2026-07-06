@@ -1211,6 +1211,7 @@ a:hover { color: var(--accent-red); }
   column-gap: 20px;
   column-rule: 1px solid rgba(74,65,42,0.15);
   font-family: var(--font-bengali);
+  padding: 16px 0;
 }
 .article-body-text p {
   margin-bottom: 8px;
