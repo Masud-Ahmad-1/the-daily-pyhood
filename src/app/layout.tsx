@@ -23,29 +23,29 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "The Daily Pyhood | জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা",
+  title: "পাইপত্র | পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা",
   description:
-    "The Daily Pyhood - জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা। সর্বশেষ জাদুভিত্তিক সংবাদ, ওয়ান্টেড পোস্টার এবং ইন্টারেক্টিভ মন্ত্র পান।",
+    "পাইপত্র - পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা। হ্যারি পটারের দা ডেইলি প্রফেট থেকে অনুপ্রাণিত। সর্বশেষ জাদুভিত্তিক সংবাদ এবং ইন্টারেক্টিভ মন্ত্র পান।",
   keywords: [
-    "Daily Pyhood",
+    "পাইপত্র",
     "হ্যারি পটার",
     "জাদুভিত্তিক সংবাদ",
     "বাংলা পত্রিকা",
-    "pyhood.com",
+    "দৈনিক প্রফেট",
   ],
   icons: {
     icon: "/assets/hogwarts_sketch.png",
   },
   openGraph: {
-    title: "The Daily Pyhood | জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা",
-    description: "জাদুভিত্তিক বিশ্বের সর্বশেষ সংবাদ, ওয়ান্টেড পোস্টার এবং ইন্টারেক্টিভ মন্ত্র।",
-    siteName: "The Daily Pyhood",
+    title: "পাইপত্র | পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা",
+    description: "জাদুবিশ্বের সর্বশেষ সংবাদ এবং ইন্টারেক্টিভ মন্ত্র।",
+    siteName: "পাইপত্র",
     type: "website",
     images: ["/assets/hogwarts_sketch.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Daily Pyhood | জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা",
+    title: "পাইপত্র | পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা",
     description: "জাদুভিত্তিক বিশ্বের সর্বশেষ সংবাদ পড়ুন।",
   },
 };

@@ -128,7 +128,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             const fullHtml = `
               <header class="mini-masthead">
                 <a href="/" style="text-decoration:none;color:inherit">
-                  <h1 class="mini-logo-title">THE DAILY PYHOOD</h1>
+                  <h1 class="mini-logo-title">পাইপত্র</h1>
                 </a>
                 <div class="mini-masthead-info">
                   <span>${dateDisplay}</span>
@@ -151,11 +151,11 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
               </article>
               <hr class="double-divider" />
               <div style="text-align:center;margin:25px 0">
-                <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+                <a href="/" class="article-back-btn">📜 পাইপত্রে ফিরে যান</a>
               </div>
               ${relatedHtml}
               <footer style="text-align:center;padding:10px 0;font-size:0.85rem;font-family:var(--font-bengali);color:var(--border-color);margin-top:auto">
-                <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
+                <p>© ১৭৪৩-২০২৬ পাইপত্র পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
                 <nav style="margin-top:8px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap">
                   <a href="/" style="color:var(--accent-gold);font-weight:700">হোমপেজ</a>
                   <a href="/archive" style="color:var(--accent-gold);font-weight:700">আর্কাইভ</a>
@@ -168,7 +168,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
               <div style="font-size:3rem">🪄</div>
               <h2 style="font-family:var(--font-display);color:var(--accent-red);margin:15px 0">জাদুভিত্তিক ত্রুটি</h2>
               <p style="color:var(--border-color);margin-bottom:20px">প্রতিবেদন প্রদর্শনে সমস্যা হয়েছে।</p>
-              <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+              <a href="/" class="article-back-btn">📜 পাইপত্রে ফিরে যান</a>
             </div>`)
           }
           setLoading(false)
@@ -181,7 +181,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             <h2 style="font-family:var(--font-display);color:var(--accent-red);margin:15px 0">${isSub ? 'সাবস্ক্রিপশন সমস্যা' : 'ত্রুটি'}</h2>
             <p style="color:var(--border-color);margin-bottom:20px">${isSub ? 'এই প্রতিবেদন পড়তে সাবস্ক্রিপশন প্রয়োজন।' : e.message || 'প্রতিবেদন পাওয়া যায়নি'}</p>
             ${isSub ? '<a href="/subscribe" class="article-back-btn" style="background:var(--accent-gold);color:#000;border-color:var(--accent-gold)">🔮 সাবস্ক্রিপশন পেজে যান</a><br/><br/>' : ''}
-            <a href="/" class="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+            <a href="/" class="article-back-btn">📜 পাইপত্রে ফিরে যান</a>
           </div>`)
           setLoading(false)
         })

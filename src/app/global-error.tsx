@@ -65,7 +65,7 @@ export default function GlobalError({
               textDecoration: 'none',
               borderBottom: '1px dotted #b59449',
             }}>
-              📜 ডেইলি পাইহুডে ফিরে যান
+              📜 পাইপত্রে ফিরে যান
             </a>
           </div>
         </div>

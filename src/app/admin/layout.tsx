@@ -114,7 +114,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="text-lg font-bold"
               style={{ fontFamily: 'var(--font-display)', color: '#b59449' }}
             >
-              PYHOOD
+              পাইপত্র
             </h1>
             <p className="text-xs" style={{ color: '#8a7a5a' }}>
               সম্পাদক প্যানেল

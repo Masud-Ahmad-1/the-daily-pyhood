@@ -55,7 +55,7 @@ interface Issue {
 }
 
 const emptyForm = {
-  title: 'The Daily Pyhood',
+  title: 'পাইপত্র',
   priceGalleons: 5,
   publishDate: new Date().toISOString().split('T')[0],
   isPublished: false,

@@ -88,7 +88,7 @@ export default function ArchivePage() {
         {/* মাস্টহেড */}
         <header className="mini-masthead">
           <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <h1 className="mini-logo-title">THE DAILY PYHOOD</h1>
+            <h1 className="mini-logo-title">পাইপত্র</h1>
           </a>
           <div className="mini-masthead-info">
             <span>📰 আর্কাইভ</span>
@@ -161,11 +161,11 @@ export default function ArchivePage() {
         <hr className="double-divider" />
 
         <div style={{ textAlign: 'center', margin: '20px 0' }}>
-          <a href="/" className="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+          <a href="/" className="article-back-btn">📜 পাইপত্রে ফিরে যান</a>
         </div>
 
         <footer style={{ textAlign: 'center', padding: '10px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)', marginTop: 'auto' }}>
-          <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
+          <p>© ১৭৪৩-২০২৬ পাইপত্র পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
           <nav style={{ marginTop: 8, display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap' }}>
             <a href="/" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>হোমপেজ</a>
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>আর্কাইভ</a>

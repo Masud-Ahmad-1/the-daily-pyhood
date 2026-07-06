@@ -90,7 +90,7 @@ export default function AdminDashboardPage() {
           স্বাগতম, সম্পাদক 🪄
         </h1>
         <p className="text-sm mt-1" style={{ color: '#6b5e4f' }}>
-          The Daily Pyhood পত্রিকার অ্যাডমিন প্যানেল
+          পাইপত্র পত্রিকার অ্যাডমিন প্যানেল
         </p>
       </div>
 

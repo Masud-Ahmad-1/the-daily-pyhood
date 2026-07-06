@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     const issue = await db.issue.create({
       data: {
         issueNumber: nextNumber,
-        title: title || 'The Daily Pyhood',
+        title: title || 'পাইপত্র',
         priceGalleons: priceGalleons ?? 5,
         publishDate: publishDate ? new Date(publishDate) : new Date(),
         isPublished: isPublished ?? false,

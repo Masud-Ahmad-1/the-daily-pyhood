@@ -48,7 +48,7 @@ export default function AdminLoginPage() {
             className="text-2xl"
             style={{ fontFamily: 'var(--font-display)', color: '#1f1f1e' }}
           >
-            THE DAILY PYHOOD
+            পাইপত্র
           </CardTitle>
           <CardDescription style={{ fontFamily: 'var(--font-bengali)', color: '#4a412a' }}>
             মন্ত্রণালয় সম্পাদক প্যানেলে প্রবেশ করুন

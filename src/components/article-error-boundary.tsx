@@ -42,7 +42,7 @@ export class ArticleErrorBoundary extends Component<
               🔮 সাবস্ক্রিপশন পেজে যান
             </a>
           )}
-          <a href="/" className="article-back-btn">📜 ডেইলি পাইহুডে ফিরে যান</a>
+          <a href="/" className="article-back-btn">📜 পাইপত্রে ফিরে যান</a>
         </div>
       )
     }

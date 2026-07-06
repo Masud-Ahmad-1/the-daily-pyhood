@@ -16,7 +16,7 @@ export default function CopyrightProtection() {
 function CopyrightEffects() {
   const handleCopy = useCallback((e: ClipboardEvent) => {
     e.preventDefault()
-    toast.error('📜 ডেইলি পাইহুডের কপিরাইট সুরক্ষিত। অনুমোদন ছাড়া কপি করা নিষিধ্ধ।', {
+    toast.error('📜 পাইপত্রের কপিরাইট সুরক্ষিত। অনুমোদন ছাড়া কপি করা নিষিধ্ধ।', {
       duration: 3000,
       position: 'top-center',
     })
@@ -30,7 +30,7 @@ function CopyrightEffects() {
     // Ctrl+C ব্লক (copy event handler দিয়ে হ্যান্ডেল হলেও অতিরিক্ত সুরক্ষা)
     if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
       e.preventDefault()
-      toast.error('📜 ডেইলি পাইহুডের কপিরাইট সুরক্ষিত। অনুমোদন ছাড়া কপি করা নিষিধ্ধ।', {
+      toast.error('📜 পাইপত্রের কপিরাইট সুরক্ষিত। অনুমোদন ছাড়া কপি করা নিষিধ্ধ।', {
         duration: 3000,
         position: 'top-center',
       })

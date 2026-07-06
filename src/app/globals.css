@@ -11,6 +11,17 @@
 }
 
 /* ==============================
+   Li Subha Letterpress (পত্রিকা নামের ফন্ট)
+   ============================== */
+@font-face {
+  font-family: 'Li Subha Letterpress';
+  src: url('/fonts/li-subha/LiSubha-Letterpress-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==============================
    July Font (বাংলা টেক্সট ফন্ট)
    ============================== */
 @font-face {
@@ -444,11 +455,11 @@ a:hover { color: var(--accent-red); }
   text-transform: uppercase;
 }
 .logo-title-v2 {
-  font-family: var(--font-gothic);
+  font-family: 'Li Subha Letterpress', var(--font-bengali);
   font-size: 4.2rem;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 3px;
-  line-height: 1;
+  line-height: 1.1;
   color: var(--ink-color);
   margin: 0;
   text-shadow: 2px 2px 0px rgba(0,0,0,0.06);
@@ -1801,10 +1812,10 @@ body.nox-active .secret-box.locked .lock-icon {
 }
 
 .mini-logo-title {
-  font-family: var(--font-display);
+  font-family: 'Li Subha Letterpress', var(--font-bengali);
   font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-weight: 400;
+  letter-spacing: 1px;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
 }
 
@@ -2311,7 +2322,7 @@ body.nox-active .article-back-btn { background: var(--accent-gold); color: #000;
   position: relative;
 }
 .copyright-overlay::after {
-  content: "© The Daily Pyhood";
+  content: "© পাইপত্র";
   position: absolute;
   bottom: 8px;
   right: 8px;

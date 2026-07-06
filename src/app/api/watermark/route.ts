@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const watermarkText = text || '© The Daily Pyhood'
+    const watermarkText = text || '© পাইপত্র'
 
     // ইমেজ ফেচ করুন
     let imageBuffer: Buffer

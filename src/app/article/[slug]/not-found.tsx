@@ -24,7 +24,7 @@ export default function NotFound() {
         আপনি যে প্রতিবেদনটি খুঁজছেন তা বিদ্যমান নয় অথবা সরানো হয়েছে।
       </p>
       <Link href="/" className="article-back-btn">
-        📜 ডেইলি পাইহুডে ফিরে যান
+        📜 পাইপত্রে ফিরে যান
       </Link>
     </div>
   )

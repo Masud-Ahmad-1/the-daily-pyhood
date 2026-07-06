@@ -198,7 +198,7 @@ export default function Home() {
           </nav>
 
           {/* মূল মাস্টহেড */}
-          <header className="masthead-v2" role="banner" aria-label="The Daily Pyhood পত্রিকার মাস্টহেড">
+          <header className="masthead-v2" role="banner" aria-label="পাইপত্র পত্রিকার মাস্টহেড">
             {/* বাম: সূর্যরশ্মি এমবলেম */}
             <div className="masthead-emblem" aria-hidden="true">
               <div className="emblem-outer">
@@ -215,9 +215,9 @@ export default function Home() {
 
             {/* কেন্দ্র: শিরোনাম */}
             <div className="masthead-center">
-              <p className="masthead-tagline-v2">জাদুভিত্তিক বিশ্বের শীর্ষ পত্রিকা</p>
-              <h1 className="logo-title-v2">THE DAILY PYHOOD</h1>
-              <p className="masthead-subtitle-v2">লন্ডন থেকে প্রকাশিত</p>
+              <p className="masthead-tagline-v2">পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা</p>
+              <h1 className="logo-title-v2">পাইপত্র</h1>
+              <p className="masthead-subtitle-v2">(হ্যারি পটারের দা ডেইলি প্রফেট থেকে অনুপ্রাণিত)</p>
             </div>
 
             {/* ডান: ইস্যু স্ট্যাম্প */}
@@ -504,7 +504,7 @@ export default function Home() {
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
             <a href="/subscribe" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>🔮 সাবস্ক্রিপশন</a>
           </nav>
-          <p>© ১৭৪৩-২০২৬ ডেইলি পাইহুড পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
+          <p>© ১৭৪৩-২০২৬ পাইপত্র পাবলিকেশনস লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
         </footer>
       </div>
     </div>

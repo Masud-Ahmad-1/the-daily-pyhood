@@ -35,7 +35,7 @@ export default function Error({
         আবার চেষ্টা করুন
       </button>
       <a href="/" className="article-back-btn">
-        📜 ডেইলি পাইহুডে ফিরে যান
+        📜 পাইপত্রে ফিরে যান
       </a>
     </div>
   )
