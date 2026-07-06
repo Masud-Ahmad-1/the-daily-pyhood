@@ -149,6 +149,7 @@ body {
   grid-column: 1 / 5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
   border-top: 2px solid var(--border-color);
   min-width: 0;
   overflow: hidden;
