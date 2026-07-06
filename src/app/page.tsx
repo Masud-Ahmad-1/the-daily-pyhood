@@ -199,33 +199,11 @@ export default function Home() {
 
           {/* মূল মাস্টহেড */}
           <header className="masthead-v2" role="banner" aria-label="পাইপত্র পত্রিকার মাস্টহেড">
-            {/* বাম: সূর্যরশ্মি এমবলেম */}
-            <div className="masthead-emblem" aria-hidden="true">
-              <div className="emblem-outer">
-                <div className="emblem-sunburst">
-                  {[...Array(12)].map((_, i) => (
-                    <span key={i} className="sun-ray" style={{ transform: `rotate(${i * 30}deg)` }} />
-                  ))}
-                </div>
-                <div className="emblem-inner">
-                  <span className="emblem-letter">P</span>
-                </div>
-              </div>
-            </div>
-
             {/* কেন্দ্র: শিরোনাম */}
             <div className="masthead-center">
               <p className="masthead-tagline-v2">পাইহুড নিবেদিত জাদুবিশ্বের শীর্ষ পত্রিকা</p>
               <h1 className="logo-title-v2">পাইপত্র</h1>
               <p className="masthead-subtitle-v2">(হ্যারি পটারের দা ডেইলি প্রফেট থেকে অনুপ্রাণিত)</p>
-            </div>
-
-            {/* ডান: ইস্যু স্ট্যাম্প */}
-            <div className="masthead-stamp" aria-hidden="true">
-              <div className="stamp-box">
-                <div className="stamp-number">{String(issue.issueNumber).padStart(5, '0')}</div>
-                <div className="stamp-label">WIZARDING WORLD</div>
-              </div>
             </div>
           </header>
 
@@ -247,21 +225,6 @@ export default function Home() {
             <span className="issue-price">মূল্য: {issue.priceGalleons} গ্যালিয়ন</span>
             <span className="issue-sep">|</span>
             <span className="issue-num">নং {issue.issueNumber.toLocaleString('bn-BD')}</span>
-          </div>
-
-          {/* শীর্ষ কীওয়ার্ড বার */}
-          <div className="masthead-keywords" aria-hidden="true">
-            <span>জাদু</span>
-            <span className="kw-sep">✦</span>
-            <span>রহস্য</span>
-            <span className="kw-sep">✦</span>
-            <span>মন্ত্র</span>
-            <span className="kw-sep">✦</span>
-            <span>প্রভাব</span>
-            <span className="kw-sep">✦</span>
-            <span>আদেশ</span>
-            <span className="kw-sep">✦</span>
-            <span>রহস্যময়</span>
           </div>
         </div>
 
