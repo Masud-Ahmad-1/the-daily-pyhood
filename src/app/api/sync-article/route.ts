@@ -31,17 +31,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, articleId: article.id })
     }
 
-    if (!id || !content) {
-      return NextResponse.json({ error: 'id ও content প্রয়োজন' }, { status: 400 })
+    if (!id) {
+      return NextResponse.json({ error: 'id প্রয়োজন' }, { status: 400 })
     }
+
+    const data: Record<string, unknown> = { updatedAt: new Date() }
+    if (content) data.content = content
+    if (snippet) data.snippet = snippet
 
     const article = await db.article.update({
       where: { id },
-      data: {
-        content,
-        ...(snippet && { snippet }),
-        updatedAt: new Date(),
-      },
+      data,
     })
 
     return NextResponse.json({ success: true, articleId: article.id })
