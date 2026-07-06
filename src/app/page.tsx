@@ -173,9 +173,9 @@ export default function Home() {
 
   const tickerMessages = tickers.map(t => `⚡ ${t.message}`).join(' ')
 
-  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৬টি, দ্বিতীয় সারিতে বাকি
-  const row1Articles = otherArticles.slice(0, 6)
-  const row2Articles = otherArticles.slice(6, 10)
+  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৫টি, দ্বিতীয় সারিতে বাকি
+  const row1Articles = otherArticles.slice(0, 5)
+  const row2Articles = otherArticles.slice(5, 10)
 
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
@@ -339,10 +339,10 @@ export default function Home() {
               )}
             </div>
 
-            {/* ---- রো ৩: প্রথম ৬টি আর্টিকেল (৪ + ২) ---- */}
+            {/* ---- রো ৩: প্রথম ৪টি আর্টিকেল ---- */}
             {row1Articles.length > 0 && (
               <div className="grid-articles-row-1">
-                {row1Articles.map(article => (
+                {row1Articles.slice(0, 4).map(article => (
                   <div key={article.id} className="grid-article-card">
                     <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                       {article.title}
@@ -354,7 +354,7 @@ export default function Home() {
                   </div>
                 ))}
                 {/* ফাঁকা কার্ড পূরণ */}
-                {Array.from({ length: Math.max(0, 6 - row1Articles.length) }).map((_, i) => (
+                {Array.from({ length: Math.max(0, 4 - row1Articles.length) }).map((_, i) => (
                   <div key={`empty-r1-${i}`} className="grid-article-card" />
                 ))}
               </div>
