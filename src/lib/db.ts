@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaLibSql } from '@prisma/adapter-libsql'
+import { PrismaLibSQL } from '@prisma/adapter-libsql'
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
@@ -8,7 +8,7 @@ const globalForPrisma = globalThis as unknown as {
 function createPrismaClient() {
   const DATABASE_URL = process.env.DATABASE_URL || ''
   if (DATABASE_URL.startsWith('libsql://')) {
-    const adapter = new PrismaLibSql({ url: DATABASE_URL })
+    const adapter = new PrismaLibSQL({ url: DATABASE_URL })
     return new PrismaClient({
       adapter,
       log: process.env.NODE_ENV === 'development' ? ['query'] : [],

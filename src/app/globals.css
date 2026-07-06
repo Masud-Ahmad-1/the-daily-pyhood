@@ -66,7 +66,7 @@ body {
   color: var(--ink-color);
   font-family: var(--font-bengali);
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.5;
   overflow-x: hidden;
 }
 
@@ -189,8 +189,8 @@ body {
 
 /* গ্রিড আর্টিকেল স্নিপেট */
 .grid-article-snippet {
-  font-size: 0.85rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.45;
   color: rgba(31,31,30,0.8);
   text-align: justify;
   flex: 1;
@@ -211,8 +211,8 @@ body {
 }
 .sidebar-widget:last-child { border-bottom: none; }
 .sidebar-widget .widget-title {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
 }
 
 /* ==============================
@@ -972,9 +972,9 @@ a:hover { color: var(--accent-red); }
 
 .decree-body {
   font-family: var(--font-bengali);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.45;
   margin-bottom: 10px;
   padding: 0 10px;
 }
@@ -997,7 +997,7 @@ a:hover { color: var(--accent-red); }
 }
 
 .classified-body {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   line-height: 1.4;
   text-align: justify;
   font-family: var(--font-bengali);
@@ -1057,7 +1057,7 @@ a:hover { color: var(--accent-red); }
   font-family: var(--font-bengali);
 }
 .letter-body {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.4;
   font-style: italic;
   font-family: var(--font-bengali);
@@ -1492,8 +1492,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .main-subheadline { font-size: 0.85rem; margin-bottom: 4px; padding-bottom: 4px; }
   .headline-body-text {
     column-count: 1 !important;
-    font-size: 0.85rem !important;
-    line-height: 1.65 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
   }
   .headline-body-text p { margin-bottom: 3px; }
   .photo-frame { margin: 4px 0; max-width: 100%; padding: 8px; }
@@ -1609,7 +1609,7 @@ body.nox-active .ad-price { color: var(--accent-gold); }
   .grid-article-title { font-size: 0.85rem; line-height: 1.25; margin-bottom: 2px; }
   .grid-article-snippet { font-size: 0.75rem; line-height: 1.4; }
   .grid-article-meta { font-size: 0.65rem; margin-top: 2px; }
-  .headline-body-text { font-size: 0.82rem !important; line-height: 1.6 !important; }
+  .headline-body-text { font-size: 0.85rem !important; line-height: 1.45 !important; }
   .headline-body-text p { margin-bottom: 3px; }
   .sidebar-widget { padding: 4px 0; }
   .decree-box { border-width: 2px; padding: 6px 4px; }

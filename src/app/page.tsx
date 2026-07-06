@@ -309,7 +309,7 @@ export default function Home() {
                         {headline.imageCaption && <p className="photo-caption">{headline.imageCaption}</p>}
                       </div>
                     )}
-                    <div className="headline-body-text" style={{ columnGap: '16px', columnRule: '1px solid rgba(74,65,42,0.15)', textAlign: 'justify', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                    <div className="headline-body-text" style={{ columnGap: '16px', columnRule: '1px solid rgba(74,65,42,0.15)', textAlign: 'justify', fontSize: '0.9rem', lineHeight: 1.45 }}>
                       {firstThree.map((para, i) => (
                         <p key={i} style={{ marginBottom: 8, textIndent: i === 0 ? 0 : '1.5em' }}>
                           {i === 0 && <span className="drop-cap" style={{ fontSize: '3rem', float: 'left', lineHeight: 0.85, paddingRight: 6, color: 'var(--accent-red)', fontFamily: 'var(--font-bn-headline)' }}>{para.charAt(0)}</span>}
@@ -333,7 +333,7 @@ export default function Home() {
                   <div className="decree-box">
                     <div className="decree-header">{decrees[0].title}</div>
                     <div className="decree-number">{decrees[0].decreeNumber}</div>
-                    <p className="decree-body" style={{ fontSize: '0.82rem' }}>&ldquo;{decrees[0].body}&rdquo;</p>
+                    <p className="decree-body" style={{ fontSize: '0.9rem' }}>&ldquo;{decrees[0].body}&rdquo;</p>
                     <div className="decree-sign">স্বাক্ষরিত: {decrees[0].signedBy}</div>
                   </div>
                 </div>
@@ -343,8 +343,8 @@ export default function Home() {
               {letters[0] && (
                 <div className="sidebar-widget">
                   <h2 className="widget-title">পাঠকের চিঠি</h2>
-                  <span className="letter-author" style={{ fontSize: '0.8rem' }}>{letters[0].author}:</span>
-                  <p className="letter-body" style={{ fontSize: '0.82rem' }}>&ldquo;{letters[0].body}&rdquo;</p>
+                  <span className="letter-author" style={{ fontSize: '0.88rem' }}>{letters[0].author}:</span>
+                  <p className="letter-body" style={{ fontSize: '0.9rem' }}>&ldquo;{letters[0].body}&rdquo;</p>
                 </div>
               )}
 
@@ -354,7 +354,7 @@ export default function Home() {
                   <div className="ad-container" style={{ padding: 0 }}>
                     <div className="ad-label">বিজ্ঞাপন</div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <h3 className="ad-title" style={{ fontSize: '0.9rem' }}>
+                      <h3 className="ad-title" style={{ fontSize: '0.95rem' }}>
                         {ads[0].articleSlug ? (
                           <a onClick={() => {
                             const linked = articles.find(a => a.slug === ads[0].articleSlug)
@@ -362,14 +362,14 @@ export default function Home() {
                           }}>{ads[0].title}</a>
                         ) : ads[0].title}
                       </h3>
-                      {ads[0].subtitle && <p className="ad-subtitle" style={{ fontSize: '0.78rem' }}>{ads[0].subtitle}</p>}
+                      {ads[0].subtitle && <p className="ad-subtitle" style={{ fontSize: '0.85rem' }}>{ads[0].subtitle}</p>}
                       {ads[0].imageUrl && (
                         <div className="potion-img-frame" style={{ width: 60, height: 80 }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={ads[0].imageUrl} alt={ads[0].title} className="magical-photo potion-photo" loading="lazy" />
                         </div>
                       )}
-                      {ads[0].price && <span className="ad-price" style={{ fontSize: '0.8rem' }}>{ads[0].price}</span>}
+                      {ads[0].price && <span className="ad-price" style={{ fontSize: '0.88rem' }}>{ads[0].price}</span>}
                     </div>
                   </div>
                 </div>
@@ -402,11 +402,11 @@ export default function Home() {
               {/* ক্লাসিফাইড */}
               {classifieds.length > 0 ? (
                 <div className="grid-article-card">
-                  <h3 className="widget-title" style={{ fontSize: '0.9rem', marginBottom: 6 }}>দৈনিক বিজ্ঞাপন</h3>
+                  <h3 className="widget-title" style={{ fontSize: '0.95rem', marginBottom: 6 }}>দৈনিক বিজ্ঞাপন</h3>
                   {classifieds.slice(0, 3).map((c, i) => (
                     <div key={c.id} style={i > 0 ? { marginTop: 6, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 6 } : {}}>
-                      <span className="classified-heading" style={{ fontSize: '0.78rem', fontWeight: 700 }}>{c.heading}</span>
-                      <p className="classified-body" style={{ fontSize: '0.78rem', lineHeight: 1.4 }}>{c.body}</p>
+                      <span className="classified-heading" style={{ fontSize: '0.88rem', fontWeight: 700 }}>{c.heading}</span>
+                      <p className="classified-body" style={{ fontSize: '0.88rem', lineHeight: 1.4 }}>{c.body}</p>
                     </div>
                   ))}
                 </div>
@@ -448,7 +448,7 @@ export default function Home() {
               <div className="wand-practice-inner" style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'flex-start' }}>
                 <div style={{ flex: '1 1 300px' }}>
                   <h2 className="widget-title">ওয়ান্ড প্র্যাকটিস</h2>
-                  <p style={{ fontSize: '0.85rem', marginBottom: 10 }}>
+                  <p style={{ fontSize: '0.9rem', marginBottom: 10 }}>
                     পত্রিকার উপর আপনার ওয়ান্ড (মাউস) ঘুরিয়ে জাদুভিত্তিক স্পার্ক দেখুন!
                   </p>
                   <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }} aria-label="মন্ত্র নিয়ন্ত্রণ">
