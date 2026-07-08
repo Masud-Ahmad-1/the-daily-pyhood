@@ -176,6 +176,7 @@ export default function Home() {
   // আর্টিকেল সারিগুলো: প্রথম সারিতে ৩টি, দ্বিতীয় সারিতে ৬টি (ক্লাসিফাইড span 2 + ৩x২)
   const row1Articles = otherArticles.slice(0, 3)
   const row2Articles = otherArticles.slice(3, 9)
+  const grid2Articles = classifieds.length > 0 ? row2Articles.slice(0, 6) : row2Articles.slice(1, 7)
 
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
@@ -358,7 +359,6 @@ export default function Home() {
 
             {/* ---- রো ৪: ক্লাসিফাইড (span 2) + ৬টি আর্টিকেল (৩x২) ---- */}
             <div className="grid-articles-row-2">
-              {/* ক্লাসিফাইড — ২ রো জুড়ে span */}
               {classifieds.length > 0 ? (
                 <div className="grid-article-card classified-card">
                   <h3 className="widget-title" style={{ fontSize: '0.95rem', marginBottom: 6 }}>দৈনিক বিজ্ঞাপন</h3>
@@ -370,19 +370,16 @@ export default function Home() {
                   ))}
                 </div>
               ) : (
-                row2Articles.length > 0 && (
-                  <div className="grid-article-card classified-card">
-                    <h3 className="grid-article-title" onClick={() => openArticle(row2Articles[0])}>
-                      {row2Articles[0].title}
-                    </h3>
-                    <p className="grid-article-snippet">{row2Articles[0].snippet}</p>
-                    <div className="grid-article-meta">{row2Articles[0].category} • {row2Articles[0].author}</div>
-                  </div>
-                )
+                <div className="grid-article-card classified-card">
+                  <h3 className="grid-article-title" onClick={() => openArticle(row2Articles[0])}>
+                    {row2Articles[0].title}
+                  </h3>
+                  <p className="grid-article-snippet">{row2Articles[0].snippet}</p>
+                  <div className="grid-article-meta">{row2Articles[0].category} • {row2Articles[0].author}</div>
+                </div>
               )}
 
-              {/* ৬টি আর্টিকেল কার্ড — ক্লাসিফাইড ছাড়া */
-              {(classifieds.length > 0 ? row2Articles.slice(0, 6) : row2Articles.slice(1, 7)).map(article => (
+              {grid2Articles.map(article => (
                 <div key={article.id} className="grid-article-card">
                   <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                     {article.title}
