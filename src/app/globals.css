@@ -154,8 +154,21 @@ body {
   overflow: hidden;
 }
 
-/* আর্টিকেল কার্ড গ্রিড - ৪র্থ রো */
-.grid-articles-row-2,
+/* আর্টিকেল কার্ড গ্রিড - ৪র্থ রো (ক্লাসিফাইড span 2 + ৩x২ নিউজ) */
+.grid-articles-row-2 {
+  grid-column: 1 / 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  border-top: 1px solid rgba(74,65,42,0.15);
+  min-width: 0;
+  overflow: hidden;
+}
+.grid-articles-row-2 .classified-card {
+  grid-row: 1 / 3;
+}
+
+/* আর্টিকেল কার্ড গ্রিড - ৪b রো (অবচিত) */
 .grid-articles-row-2b {
   grid-column: 1 / 5;
   display: grid;
@@ -210,7 +223,7 @@ body {
   text-align: justify;
   align-self: flex-start;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -173,9 +173,9 @@ export default function Home() {
 
   const tickerMessages = tickers.map(t => `⚡ ${t.message}`).join(' ')
 
-  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৫টি, দ্বিতীয় সারিতে বাকি
-  const row1Articles = otherArticles.slice(0, 5)
-  const row2Articles = otherArticles.slice(5, 10)
+  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৩টি, দ্বিতীয় সারিতে ৬টি (ক্লাসিফাইড span 2 + ৩x২)
+  const row1Articles = otherArticles.slice(0, 3)
+  const row2Articles = otherArticles.slice(3, 9)
 
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
@@ -339,10 +339,10 @@ export default function Home() {
               )}
             </div>
 
-            {/* ---- রো ৩: প্রথম ৪টি আর্টিকেল ---- */}
+            {/* ---- রো ৩: প্রথম ৩টি আর্টিকেল ---- */}
             {row1Articles.length > 0 && (
               <div className="grid-articles-row-1">
-                {row1Articles.slice(0, 4).map(article => (
+                {row1Articles.map(article => (
                   <div key={article.id} className="grid-article-card">
                     <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                       {article.title}
@@ -356,11 +356,11 @@ export default function Home() {
               </div>
             )}
 
-            {/* ---- রো ৪: ক্লাসিফাইড + প্রথম ৩টি আর্টিকেল ---- */}
+            {/* ---- রো ৪: ক্লাসিফাইড (span 2) + ৬টি আর্টিকেল (৩x২) ---- */}
             <div className="grid-articles-row-2">
-              {/* ক্লাসিফাইড */}
+              {/* ক্লাসিফাইড — ২ রো জুড়ে span */}
               {classifieds.length > 0 ? (
-                <div className="grid-article-card">
+                <div className="grid-article-card classified-card">
                   <h3 className="widget-title" style={{ fontSize: '0.95rem', marginBottom: 6 }}>দৈনিক বিজ্ঞাপন</h3>
                   {classifieds.slice(0, 3).map((c, i) => (
                     <div key={c.id} style={i > 0 ? { marginTop: 6, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 6 } : {}}>
@@ -371,7 +371,7 @@ export default function Home() {
                 </div>
               ) : (
                 row2Articles.length > 0 && (
-                  <div className="grid-article-card">
+                  <div className="grid-article-card classified-card">
                     <h3 className="grid-article-title" onClick={() => openArticle(row2Articles[0])}>
                       {row2Articles[0].title}
                     </h3>
@@ -381,8 +381,8 @@ export default function Home() {
                 )
               )}
 
-              {/* প্রথম সারির বাকি আর্টিকেল */}
-              {(classifieds.length > 0 ? row2Articles.slice(0, 3) : row2Articles.slice(1, 4)).map(article => (
+              {/* ৬টি আর্টিকেল কার্ড — ক্লাসিফাইড ছাড়া */
+              {(classifieds.length > 0 ? row2Articles.slice(0, 6) : row2Articles.slice(1, 7)).map(article => (
                 <div key={article.id} className="grid-article-card">
                   <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                     {article.title}
@@ -394,23 +394,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            {/* ---- রো ৪b: বাকি আর্টিকেল ---- */}
-            {(classifieds.length > 0 ? row2Articles.slice(3) : row2Articles.slice(4)).length > 0 && (
-              <div className="grid-articles-row-2b">
-                {(classifieds.length > 0 ? row2Articles.slice(3) : row2Articles.slice(4)).map(article => (
-                  <div key={article.id} className="grid-article-card">
-                    <h3 className="grid-article-title" onClick={() => openArticle(article)}>
-                      {article.title}
-                    </h3>
-                    <p className="grid-article-snippet">{article.snippet}</p>
-                    <div className="grid-article-meta">
-                      {article.category} • {article.author}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
 
             {/* ---- রো ৫: ওয়ান্ড প্র্যাকটিস (ফুল উইডথ) ---- */}
             <div className="grid-full-row">
