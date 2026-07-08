@@ -1,0 +1,12 @@
+{
+  "name": "The Daily Pyhood",
+  "short_name": "Pyhood",
+  "description": "জাদুভিত্তিক বিশ্বের শীর্ষ বাংলা পত্রিকা",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2ebd9",
+  "theme_color": "#b59449",
+  "icons": [
+    { "src": "/assets/hogwarts_sketch.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

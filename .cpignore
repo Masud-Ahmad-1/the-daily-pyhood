@@ -1,0 +1,17 @@
+# cPanel Node.js সেটআপের জন্য প্রয়োজনীয়
+node_modules/
+.next/
+db/*.db
+db/*.db-journal
+*.log
+.env
+.env.local
+.env.production
+download/
+upload/
+agent-ctx/
+tool-results/
+daily-prophet/
+examples/
+.git/
+.gitignore
