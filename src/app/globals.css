@@ -155,7 +155,8 @@ body {
 }
 
 /* আর্টিকেল কার্ড গ্রিড - ৪র্থ রো */
-.grid-articles-row-2 {
+.grid-articles-row-2,
+.grid-articles-row-2b {
   grid-column: 1 / 5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -207,7 +208,7 @@ body {
   line-height: 1.3;
   color: rgba(31,31,30,0.8);
   text-align: justify;
-  flex: 1;
+  align-self: flex-start;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -1380,7 +1381,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     grid-row: auto;
   }
   .grid-articles-row-1,
-  .grid-articles-row-2 {
+  .grid-articles-row-2,
+  .grid-articles-row-2b {
     grid-column: 1 / 3;
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1411,7 +1413,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
     overflow: visible;
   }
   .grid-articles-row-1,
-  .grid-articles-row-2 {
+  .grid-articles-row-2,
+  .grid-articles-row-2b {
     grid-column: 1 / -1;
     grid-template-columns: 1fr 1fr;
     overflow: visible;
@@ -1557,7 +1560,8 @@ body.nox-active .ad-price { color: var(--accent-gold); }
 @media (max-width: 480px) {
   .newspaper-container { padding: 4px; width: 100%; max-width: 100%; }
   .grid-articles-row-1,
-  .grid-articles-row-2 {
+  .grid-articles-row-2,
+  .grid-articles-row-2b {
     grid-template-columns: 1fr;
   }
   .grid-article-card { padding: 6px 2px; }

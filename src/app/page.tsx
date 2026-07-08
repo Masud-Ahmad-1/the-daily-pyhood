@@ -353,14 +353,10 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-                {/* ফাঁকা কার্ড পূরণ */}
-                {Array.from({ length: Math.max(0, 4 - row1Articles.length) }).map((_, i) => (
-                  <div key={`empty-r1-${i}`} className="grid-article-card" />
-                ))}
               </div>
             )}
 
-            {/* ---- রো ৪: দ্বিতীয় সারি আর্টিকেল + ক্লাসিফাইড ---- */}
+            {/* ---- রো ৪: ক্লাসিফাইড + প্রথম ৩টি আর্টিকেল ---- */}
             <div className="grid-articles-row-2">
               {/* ক্লাসিফাইড */}
               {classifieds.length > 0 ? (
@@ -385,8 +381,8 @@ export default function Home() {
                 )
               )}
 
-              {/* বাকি আর্টিকেল */}
-              {(classifieds.length > 0 ? row2Articles : row2Articles.slice(1)).map(article => (
+              {/* প্রথম সারির বাকি আর্টিকেল */}
+              {(classifieds.length > 0 ? row2Articles.slice(0, 3) : row2Articles.slice(1, 4)).map(article => (
                 <div key={article.id} className="grid-article-card">
                   <h3 className="grid-article-title" onClick={() => openArticle(article)}>
                     {article.title}
@@ -397,14 +393,24 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-
-              {/* ফাঁকা কার্ড পূরণ */}
-              {Array.from({
-                length: Math.max(0, 3 - (classifieds.length > 0 ? row2Articles.length : row2Articles.length - 1))
-              }).map((_, i) => (
-                <div key={`empty-r2-${i}`} className="grid-article-card" />
-              ))}
             </div>
+
+            {/* ---- রো ৪b: বাকি আর্টিকেল ---- */}
+            {(classifieds.length > 0 ? row2Articles.slice(3) : row2Articles.slice(4)).length > 0 && (
+              <div className="grid-articles-row-2b">
+                {(classifieds.length > 0 ? row2Articles.slice(3) : row2Articles.slice(4)).map(article => (
+                  <div key={article.id} className="grid-article-card">
+                    <h3 className="grid-article-title" onClick={() => openArticle(article)}>
+                      {article.title}
+                    </h3>
+                    <p className="grid-article-snippet">{article.snippet}</p>
+                    <div className="grid-article-meta">
+                      {article.category} • {article.author}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* ---- রো ৫: ওয়ান্ড প্র্যাকটিস (ফুল উইডথ) ---- */}
             <div className="grid-full-row">
