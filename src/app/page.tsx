@@ -173,10 +173,10 @@ export default function Home() {
 
   const tickerMessages = tickers.map(t => `⚡ ${t.message}`).join(' ')
 
-  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৩টি, দ্বিতীয় সারিতে ৬টি (ক্লাসিফাইড span 2 + ৩x২)
-  const row1Articles = otherArticles.slice(0, 3)
-  const row2Articles = otherArticles.slice(3, 9)
-  const grid2Articles = classifieds.length > 0 ? row2Articles.slice(0, 6) : row2Articles.slice(1, 7)
+  // আর্টিকেল সারিগুলো: প্রথম সারিতে ৪টি, দ্বিতীয় সারিতে ক্লাসিফাইড span 2 + ৫টি আর্টিকেল
+  const row1Articles = otherArticles.slice(0, 4)
+  const row2Articles = otherArticles.slice(4, 9)
+  const grid2Articles = classifieds.length > 0 ? row2Articles.slice(0, 5) : row2Articles.slice(1, 6)
 
   return (
     <div className="parchment-bg min-h-screen flex flex-col">
