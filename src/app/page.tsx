@@ -116,8 +116,22 @@ export default function Home() {
       createSparkle(e.clientX, e.clientY)
       setTimeout(() => { spellThrottle.current = false }, 15)
     }
+    const touchHandler = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      document.body.style.setProperty('--cursor-x', `${touch.clientX}px`)
+      document.body.style.setProperty('--cursor-y', `${touch.clientY}px`)
+      if (spellThrottle.current) return
+      spellThrottle.current = true
+      createSparkle(touch.clientX, touch.clientY)
+      setTimeout(() => { spellThrottle.current = false }, 15)
+    }
     window.addEventListener('mousemove', handler)
-    return () => window.removeEventListener('mousemove', handler)
+    window.addEventListener('touchmove', touchHandler, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handler)
+      window.removeEventListener('touchmove', touchHandler)
+    }
   }, [createSparkle])
 
   const playSound = (type: 'page' | 'magic') => {

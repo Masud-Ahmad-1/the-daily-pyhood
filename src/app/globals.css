@@ -1260,7 +1260,7 @@ body.nox-active .parchment-bg {
   --bg-parchment: #161513;
   box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
 }
-body.nox-active { background-color: #f2ebd9; }
+body.nox-active { background-color: #0e0d0c; }
 body.nox-active .spell-glow { display: none; }
 body.nox-active { color: #e4d8bc; }
 body.nox-active a:hover { color: #ffdf7a; }
@@ -1305,6 +1305,74 @@ body.nox-active .column-divider { border-top-color: rgba(228,216,188,0.15); }
 body.nox-active .bottom-card { border-color: rgba(228,216,188,0.1); background: rgba(255,255,255,0.01); }
 body.nox-active .decree-box { border-color: rgba(228,216,188,0.25); background: rgba(255,255,255,0.01); }
 body.nox-active .ad-price { color: var(--accent-gold); }
+
+/* কনফুন্ডো — বেগুনি ভ্রম ইফেক্ট */
+body.confundo-active { background-color: #1a0f20; }
+body.confundo-active .parchment-bg {
+  --bg-parchment: #1e1226;
+  box-shadow: inset 0 0 40px rgba(74,20,140,0.3);
+}
+body.confundo-active { color: #d4c4e8; }
+body.confundo-active a:hover { color: #ce93d8; }
+body.confundo-active .logo-title { color: #ce93d8; text-shadow: 0 0 12px rgba(206,147,216,0.5); }
+body.confundo-active .logo-title-v2 { color: #ce93d8; text-shadow: 0 0 12px rgba(206,147,216,0.5); }
+body.confundo-active .masthead-tagline-v2,
+body.confundo-active .masthead-subtitle-v2 { color: rgba(212,196,232,0.5); }
+body.confundo-active .masthead-keywords { color: rgba(212,196,232,0.3); }
+body.confundo-active .issue-bar-v2 { color: #d4c4e8; border-color: rgba(206,147,216,0.2); }
+body.confundo-active .issue-sep { color: rgba(206,147,216,0.2); }
+body.confundo-active .ornament-line { background: linear-gradient(to right, transparent, rgba(206,147,216,0.3), transparent); }
+body.confundo-active .ornament-fleur { color: rgba(206,147,216,0.5); }
+body.confundo-active .ornament-wing { color: rgba(206,147,216,0.4); }
+body.confundo-active .top-nav-bar { color: rgba(212,196,232,0.5); }
+body.confundo-active .nav-link-sm { color: rgba(206,147,216,0.6); }
+body.confundo-active .nav-link-sm:hover { color: #ce93d8; }
+body.confundo-active .nav-divider-dot { color: rgba(206,147,216,0.2); }
+body.confundo-active .grid-article-title { color: #ce93d8; }
+body.confundo-active .grid-article-snippet { color: rgba(212,196,232,0.7); }
+body.confundo-active .widget-title { color: #ce93d8; }
+body.confundo-active .main-headline a { color: #e1bee7; }
+body.confundo-active .main-subheadline { color: rgba(212,196,232,0.7); }
+body.confundo-active .drop-cap { color: #ce93d8; }
+body.confundo-active .decree-box { border-color: rgba(206,147,216,0.3); background: rgba(74,20,140,0.05); }
+body.confundo-active .decree-header { color: #ce93d8; }
+body.confundo-active .classified-heading { color: #ce93d8; }
+body.confundo-active .wax-seal { background: #2a1535; background-image: radial-gradient(circle at 35% 35%, #3d1f4e 0%, #1a0f20 100%); }
+body.confundo-active .seal-letter, body.confundo-active .seal-text { color: #d4c4e8; }
+body.confundo-active .photo-frame { background: #1e1226; }
+body.confundo-active .photo-caption { color: #d4c4e8; }
+body.confundo-active .ticker-container { background: rgba(74,20,140,0.15); border-color: rgba(206,147,216,0.2); }
+body.confundo-active .ticker-label { color: #ce93d8; }
+body.confundo-active .double-divider { border-color: rgba(206,147,216,0.2); }
+body.confundo-active .spell-btn.active {
+  background: #9c27b0;
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156,39,176,0.6);
+}
+body.confundo-active .magic-btn {
+  background: linear-gradient(135deg, #4a148c, #7b1fa2);
+  box-shadow: 0 0 12px rgba(156,39,176,0.4);
+}
+body.confundo-active .secret-box.unlocked {
+  border-color: rgba(206,147,216,0.3);
+  background: rgba(74,20,140,0.1);
+}
+body.confundo-active .secret-content { color: #d4c4e8; }
+body.confundo-active .grid-article-card { border-color: rgba(206,147,216,0.12); }
+body.confundo-active .grid-article-meta { color: rgba(212,196,232,0.5); }
+body.confundo-active .site-footer { color: rgba(212,196,232,0.4); }
+body.confundo-active .site-footer a { color: #ce93d8; }
+body.confundo-active .spell-glow {
+  opacity: 1;
+  background: radial-gradient(circle 200px at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(156,39,176,0.15) 0%, rgba(74,20,140,0.3) 50%, transparent 80%);
+}
+body.confundo-active .parchment-bg {
+  animation: confundo-shimmer 3s ease-in-out infinite;
+}
+@keyframes confundo-shimmer {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(15deg); }
+}
 
 /* স্পার্কল */
 .sparkle-layer {
