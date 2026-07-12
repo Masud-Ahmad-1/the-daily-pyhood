@@ -1908,9 +1908,6 @@ body.nox-active .parchment-input {
   background: rgba(0,0,0,0.4);
   color: #e4d8bc;
 }
-body.nox-active .magic-btn {
-  color: #000;
-}
 body.nox-active .secret-box.locked .lock-icon {
   color: var(--accent-gold);
 }
