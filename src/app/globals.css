@@ -1608,13 +1608,17 @@ body.confundo-active .parchment-bg {
   .reward-amount { font-size: 1rem; }
   /* সাইডবার উইজেট কমপ্যাক্ট */
   .sidebar-widget { padding: 4px 0; }
-  .sidebar-widget .widget-title { margin-bottom: 3px; }
+  .sidebar-widget .widget-title { margin-bottom: 3px; font-size: 1rem; }
   .widget-title { font-size: 1rem; }
   .decree-box { padding: 8px; }
   .decree-body { font-size: 1rem; }
+  .decree-sign { font-size: 1rem; }
   .letter-body { font-size: 1rem; }
   .ad-container { padding: 6px 0; }
-  .potion-img-frame { width: 50px; height: 66px; }
+  .ad-label { font-size: 1rem; }
+  .ad-title { font-size: 1rem; }
+  .ad-subtitle { font-size: 1rem; }
+  .ad-price { font-size: 1rem; }
   /* আবহাওয়া মোবাইল */
   .weather-single-col { flex-wrap: wrap; gap: 3px; }
   .weather-item-horiz { flex: 1 1 calc(33.33% - 3px); min-width: 80px; padding: 4px 2px; }
@@ -1730,6 +1734,8 @@ body.confundo-active .parchment-bg {
   .drop-cap { font-size: 2.2rem; padding-right: 3px; }
   .ad-title { font-size: 1rem; }
   .ad-subtitle { font-size: 1rem; }
+  .ad-label { font-size: 1rem; }
+  .ad-price { font-size: 1rem; }
   .wanted-header { font-size: 1rem; margin-bottom: 3px; padding-bottom: 2px; }
   .wanted-name { font-size: 1rem; margin: 4px 0 1px; }
   .wanted-poster { border-width: 2px; padding: 4px 3px; }
@@ -1749,6 +1755,7 @@ body.confundo-active .parchment-bg {
   .decree-body { font-size: 1rem; }
   .decree-header { font-size: 1rem; }
   .decree-number { font-size: 1rem; }
+  .decree-sign { font-size: 1rem; }
   .magic-btn { font-size: 1rem; padding: 6px; min-height: 44px; }
   .secret-box { padding: 6px 4px; }
   .potion-img-frame { width: 44px; height: 58px; }
