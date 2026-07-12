@@ -1560,14 +1560,14 @@ body.confundo-active .parchment-bg {
   .kw-sep { margin: 0 6px; font-size: 0.35rem; }
   .masthead-v2 { padding: 6px 4px 4px; }
   .logo-title-v2 { font-size: 1.9rem; letter-spacing: 1px; }
-  .masthead-tagline-v2 { font-size: 0.85rem; letter-spacing: 1px; }
-  .masthead-subtitle-v2 { font-size: 0.85rem; letter-spacing: 2px; margin-top: 2px; }
+  .masthead-tagline-v2 { font-size: 0.9rem; letter-spacing: 1px; }
+  .masthead-subtitle-v2 { font-size: 0.9rem; letter-spacing: 2px; margin-top: 2px; }
   .masthead-ornament { padding: 2px 8px; gap: 3px; }
   .ornament-wing { display: none; }
   .ornament-line { max-width: 80px; }
   .ornament-fleur { font-size: 0.45rem; }
   .ornament-diamond { font-size: 0.35rem; }
-  .issue-bar-v2 { font-size: 0.65rem; padding: 3px 6px; }
+  .issue-bar-v2 { font-size: 0.8rem; padding: 3px 6px; }
   .issue-sep { margin: 0 6px; }
   /* টুলবার কমপ্যাক্ট */
   .top-toolbar {
@@ -1594,7 +1594,7 @@ body.confundo-active .parchment-bg {
     height: auto;
     padding: 6px 8px;
   }
-  .ticker-label { font-size: 0.75rem; padding: 3px 6px; }
+  .ticker-label { font-size: 0.875rem; padding: 4px 8px; }
   /* ডিভাইডার কমপ্যাক্ট */
   .double-divider {
     margin: 6px 0;
@@ -1609,7 +1609,7 @@ body.confundo-active .parchment-bg {
   /* সাইডবার উইজেট কমপ্যাক্ট */
   .sidebar-widget { padding: 4px 0; }
   .sidebar-widget .widget-title { margin-bottom: 3px; }
-  .widget-title { font-size: 0.85rem; }
+  .widget-title { font-size: 0.9rem; }
   .decree-box { padding: 8px; }
   .decree-body { font-size: 0.95rem; }
   .letter-body { font-size: 0.95rem; }
@@ -1632,15 +1632,15 @@ body.confundo-active .parchment-bg {
   .headline-body-text p { margin-bottom: 3px; }
   .photo-frame { margin: 4px 0; max-width: 100%; padding: 8px; }
   .photo-border img { max-width: 100%; height: auto; }
-  .read-more { font-size: 0.8rem; display: inline-block; padding: 8px 0; }
+  .read-more { font-size: 0.875rem; display: inline-block; padding: 8px 0; }
   /* আর্টিকেল কার্ড কমপ্যাক্ট */
-  .grid-article-title { font-size: 0.9rem; line-height: 1.3; margin-bottom: 3px; }
-  .grid-article-snippet { font-size: 0.9rem; line-height: 1.3; }
-  .grid-article-meta { font-size: 0.7rem; margin-top: 3px; }
+  .grid-article-title { font-size: 0.95rem; line-height: 1.35; margin-bottom: 3px; }
+  .grid-article-snippet { font-size: 0.9rem; line-height: 1.35; }
+  .grid-article-meta { font-size: 0.8rem; margin-top: 3px; }
   /* ওয়ান্ড প্র্যাকটিস কমপ্যাক্ট */
   .grid-full-row > div { flex-direction: column !important; gap: 8px !important; }
   .grid-full-row > div > div { flex: 1 1 100% !important; min-width: 0 !important; }
-  .spell-btn { font-size: 0.72rem; padding: 8px 12px; min-height: 36px; }
+  .spell-btn { font-size: 0.875rem; padding: 8px 14px; min-height: 44px; }
   .magic-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 10px; min-height: 40px; }
   .secret-box { padding: 6px; margin-top: 6px; }
   .parchment-input { width: 100%; box-sizing: border-box; margin-bottom: 4px; }
@@ -1655,8 +1655,8 @@ body.confundo-active .parchment-bg {
   /* ফুটার কমপ্যাক্ট */
   footer { padding: 4px 0 !important; }
   footer nav { gap: 6px; margin-bottom: 4px; }
-  footer nav a { font-size: 0.7rem; }
-  footer p { font-size: 0.65rem; }
+  footer nav a { font-size: 0.875rem; }
+  footer p { font-size: 0.8rem; }
   /* অন্যান্য */
   .bottom-grid { grid-template-columns: 1fr; }
   .article-columns { column-count: 1; }
@@ -1686,51 +1686,51 @@ body.confundo-active .parchment-bg {
   .masthead { margin: 4px 0; }
   .top-toolbar { padding: 2px 0; gap: 3px; margin-bottom: 2px; }
   .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 3px; }
-  .spell-btn { font-size: 0.65rem; padding: 8px 10px; min-height: 36px; }
+  .spell-btn { font-size: 0.8rem; padding: 8px 12px; min-height: 44px; }
   /* মাস্টহেড V2 ছোট মোবাইল */
   .masthead-block { border-width: 2px; }
   .masthead-block::before { inset: 3px; }
   .masthead-block::after { display: none; }
-  .top-nav-bar { font-size: 0.75rem; gap: 2px; padding: 2px 0 0; border-bottom: none; }
-  .masthead-keywords { font-size: 0.75rem; padding: 2px 0 1px; gap: 0; }
+  .top-nav-bar { font-size: 0.85rem; gap: 2px; padding: 2px 0 0; border-bottom: none; }
+  .masthead-keywords { font-size: 0.85rem; padding: 2px 0 1px; gap: 0; }
   .kw-sep { margin: 0 4px; }
   .masthead-v2 { padding: 4px 0 2px; }
   .logo-title-v2 { font-size: 1.4rem; letter-spacing: 0; }
-  .masthead-tagline-v2 { font-size: 0.75rem; }
-  .masthead-subtitle-v2 { font-size: 0.75rem; letter-spacing: 1.5px; margin-top: 1px; }
+  .masthead-tagline-v2 { font-size: 0.85rem; }
+  .masthead-subtitle-v2 { font-size: 0.85rem; letter-spacing: 1.5px; margin-top: 1px; }
   .masthead-ornament { padding: 1px 4px; gap: 2px; }
   .ornament-wing { display: none; }
   .ornament-line { max-width: 50px; }
   .ornament-fleur, .ornament-diamond { font-size: 0.3rem; }
-  .issue-bar-v2 { font-size: 0.75rem; padding: 2px 4px; flex-wrap: wrap; gap: 0; }
+  .issue-bar-v2 { font-size: 0.8rem; padding: 2px 4px; flex-wrap: wrap; gap: 0; }
   .issue-sep { margin: 0 4px; }
   .ticker-container { flex-direction: column; height: auto; padding: 3px 4px; }
-  .ticker-label { font-size: 0.7rem; }
-  .ticker-wrap { font-size: 0.65rem; }
-  .issue-bar { font-size: 0.65rem; padding: 2px 4px; gap: 1px 6px; }
+  .ticker-label { font-size: 0.8rem; }
+  .ticker-wrap { font-size: 0.8rem; }
+  .issue-bar { font-size: 0.8rem; padding: 2px 4px; gap: 1px 6px; }
   .double-divider { margin: 0; height: 3px; }
   .main-headline { font-size: 1.05rem; line-height: 1.3; margin-bottom: 3px; }
-  .main-subheadline { font-size: 0.78rem; margin-bottom: 4px; }
+  .main-subheadline { font-size: 0.8rem; margin-bottom: 4px; }
   .full-title { font-size: 1rem; line-height: 1.3; }
-  .full-subtitle { font-size: 0.75rem; }
+  .full-subtitle { font-size: 0.8rem; }
   .wax-seal { width: 36px; height: 36px; }
   .seal-inner { width: 28px; height: 28px; top: 4px; left: 4px; }
   .seal-letter { font-size: 0.85rem; }
   .seal-text { font-size: 0.3rem; letter-spacing: 0.3px; }
-  .widget-title { font-size: 0.82rem; margin-bottom: 3px; }
-  .mini-title { font-size: 0.85rem; }
-  .mini-snippet { font-size: 0.75rem; }
+  .widget-title { font-size: 0.875rem; margin-bottom: 3px; }
+  .mini-title { font-size: 0.9rem; }
+  .mini-snippet { font-size: 0.8rem; }
   .block-title { font-size: 0.9rem; }
-  .block-snippet { font-size: 0.78rem; }
+  .block-snippet { font-size: 0.8rem; }
   .card-title { font-size: 0.9rem; }
-  .card-snippet { font-size: 0.75rem; }
-  .classified-heading { font-size: 0.82rem; }
-  .classified-body { font-size: 0.72rem; }
-  .lead-para { font-size: 0.82rem; }
+  .card-snippet { font-size: 0.8rem; }
+  .classified-heading { font-size: 0.9rem; }
+  .classified-body { font-size: 0.8rem; }
+  .lead-para { font-size: 0.9rem; }
   .drop-cap { font-size: 2.2rem; padding-right: 3px; }
-  .ad-title { font-size: 0.85rem; }
-  .ad-subtitle { font-size: 0.68rem; }
-  .wanted-header { font-size: 0.85rem; margin-bottom: 3px; padding-bottom: 2px; }
+  .ad-title { font-size: 0.9rem; }
+  .ad-subtitle { font-size: 0.8rem; }
+  .wanted-header { font-size: 0.9rem; margin-bottom: 3px; padding-bottom: 2px; }
   .wanted-name { font-size: 1rem; margin: 4px 0 1px; }
   .wanted-poster { border-width: 2px; padding: 4px 3px; }
   .wanted-img-frame { width: 70px; height: 84px; }
@@ -1739,29 +1739,29 @@ body.confundo-active .parchment-bg {
   .reward-amount { font-size: 0.9rem; }
   .wand-practice-inner { gap: 6px !important; }
   .wand-practice-inner p { margin-bottom: 2px; }
-  .grid-article-title { font-size: 0.85rem; line-height: 1.25; margin-bottom: 2px; }
-  .grid-article-snippet { font-size: 0.85rem; line-height: 1.3; }
-  .grid-article-meta { font-size: 0.65rem; margin-top: 2px; }
+  .grid-article-title { font-size: 0.9rem; line-height: 1.3; margin-bottom: 2px; }
+  .grid-article-snippet { font-size: 0.875rem; line-height: 1.35; }
+  .grid-article-meta { font-size: 0.8rem; margin-top: 2px; }
   .headline-body-text { font-size: 0.9rem !important; line-height: 1.3 !important; }
   .headline-body-text p { margin-bottom: 3px; }
   .sidebar-widget { padding: 4px 0; }
   .decree-box { border-width: 2px; padding: 6px 4px; }
   .decree-body { font-size: 0.9rem; }
-  .decree-header { font-size: 0.8rem; }
-  .decree-number { font-size: 0.65rem; }
-  .magic-btn { font-size: 0.75rem; padding: 6px; }
+  .decree-header { font-size: 0.875rem; }
+  .decree-number { font-size: 0.8rem; }
+  .magic-btn { font-size: 0.8rem; padding: 6px; min-height: 44px; }
   .secret-box { padding: 6px 4px; }
   .potion-img-frame { width: 44px; height: 58px; }
   .article-body-text { font-size: 0.9rem; line-height: 1.3; column-count: 1; }
   .article-author { font-size: 0.8rem; }
-  .article-back-btn { font-size: 0.75rem; padding: 6px 12px; }
+  .article-back-btn { font-size: 0.8rem; padding: 8px 12px; }
   .mini-article { padding: 4px 2px; }
   .bottom-card { padding: 6px; }
   .archive-issue-header { padding: 8px; }
   .archive-issue-number { font-size: 0.9rem; }
-  .archive-issue-stats { gap: 6px; font-size: 0.72rem; flex-wrap: wrap; }
+  .archive-issue-stats { gap: 6px; font-size: 0.8rem; flex-wrap: wrap; }
   .archive-article-row { padding: 4px; }
-  .section-tab { padding: 2px 5px; font-size: 0.62rem; }
+  .section-tab { padding: 3px 6px; font-size: 0.7rem; }
   .parchment-page-inner { padding: 10px 8px; }
   .parchment-page-title { font-size: 1.1rem; }
   /* আবহাওয়া ছোট মোবাইল */
@@ -1770,14 +1770,14 @@ body.confundo-active .parchment-bg {
     min-width: 60px;
     padding: 3px 1px;
   }
-  .weather-loc { font-size: 0.58rem; }
+  .weather-loc { font-size: 0.65rem; }
   .weather-sym { font-size: 1.1rem; }
-  .weather-desc { font-size: 0.55rem; }
+  .weather-desc { font-size: 0.65rem; }
   /* ফুটার ছোট মোবাইল */
   footer { padding: 4px 0; }
-  footer p { font-size: 0.65rem; }
+  footer p { font-size: 0.8rem; }
   footer nav { gap: 6px; flex-wrap: wrap; justify-content: center; }
-  footer nav a { font-size: 0.68rem; }
+  footer nav a { font-size: 0.8rem; }
   /* অ্যাডমিন ও অন্যান্য পেজ */
   .auth-container { margin: 10px 8px; padding: 16px 12px; }
   .parchment-page-inner { padding: 10px 8px; }
