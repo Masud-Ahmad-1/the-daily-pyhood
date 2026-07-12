@@ -287,7 +287,7 @@ export default function Home() {
                         {headline.imageCaption && <p className="photo-caption">{headline.imageCaption}</p>}
                       </div>
                     )}
-                    <div className="headline-body-text" style={{ columnGap: '16px', columnRule: '1px solid rgba(74,65,42,0.15)', textAlign: 'justify', fontSize: '1rem', lineHeight: 1.3 }}>
+                    <div className="headline-body-text" style={{ columnGap: '16px', columnRule: '1px solid rgba(74,65,42,0.15)', textAlign: 'justify', fontSize: '1.25rem', lineHeight: 1.3 }}>
                       {firstThree.map((para, i) => (
                         <p key={i} style={{ marginBottom: 8, textIndent: i === 0 ? 0 : '1.5em' }}>
                           {i === 0 && <span className="drop-cap" style={{ fontSize: '3rem', float: 'left', lineHeight: 0.85, paddingRight: 6, color: 'var(--accent-red)', fontFamily: 'var(--font-bn-headline)' }}>{para.charAt(0)}</span>}
@@ -311,7 +311,7 @@ export default function Home() {
                   <div className="decree-box">
                     <div className="decree-header">{decrees[0].title}</div>
                     <div className="decree-number">{decrees[0].decreeNumber}</div>
-                    <p className="decree-body" style={{ fontSize: '1rem' }}>&ldquo;{decrees[0].body}&rdquo;</p>
+                    <p className="decree-body" style={{ fontSize: '1.25rem' }}>&ldquo;{decrees[0].body}&rdquo;</p>
                     <div className="decree-sign">স্বাক্ষরিত: {decrees[0].signedBy}</div>
                   </div>
                 </div>
@@ -321,8 +321,8 @@ export default function Home() {
               {letters[0] && (
                 <div className="sidebar-widget">
                   <h2 className="widget-title">পাঠকের চিঠি</h2>
-                  <span className="letter-author" style={{ fontSize: '1rem' }}>{letters[0].author}:</span>
-                  <p className="letter-body" style={{ fontSize: '1rem' }}>&ldquo;{letters[0].body}&rdquo;</p>
+                  <span className="letter-author" style={{ fontSize: '1.25rem' }}>{letters[0].author}:</span>
+                  <p className="letter-body" style={{ fontSize: '1.25rem' }}>&ldquo;{letters[0].body}&rdquo;</p>
                 </div>
               )}
 
@@ -378,8 +378,8 @@ export default function Home() {
                   <h3 className="widget-title">দৈনিক বিজ্ঞাপন</h3>
                   {classifieds.slice(0, 3).map((c, i) => (
                     <div key={c.id} style={i > 0 ? { marginTop: 6, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 6 } : {}}>
-                      <span className="classified-heading" style={{ fontSize: '1rem', fontWeight: 700 }}>{c.heading}</span>
-                      <p className="classified-body" style={{ fontSize: '1rem', lineHeight: 1.3 }}>{c.body}</p>
+                      <span className="classified-heading" style={{ fontSize: '1.25rem', fontWeight: 700 }}>{c.heading}</span>
+                      <p className="classified-body" style={{ fontSize: '1.25rem', lineHeight: 1.3 }}>{c.body}</p>
                     </div>
                   ))}
                 </div>
@@ -411,7 +411,7 @@ export default function Home() {
               <div className="wand-practice-inner" style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'flex-start' }}>
                 <div style={{ flex: '1 1 300px' }}>
                   <h2 className="widget-title">ওয়ান্ড প্র্যাকটিস</h2>
-                  <p style={{ fontSize: '1rem', marginBottom: 10 }}>
+                  <p style={{ fontSize: '1.25rem', marginBottom: 10 }}>
                     পত্রিকার উপর আপনার ওয়ান্ড (মাউস) ঘুরিয়ে জাদুভিত্তিক স্পার্ক দেখুন!
                   </p>
                   <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }} aria-label="মন্ত্র নিয়ন্ত্রণ">
