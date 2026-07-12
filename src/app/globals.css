@@ -1608,17 +1608,17 @@ body.confundo-active .parchment-bg {
   .reward-amount { font-size: 1rem; }
   /* সাইডবার উইজেট কমপ্যাক্ট */
   .sidebar-widget { padding: 4px 0; }
-  .sidebar-widget .widget-title { margin-bottom: 3px; font-size: 1rem; }
+  .sidebar-widget .widget-title { margin-bottom: 3px; font-size: 1rem !important; }
   .widget-title { font-size: 1rem; }
   .decree-box { padding: 8px; }
   .decree-body { font-size: 1rem; }
   .decree-sign { font-size: 1rem; }
   .letter-body { font-size: 1rem; }
   .ad-container { padding: 6px 0; }
-  .ad-label { font-size: 1rem; }
-  .ad-title { font-size: 1rem; }
-  .ad-subtitle { font-size: 1rem; }
-  .ad-price { font-size: 1rem; }
+  .ad-label { font-size: 1rem !important; }
+  .ad-title { font-size: 1rem !important; }
+  .ad-subtitle { font-size: 1rem !important; }
+  .ad-price { font-size: 1rem !important; }
   /* আবহাওয়া মোবাইল */
   .weather-single-col { flex-wrap: wrap; gap: 3px; }
   .weather-item-horiz { flex: 1 1 calc(33.33% - 3px); min-width: 80px; padding: 4px 2px; }
@@ -1645,7 +1645,7 @@ body.confundo-active .parchment-bg {
   .grid-full-row > div { flex-direction: column !important; gap: 8px !important; }
   .grid-full-row > div > div { flex: 1 1 100% !important; min-width: 0 !important; }
   .spell-btn { font-size: 1rem; padding: 8px 14px; min-height: 44px; }
-  .magic-btn { width: 100%; text-align: center; font-size: 1rem; padding: 10px; min-height: 44px; }
+  .magic-btn { width: 100%; text-align: center; font-size: 1rem !important; padding: 10px; min-height: 44px; }
   .secret-box { padding: 6px; margin-top: 6px; }
   .parchment-input { width: 100%; box-sizing: border-box; margin-bottom: 4px; }
   /* ওয়ান্ড প্র্যাকটিস gap কমানো */
@@ -1721,6 +1721,7 @@ body.confundo-active .parchment-bg {
   .seal-inner { width: 28px; height: 28px; top: 4px; left: 4px; }
   .seal-letter { font-size: 0.85rem; }
   .seal-text { font-size: 0.3rem; letter-spacing: 0.3px; }
+  .sidebar-widget .widget-title { font-size: 1rem !important; margin-bottom: 3px; }
   .widget-title { font-size: 1rem; margin-bottom: 3px; }
   .mini-title { font-size: 1rem; }
   .mini-snippet { font-size: 1rem; }
@@ -1732,10 +1733,10 @@ body.confundo-active .parchment-bg {
   .classified-body { font-size: 1rem; }
   .lead-para { font-size: 1rem; }
   .drop-cap { font-size: 2.2rem; padding-right: 3px; }
-  .ad-title { font-size: 1rem; }
-  .ad-subtitle { font-size: 1rem; }
-  .ad-label { font-size: 1rem; }
-  .ad-price { font-size: 1rem; }
+  .ad-title { font-size: 1rem !important; }
+  .ad-subtitle { font-size: 1rem !important; }
+  .ad-label { font-size: 1rem !important; }
+  .ad-price { font-size: 1rem !important; }
   .wanted-header { font-size: 1rem; margin-bottom: 3px; padding-bottom: 2px; }
   .wanted-name { font-size: 1rem; margin: 4px 0 1px; }
   .wanted-poster { border-width: 2px; padding: 4px 3px; }
@@ -1756,7 +1757,7 @@ body.confundo-active .parchment-bg {
   .decree-header { font-size: 1rem; }
   .decree-number { font-size: 1rem; }
   .decree-sign { font-size: 1rem; }
-  .magic-btn { font-size: 1rem; padding: 6px; min-height: 44px; }
+  .magic-btn { font-size: 1rem !important; padding: 6px; min-height: 44px; }
   .secret-box { padding: 6px 4px; }
   .potion-img-frame { width: 44px; height: 58px; }
   .article-body-text { font-size: 1rem; line-height: 1.4; column-count: 1; }
