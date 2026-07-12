@@ -1553,21 +1553,21 @@ body.confundo-active .parchment-bg {
   .masthead-block::before { inset: 4px; }
   .masthead-block::after { font-size: 0.4rem; padding: 0 8px; }
   /* মাস্টহেড V2 মোবাইল */
-  .top-nav-bar { font-size: 0.85rem; gap: 3px; padding: 6px 0 2px; border-bottom: none; }
+  .top-nav-bar { font-size: 1rem; gap: 3px; padding: 6px 0 2px; border-bottom: none; }
   .nav-link-sm { padding: 8px 6px; }
   .nav-status { display: none; }
-  .masthead-keywords { font-size: 0.85rem; padding: 4px 0 5px; letter-spacing: 1px; }
+  .masthead-keywords { font-size: 1rem; padding: 4px 0 5px; letter-spacing: 1px; }
   .kw-sep { margin: 0 6px; font-size: 0.35rem; }
   .masthead-v2 { padding: 6px 4px 4px; }
   .logo-title-v2 { font-size: 1.9rem; letter-spacing: 1px; }
-  .masthead-tagline-v2 { font-size: 0.9rem; letter-spacing: 1px; }
-  .masthead-subtitle-v2 { font-size: 0.9rem; letter-spacing: 2px; margin-top: 2px; }
+  .masthead-tagline-v2 { font-size: 1rem; letter-spacing: 1px; }
+  .masthead-subtitle-v2 { font-size: 1rem; letter-spacing: 2px; margin-top: 2px; }
   .masthead-ornament { padding: 2px 8px; gap: 3px; }
   .ornament-wing { display: none; }
   .ornament-line { max-width: 80px; }
   .ornament-fleur { font-size: 0.45rem; }
   .ornament-diamond { font-size: 0.35rem; }
-  .issue-bar-v2 { font-size: 0.8rem; padding: 3px 6px; }
+  .issue-bar-v2 { font-size: 1rem; padding: 3px 6px; }
   .issue-sep { margin: 0 6px; }
   /* টুলবার কমপ্যাক্ট */
   .top-toolbar {
@@ -1580,7 +1580,7 @@ body.confundo-active .parchment-bg {
   .top-toolbar > div { flex-wrap: wrap; justify-content: center; }
   /* ইস্যু বার কমপ্যাক্ট */
   .issue-bar {
-    font-size: 0.75rem;
+    font-size: 1rem;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -1594,7 +1594,7 @@ body.confundo-active .parchment-bg {
     height: auto;
     padding: 6px 8px;
   }
-  .ticker-label { font-size: 0.875rem; padding: 4px 8px; }
+  .ticker-label { font-size: 1rem; padding: 4px 8px; }
   /* ডিভাইডার কমপ্যাক্ট */
   .double-divider {
     margin: 6px 0;
@@ -1609,39 +1609,39 @@ body.confundo-active .parchment-bg {
   /* সাইডবার উইজেট কমপ্যাক্ট */
   .sidebar-widget { padding: 4px 0; }
   .sidebar-widget .widget-title { margin-bottom: 3px; }
-  .widget-title { font-size: 0.9rem; }
+  .widget-title { font-size: 1rem; }
   .decree-box { padding: 8px; }
-  .decree-body { font-size: 0.95rem; }
-  .letter-body { font-size: 0.95rem; }
+  .decree-body { font-size: 1rem; }
+  .letter-body { font-size: 1rem; }
   .ad-container { padding: 6px 0; }
   .potion-img-frame { width: 50px; height: 66px; }
   /* আবহাওয়া মোবাইল */
   .weather-single-col { flex-wrap: wrap; gap: 3px; }
   .weather-item-horiz { flex: 1 1 calc(33.33% - 3px); min-width: 80px; padding: 4px 2px; }
-  .weather-loc { font-size: 0.68rem; }
+  .weather-loc { font-size: 0.85rem; }
   .weather-sym { font-size: 1.3rem; }
-  .weather-desc { font-size: 0.62rem; }
+  .weather-desc { font-size: 0.8rem; }
   /* হেডলাইন কমপ্যাক্ট */
   .main-headline { font-size: 1.2rem; line-height: 1.3; margin-bottom: 3px; }
-  .main-subheadline { font-size: 0.85rem; margin-bottom: 4px; padding-bottom: 4px; }
+  .main-subheadline { font-size: 1rem; margin-bottom: 4px; padding-bottom: 4px; }
   .headline-body-text {
     column-count: 1 !important;
-    font-size: 0.95rem !important;
+    font-size: 1rem !important;
     line-height: 1.3 !important;
   }
   .headline-body-text p { margin-bottom: 3px; }
   .photo-frame { margin: 4px 0; max-width: 100%; padding: 8px; }
   .photo-border img { max-width: 100%; height: auto; }
-  .read-more { font-size: 0.875rem; display: inline-block; padding: 8px 0; }
+  .read-more { font-size: 1rem; display: inline-block; padding: 8px 0; }
   /* আর্টিকেল কার্ড কমপ্যাক্ট */
-  .grid-article-title { font-size: 0.95rem; line-height: 1.35; margin-bottom: 3px; }
-  .grid-article-snippet { font-size: 0.9rem; line-height: 1.35; }
-  .grid-article-meta { font-size: 0.8rem; margin-top: 3px; }
+  .grid-article-title { font-size: 1.05rem; line-height: 1.4; margin-bottom: 3px; }
+  .grid-article-snippet { font-size: 1rem; line-height: 1.4; }
+  .grid-article-meta { font-size: 1rem; margin-top: 3px; }
   /* ওয়ান্ড প্র্যাকটিস কমপ্যাক্ট */
   .grid-full-row > div { flex-direction: column !important; gap: 8px !important; }
   .grid-full-row > div > div { flex: 1 1 100% !important; min-width: 0 !important; }
-  .spell-btn { font-size: 0.875rem; padding: 8px 14px; min-height: 44px; }
-  .magic-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 10px; min-height: 40px; }
+  .spell-btn { font-size: 1rem; padding: 8px 14px; min-height: 44px; }
+  .magic-btn { width: 100%; text-align: center; font-size: 1rem; padding: 10px; min-height: 44px; }
   .secret-box { padding: 6px; margin-top: 6px; }
   .parchment-input { width: 100%; box-sizing: border-box; margin-bottom: 4px; }
   /* ওয়ান্ড প্র্যাকটিস gap কমানো */
@@ -1655,13 +1655,13 @@ body.confundo-active .parchment-bg {
   /* ফুটার কমপ্যাক্ট */
   footer { padding: 4px 0 !important; }
   footer nav { gap: 6px; margin-bottom: 4px; }
-  footer nav a { font-size: 0.875rem; }
-  footer p { font-size: 0.8rem; }
+  footer nav a { font-size: 1rem; }
+  footer p { font-size: 1rem; }
   /* অন্যান্য */
   .bottom-grid { grid-template-columns: 1fr; }
   .article-columns { column-count: 1; }
-  .article-body-text { font-size: 0.95rem; line-height: 1.3; column-count: 2; }
-  .article-author { font-size: 0.82rem; }
+  .article-body-text { font-size: 1rem; line-height: 1.4; column-count: 2; }
+  .article-author { font-size: 1rem; }
   .mini-article { padding: 6px 4px; }
   .section-article-grid { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr; }
@@ -1686,51 +1686,51 @@ body.confundo-active .parchment-bg {
   .masthead { margin: 4px 0; }
   .top-toolbar { padding: 2px 0; gap: 3px; margin-bottom: 2px; }
   .top-toolbar nav[aria-label="পৃষ্ঠা নেভিগেশন"] { gap: 3px; }
-  .spell-btn { font-size: 0.8rem; padding: 8px 12px; min-height: 44px; }
+  .spell-btn { font-size: 1rem; padding: 8px 12px; min-height: 44px; }
   /* মাস্টহেড V2 ছোট মোবাইল */
   .masthead-block { border-width: 2px; }
   .masthead-block::before { inset: 3px; }
   .masthead-block::after { display: none; }
-  .top-nav-bar { font-size: 0.85rem; gap: 2px; padding: 2px 0 0; border-bottom: none; }
-  .masthead-keywords { font-size: 0.85rem; padding: 2px 0 1px; gap: 0; }
+  .top-nav-bar { font-size: 1rem; gap: 2px; padding: 2px 0 0; border-bottom: none; }
+  .masthead-keywords { font-size: 1rem; padding: 2px 0 1px; gap: 0; }
   .kw-sep { margin: 0 4px; }
   .masthead-v2 { padding: 4px 0 2px; }
   .logo-title-v2 { font-size: 1.4rem; letter-spacing: 0; }
-  .masthead-tagline-v2 { font-size: 0.85rem; }
-  .masthead-subtitle-v2 { font-size: 0.85rem; letter-spacing: 1.5px; margin-top: 1px; }
+  .masthead-tagline-v2 { font-size: 1rem; }
+  .masthead-subtitle-v2 { font-size: 1rem; letter-spacing: 1.5px; margin-top: 1px; }
   .masthead-ornament { padding: 1px 4px; gap: 2px; }
   .ornament-wing { display: none; }
   .ornament-line { max-width: 50px; }
   .ornament-fleur, .ornament-diamond { font-size: 0.3rem; }
-  .issue-bar-v2 { font-size: 0.8rem; padding: 2px 4px; flex-wrap: wrap; gap: 0; }
+  .issue-bar-v2 { font-size: 1rem; padding: 2px 4px; flex-wrap: wrap; gap: 0; }
   .issue-sep { margin: 0 4px; }
   .ticker-container { flex-direction: column; height: auto; padding: 3px 4px; }
-  .ticker-label { font-size: 0.8rem; }
-  .ticker-wrap { font-size: 0.8rem; }
-  .issue-bar { font-size: 0.8rem; padding: 2px 4px; gap: 1px 6px; }
+  .ticker-label { font-size: 1rem; }
+  .ticker-wrap { font-size: 1rem; }
+  .issue-bar { font-size: 1rem; padding: 2px 4px; gap: 1px 6px; }
   .double-divider { margin: 0; height: 3px; }
   .main-headline { font-size: 1.05rem; line-height: 1.3; margin-bottom: 3px; }
-  .main-subheadline { font-size: 0.8rem; margin-bottom: 4px; }
+  .main-subheadline { font-size: 1rem; margin-bottom: 4px; }
   .full-title { font-size: 1rem; line-height: 1.3; }
-  .full-subtitle { font-size: 0.8rem; }
+  .full-subtitle { font-size: 1rem; }
   .wax-seal { width: 36px; height: 36px; }
   .seal-inner { width: 28px; height: 28px; top: 4px; left: 4px; }
   .seal-letter { font-size: 0.85rem; }
   .seal-text { font-size: 0.3rem; letter-spacing: 0.3px; }
-  .widget-title { font-size: 0.875rem; margin-bottom: 3px; }
-  .mini-title { font-size: 0.9rem; }
-  .mini-snippet { font-size: 0.8rem; }
-  .block-title { font-size: 0.9rem; }
-  .block-snippet { font-size: 0.8rem; }
-  .card-title { font-size: 0.9rem; }
-  .card-snippet { font-size: 0.8rem; }
-  .classified-heading { font-size: 0.9rem; }
-  .classified-body { font-size: 0.8rem; }
-  .lead-para { font-size: 0.9rem; }
+  .widget-title { font-size: 1rem; margin-bottom: 3px; }
+  .mini-title { font-size: 1rem; }
+  .mini-snippet { font-size: 1rem; }
+  .block-title { font-size: 1rem; }
+  .block-snippet { font-size: 1rem; }
+  .card-title { font-size: 1rem; }
+  .card-snippet { font-size: 1rem; }
+  .classified-heading { font-size: 1rem; }
+  .classified-body { font-size: 1rem; }
+  .lead-para { font-size: 1rem; }
   .drop-cap { font-size: 2.2rem; padding-right: 3px; }
-  .ad-title { font-size: 0.9rem; }
-  .ad-subtitle { font-size: 0.8rem; }
-  .wanted-header { font-size: 0.9rem; margin-bottom: 3px; padding-bottom: 2px; }
+  .ad-title { font-size: 1rem; }
+  .ad-subtitle { font-size: 1rem; }
+  .wanted-header { font-size: 1rem; margin-bottom: 3px; padding-bottom: 2px; }
   .wanted-name { font-size: 1rem; margin: 4px 0 1px; }
   .wanted-poster { border-width: 2px; padding: 4px 3px; }
   .wanted-img-frame { width: 70px; height: 84px; }
@@ -1739,29 +1739,29 @@ body.confundo-active .parchment-bg {
   .reward-amount { font-size: 0.9rem; }
   .wand-practice-inner { gap: 6px !important; }
   .wand-practice-inner p { margin-bottom: 2px; }
-  .grid-article-title { font-size: 0.9rem; line-height: 1.3; margin-bottom: 2px; }
-  .grid-article-snippet { font-size: 0.875rem; line-height: 1.35; }
-  .grid-article-meta { font-size: 0.8rem; margin-top: 2px; }
-  .headline-body-text { font-size: 0.9rem !important; line-height: 1.3 !important; }
+  .grid-article-title { font-size: 1.05rem; line-height: 1.35; margin-bottom: 2px; }
+  .grid-article-snippet { font-size: 1rem; line-height: 1.4; }
+  .grid-article-meta { font-size: 1rem; margin-top: 2px; }
+  .headline-body-text { font-size: 1rem !important; line-height: 1.4 !important; }
   .headline-body-text p { margin-bottom: 3px; }
   .sidebar-widget { padding: 4px 0; }
   .decree-box { border-width: 2px; padding: 6px 4px; }
-  .decree-body { font-size: 0.9rem; }
-  .decree-header { font-size: 0.875rem; }
-  .decree-number { font-size: 0.8rem; }
-  .magic-btn { font-size: 0.8rem; padding: 6px; min-height: 44px; }
+  .decree-body { font-size: 1rem; }
+  .decree-header { font-size: 1rem; }
+  .decree-number { font-size: 1rem; }
+  .magic-btn { font-size: 1rem; padding: 6px; min-height: 44px; }
   .secret-box { padding: 6px 4px; }
   .potion-img-frame { width: 44px; height: 58px; }
-  .article-body-text { font-size: 0.9rem; line-height: 1.3; column-count: 1; }
-  .article-author { font-size: 0.8rem; }
-  .article-back-btn { font-size: 0.8rem; padding: 8px 12px; }
+  .article-body-text { font-size: 1rem; line-height: 1.4; column-count: 1; }
+  .article-author { font-size: 1rem; }
+  .article-back-btn { font-size: 1rem; padding: 8px 12px; }
   .mini-article { padding: 4px 2px; }
   .bottom-card { padding: 6px; }
   .archive-issue-header { padding: 8px; }
   .archive-issue-number { font-size: 0.9rem; }
-  .archive-issue-stats { gap: 6px; font-size: 0.8rem; flex-wrap: wrap; }
+  .archive-issue-stats { gap: 6px; font-size: 1rem; flex-wrap: wrap; }
   .archive-article-row { padding: 4px; }
-  .section-tab { padding: 3px 6px; font-size: 0.7rem; }
+  .section-tab { padding: 3px 6px; font-size: 1rem; }
   .parchment-page-inner { padding: 10px 8px; }
   .parchment-page-title { font-size: 1.1rem; }
   /* আবহাওয়া ছোট মোবাইল */
@@ -1770,14 +1770,14 @@ body.confundo-active .parchment-bg {
     min-width: 60px;
     padding: 3px 1px;
   }
-  .weather-loc { font-size: 0.65rem; }
+  .weather-loc { font-size: 0.85rem; }
   .weather-sym { font-size: 1.1rem; }
-  .weather-desc { font-size: 0.65rem; }
+  .weather-desc { font-size: 0.85rem; }
   /* ফুটার ছোট মোবাইল */
   footer { padding: 4px 0; }
-  footer p { font-size: 0.8rem; }
+  footer p { font-size: 1rem; }
   footer nav { gap: 6px; flex-wrap: wrap; justify-content: center; }
-  footer nav a { font-size: 0.8rem; }
+  footer nav a { font-size: 1rem; }
   /* অ্যাডমিন ও অন্যান্য পেজ */
   .auth-container { margin: 10px 8px; padding: 16px 12px; }
   .parchment-page-inner { padding: 10px 8px; }
