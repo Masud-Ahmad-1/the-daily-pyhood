@@ -1305,6 +1305,21 @@ body.nox-active .column-divider { border-top-color: rgba(228,216,188,0.15); }
 body.nox-active .bottom-card { border-color: rgba(228,216,188,0.1); background: rgba(255,255,255,0.01); }
 body.nox-active .decree-box { border-color: rgba(228,216,188,0.25); background: rgba(255,255,255,0.01); }
 body.nox-active .ad-price { color: var(--accent-gold); }
+body.nox-active .grid-article-title { color: #e4d8bc; }
+body.nox-active .grid-article-snippet { color: rgba(228,216,188,0.75); }
+body.nox-active .main-headline a { color: #e4d8bc; }
+body.nox-active .headline-body-text { color: rgba(228,216,188,0.85); }
+body.nox-active .read-more { color: var(--accent-gold); }
+body.nox-active .spell-btn { color: #e4d8bc; border-color: rgba(228,216,188,0.3); background: rgba(228,216,188,0.08); }
+body.nox-active .spell-btn:hover { background: rgba(228,216,188,0.15); box-shadow: 0 0 5px rgba(181,148,73,0.4); }
+body.nox-active .magic-btn { color: #e4d8bc; background: rgba(228,216,188,0.08); border-color: rgba(228,216,188,0.3); box-shadow: 0 0 8px rgba(181,148,73,0.3); }
+body.nox-active .decree-sign { color: rgba(228,216,188,0.6); }
+body.nox-active .decree-body { color: #e4d8bc; }
+body.nox-active .letter-body { color: rgba(228,216,188,0.85); }
+body.nox-active .ad-container { background: rgba(255,255,255,0.02); }
+body.nox-active .lock-icon { color: rgba(228,216,188,0.7); }
+body.nox-active .site-footer p { color: rgba(228,216,188,0.4); }
+body.nox-active .site-footer { color: rgba(228,216,188,0.4); }
 
 /* কনফুন্ডো — বেগুনি ভ্রম ইফেক্ট */
 body.confundo-active { background-color: #1a0f20; }
@@ -1362,6 +1377,18 @@ body.confundo-active .grid-article-card { border-color: rgba(206,147,216,0.12); 
 body.confundo-active .grid-article-meta { color: rgba(212,196,232,0.5); }
 body.confundo-active .site-footer { color: rgba(212,196,232,0.4); }
 body.confundo-active .site-footer a { color: #ce93d8; }
+body.confundo-active .read-more { color: #ce93d8; }
+body.confundo-active .spell-btn { color: #d4c4e8; border-color: rgba(206,147,216,0.3); background: rgba(156,39,176,0.1); }
+body.confundo-active .spell-btn:hover { background: rgba(156,39,176,0.2); box-shadow: 0 0 5px rgba(156,39,176,0.5); }
+body.confundo-active .magic-btn { color: #fff; }
+body.confundo-active .decree-sign { color: rgba(212,196,232,0.6); }
+body.confundo-active .decree-body { color: #d4c4e8; }
+body.confundo-active .letter-body { color: rgba(212,196,232,0.85); }
+body.confundo-active .classified-body { color: #d4c4e8; }
+body.confundo-active .ad-container { background: rgba(74,20,140,0.05); }
+body.confundo-active .lock-icon { color: rgba(212,196,232,0.7); }
+body.confundo-active .headline-body-text { color: rgba(212,196,232,0.85); }
+body.confundo-active .site-footer p { color: rgba(212,196,232,0.4); }
 body.confundo-active .spell-glow {
   opacity: 1;
   background: radial-gradient(circle 200px at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(156,39,176,0.15) 0%, rgba(74,20,140,0.3) 50%, transparent 80%);
