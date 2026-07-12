@@ -332,7 +332,7 @@ export default function Home() {
                   <div className="ad-container" style={{ padding: 0 }}>
                     <div className="ad-label">বিজ্ঞাপন</div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <h3 className="ad-title" style={{ fontSize: '0.95rem' }}>
+                      <h3 className="ad-title">
                         {ads[0].articleSlug ? (
                           <a onClick={() => {
                             const linked = articles.find(a => a.slug === ads[0].articleSlug)
@@ -340,14 +340,14 @@ export default function Home() {
                           }}>{ads[0].title}</a>
                         ) : ads[0].title}
                       </h3>
-                      {ads[0].subtitle && <p className="ad-subtitle" style={{ fontSize: '0.85rem' }}>{ads[0].subtitle}</p>}
+                      {ads[0].subtitle && <p className="ad-subtitle">{ads[0].subtitle}</p>}
                       {ads[0].imageUrl && (
                         <div className="potion-img-frame" style={{ width: 60, height: 80 }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={ads[0].imageUrl} alt={ads[0].title} className="magical-photo potion-photo" loading="lazy" />
                         </div>
                       )}
-                      {ads[0].price && <span className="ad-price" style={{ fontSize: '0.88rem' }}>{ads[0].price}</span>}
+                      {ads[0].price && <span className="ad-price">{ads[0].price}</span>}
                     </div>
                   </div>
                 </div>
@@ -375,7 +375,7 @@ export default function Home() {
             <div className="grid-articles-row-2">
               {classifieds.length > 0 ? (
                 <div className="grid-article-card classified-card">
-                  <h3 className="widget-title" style={{ fontSize: '0.95rem', marginBottom: 6 }}>দৈনিক বিজ্ঞাপন</h3>
+                  <h3 className="widget-title">দৈনিক বিজ্ঞাপন</h3>
                   {classifieds.slice(0, 3).map((c, i) => (
                     <div key={c.id} style={i > 0 ? { marginTop: 6, borderTop: '1px dashed rgba(74,65,42,0.15)', paddingTop: 6 } : {}}>
                       <span className="classified-heading" style={{ fontSize: '1rem', fontWeight: 700 }}>{c.heading}</span>
@@ -460,7 +460,7 @@ export default function Home() {
 
         <hr className="double-divider" />
 
-        <footer className="site-footer" style={{ textAlign: 'center', padding: '8px 0', fontSize: '0.85rem', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
+        <footer className="site-footer" style={{ textAlign: 'center', padding: '8px 0', fontFamily: 'var(--font-bengali)', color: 'var(--border-color)' }} role="contentinfo">
           <nav style={{ display: 'flex', justifyContent: 'center', gap: 15, marginBottom: 8, flexWrap: 'wrap' }} aria-label="ফুটার নেভিগেশন">
             <a href="/archive" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📚 আর্কাইভ</a>
             <a href="/sections" style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>📂 বিভাগ</a>
