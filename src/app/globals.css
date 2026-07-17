@@ -1544,7 +1544,7 @@ body.confundo-active .parchment-bg {
     padding: 6px 0;
   }
   /* মাস্টহেড কমপ্যাক্ট (পুরাতন) */
-  .logo-title { font-size: 2rem; letter-spacing: -1px; }
+  .logo-title { font-size: 2.8rem; letter-spacing: -1px; }
   .logo-tagline { font-size: 0.7rem; margin-top: 2px; }
   .masthead { margin: 4px 0; }
   .masthead-decor { height: 6px; }
@@ -1559,7 +1559,7 @@ body.confundo-active .parchment-bg {
   .masthead-keywords { font-size: 1.25rem; padding: 4px 0 5px; letter-spacing: 1px; }
   .kw-sep { margin: 0 6px; font-size: 0.35rem; }
   .masthead-v2 { padding: 6px 4px 4px; }
-  .logo-title-v2 { font-size: 1.9rem; letter-spacing: 1px; }
+  .logo-title-v2 { font-size: 2.8rem; letter-spacing: 1px; }
   .masthead-tagline-v2 { font-size: 1.25rem; letter-spacing: 1px; }
   .masthead-subtitle-v2 { font-size: 1.25rem; letter-spacing: 2px; margin-top: 2px; }
   .masthead-ornament { padding: 2px 8px; gap: 3px; }
@@ -1685,7 +1685,7 @@ body.confundo-active .parchment-bg {
     grid-row: auto;
   }
   .grid-article-card { padding: 6px 2px; }
-  .logo-title { font-size: 1.5rem; letter-spacing: 0; margin-bottom: 0; }
+  .logo-title { font-size: 2.2rem; letter-spacing: 0; margin-bottom: 0; }
   .logo-tagline { font-size: 0.6rem; letter-spacing: 0.5px; }
   .masthead { margin: 4px 0; }
   .top-toolbar { padding: 2px 0; gap: 3px; margin-bottom: 2px; }
@@ -1699,7 +1699,7 @@ body.confundo-active .parchment-bg {
   .masthead-keywords { font-size: 1.25rem; padding: 2px 0 1px; gap: 0; }
   .kw-sep { margin: 0 4px; }
   .masthead-v2 { padding: 4px 0 2px; }
-  .logo-title-v2 { font-size: 1.4rem; letter-spacing: 0; }
+  .logo-title-v2 { font-size: 2.2rem; letter-spacing: 0; }
   .masthead-tagline-v2 { font-size: 1.25rem; }
   .masthead-subtitle-v2 { font-size: 1.25rem; letter-spacing: 1.5px; margin-top: 1px; }
   .masthead-ornament { padding: 1px 4px; gap: 2px; }
@@ -1940,7 +1940,7 @@ body.nox-active .secret-box.locked .lock-icon {
 
 .mini-logo-title {
   font-family: 'Li Subha Letterpress', var(--font-bengali);
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 1px;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
@@ -2378,7 +2378,7 @@ body.nox-active .secret-box.locked .lock-icon {
    নতুন পেজ রেসপন্সিভ
    ============================== */
 @media (max-width: 768px) {
-  .mini-logo-title { font-size: 1.4rem; }
+  .mini-logo-title { font-size: 2rem; }
   .mini-masthead { flex-direction: column; gap: 8px; text-align: center; }
   .related-grid { grid-template-columns: 1fr; }
   .section-article-grid { grid-template-columns: 1fr; }
@@ -2393,7 +2393,7 @@ body.nox-active .secret-box.locked .lock-icon {
 }
 
 @media (max-width: 480px) {
-  .mini-logo-title { font-size: 1.2rem; }
+  .mini-logo-title { font-size: 1.6rem; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .stat-value { font-size: 1.5rem; }
   .section-tabs { gap: 4px; }
